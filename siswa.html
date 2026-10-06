@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Siswa - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-teal-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-user-graduate text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL SISWA</h1>
+                    <p class="text-xs text-slate-400">Pusat Pembelajaran, Tugas, Ujian, Kehadiran, PKL, & Karier Siswa</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="switchTab('komunikasi')" class="relative text-slate-300 hover:text-white">
+                    <i class="fa-solid fa-bell text-lg"></i>
+                    <span class="absolute -top-1 -right-2 bg-rose-500 text-white text-[10px] px-1.5 rounded-full">3</span>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center font-bold text-sm">RP</div>
+                    <div class="hidden md:block leading-tight">
+                        <span class="text-sm font-medium block">Rian Pratama</span>
+                        <span class="text-[10px] text-slate-400">X TKJ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-3 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('dashboard')" id="btn-dashboard" class="tab-btn py-3 font-semibold text-teal-600 border-b-2 border-teal-600 whitespace-nowrap"><i class="fa-solid fa-house mr-1.5"></i> 1. Profil & Dashboard</button>
+            <button onclick="switchTab('pembelajaran')" id="btn-pembelajaran" class="tab-btn py-3 font-medium text-slate-600 hover:text-teal-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-book-open mr-1.5"></i> 2. Pembelajaran</button>
+            <button onclick="switchTab('tugas')" id="btn-tugas" class="tab-btn py-3 font-medium text-slate-600 hover:text-teal-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-list-check mr-1.5"></i> 3. Tugas & Projek <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">2</span></button>
+            <button onclick="switchTab('ujian')" id="btn-ujian" class="tab-btn py-3 font-medium text-slate-600 hover:text-teal-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-pen mr-1.5"></i> 4. Ujian & Nilai</button>
+            <button onclick="switchTab('kehadiran')" id="btn-kehadiran" class="tab-btn py-3 font-medium text-slate-600 hover:text-teal-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-clipboard-user mr-1.5"></i> 5. Kehadiran</button>
+            <button onclick="switchTab('bimbingan')" id="btn-bimbingan" class="tab-btn py-3 font-medium text-slate-600 hover:text-teal-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-shield-halved mr-1.5"></i> 6. Kedisiplinan & BK</button>
+            <button onclick="switchTab('pkl')" id="btn-pkl" class="tab-btn py-3 font-medium text-slate-600 hover:text-teal-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-industry mr-1.5"></i> 7. PKL & Karier <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">SMK</span></button>
+            <button onclick="switchTab('komunikasi')" id="btn-komunikasi" class="tab-btn py-3 font-medium text-slate-600 hover:text-teal-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> 8. Komunikasi</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+
+        <!-- ================= 1. PROFIL DAN DASHBOARD ================= -->
+        <div id="tab-dashboard" class="space-y-6 tab-content">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-id-badge mr-2 text-teal-600"></i>1. Profil dan Dashboard (Poin 1.1 - 1.4)</h3>
+                        <p class="text-xs text-slate-500">Profil diri, ringkasan jadwal hari ini, tugas mendekati tenggat, ujian mendatang, serta pengaturan akun.</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="alert('Formulir pengajuan perubahan foto/kontak dibuka. Perubahan akan diverifikasi TU.')" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-pen-to-square mr-1"></i> Ajukan Perubahan Data</button>
+                        <button onclick="alert('Halaman ubah password & pengaturan akun dibuka.')" class="bg-slate-700 hover:bg-slate-800 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-key mr-1"></i> Ubah Password</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Profil Saya</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rian Pratama</h4>
+                        <p class="text-slate-600"><strong>NIS / NISN:</strong> 10245 / 00812345</p>
+                        <p class="text-slate-600"><strong>Kelas:</strong> X TKJ</p>
+                        <p class="text-slate-600"><strong>Jurusan:</strong> Teknik Komputer dan Jaringan</p>
+                        <p class="text-slate-600"><strong>Wali Kelas:</strong> Bu Sabdal, S.Pd.</p>
+                        <p class="text-slate-600"><strong>Status:</strong> <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Aktif</span></p>
+                        <div class="pt-1">
+                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded"><i class="fa-solid fa-clock mr-1"></i> 1 pengajuan ganti foto menunggu verifikasi TU</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 md:col-span-2">
+                        <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Jadwal Hari Ini - Selasa, 6 Oktober 2026</span>
+                        <table class="w-full text-left border-collapse bg-white rounded border border-slate-200">
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-2 w-28 font-medium">07.00 - 08.30</td>
+                                    <td class="p-2">Komputer dan Jaringan Dasar</td>
+                                    <td class="p-2 text-slate-500">Pak San, S.T.</td>
+                                    <td class="p-2 text-slate-500">Lab TKJ 1</td>
+                                </tr>
+                                <tr class="bg-teal-50">
+                                    <td class="p-2 font-medium">08.30 - 10.00</td>
+                                    <td class="p-2 font-semibold">Pemrograman Web Dasar <span class="text-[10px] bg-teal-600 text-white px-1.5 rounded ml-1">Berlangsung</span></td>
+                                    <td class="p-2 text-slate-500">Bu Dewi, S.Kom.</td>
+                                    <td class="p-2 text-slate-500">Lab RPL 2</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-medium">10.15 - 11.45</td>
+                                    <td class="p-2">Bahasa Indonesia</td>
+                                    <td class="p-2 text-slate-500">Bu Ratna, S.Pd.</td>
+                                    <td class="p-2 text-slate-500">R. X-3</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-medium">12.30 - 14.00</td>
+                                    <td class="p-2">Matematika <span class="text-[10px] bg-indigo-100 text-indigo-700 px-1.5 rounded ml-1">Daring</span></td>
+                                    <td class="p-2 text-slate-500">Pak Hendra, S.Pd.</td>
+                                    <td class="p-2 text-slate-500">Google Meet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 space-y-2">
+                        <span class="text-[10px] font-bold text-amber-800 uppercase tracking-wider"><i class="fa-solid fa-hourglass-half mr-1"></i> Tugas Mendekati Tenggat</span>
+                        <div class="bg-white p-2.5 rounded border border-amber-200">
+                            <strong class="block">Membuat Halaman Profil HTML</strong>
+                            <span class="text-slate-500">Pemrograman Web Dasar &middot; </span><span class="text-rose-600 font-semibold">Besok, 23.59</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-amber-200">
+                            <strong class="block">Laporan Praktik Crimping Kabel</strong>
+                            <span class="text-slate-500">Komputer & Jaringan Dasar &middot; </span><span class="text-amber-700 font-semibold">9 Okt 2026</span>
+                        </div>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="text-[10px] font-bold text-indigo-800 uppercase tracking-wider"><i class="fa-solid fa-calendar-check mr-1"></i> Ujian Mendatang</span>
+                        <div class="bg-white p-2.5 rounded border border-indigo-200">
+                            <strong class="block">Kuis Bab 2 - Subnetting</strong>
+                            <span class="text-slate-500">Kamis, 8 Okt 2026 &middot; 30 menit</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-indigo-200">
+                            <strong class="block">STS Ganjil 2026/2027</strong>
+                            <span class="text-slate-500">19 - 24 Okt 2026 &middot; Lab Komputer</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider"><i class="fa-solid fa-bullhorn mr-1"></i> Pengumuman & Notifikasi</span>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <strong class="block">Nilai baru: Tugas Topologi Jaringan (88)</strong>
+                            <span class="text-slate-500">Pak San, S.T. &middot; 1 jam lalu</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <strong class="block">Perubahan jadwal: Matematika jadi daring</strong>
+                            <span class="text-slate-500">Waka Kurikulum &middot; Hari ini</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. PEMBELAJARAN ================= -->
+        <div id="tab-pembelajaran" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-book-open mr-2 text-teal-600"></i>2. Pembelajaran (Poin 2.1 - 2.5)</h3>
+                    <p class="text-xs text-slate-500">Daftar mapel & guru pengampu, akses materi sesuai jadwal rilis, progres belajar, forum diskusi, dan kelas daring.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Mapel & Kelas yang Diikuti</span>
+                        <div class="bg-white p-2.5 rounded border-2 border-teal-500 cursor-pointer">
+                            <strong class="block">Pemrograman Web Dasar</strong>
+                            <span class="text-slate-500">Bu Dewi, S.Kom.</span>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 mt-2"><div class="bg-teal-600 h-1.5 rounded-full" style="width: 60%"></div></div>
+                            <span class="text-[10px] text-slate-500">Progres 6/10 materi</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200 cursor-pointer hover:border-teal-400">
+                            <strong class="block">Komputer dan Jaringan Dasar</strong>
+                            <span class="text-slate-500">Pak San, S.T.</span>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 mt-2"><div class="bg-teal-600 h-1.5 rounded-full" style="width: 75%"></div></div>
+                            <span class="text-[10px] text-slate-500">Progres 9/12 materi</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200 cursor-pointer hover:border-teal-400">
+                            <strong class="block">Matematika</strong>
+                            <span class="text-slate-500">Pak Hendra, S.Pd.</span>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 mt-2"><div class="bg-teal-600 h-1.5 rounded-full" style="width: 40%"></div></div>
+                            <span class="text-[10px] text-slate-500">Progres 4/10 materi</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200 cursor-pointer hover:border-teal-400">
+                            <strong class="block">Bahasa Indonesia</strong>
+                            <span class="text-slate-500">Bu Ratna, S.Pd.</span>
+                            <div class="w-full bg-slate-200 rounded-full h-1.5 mt-2"><div class="bg-teal-600 h-1.5 rounded-full" style="width: 50%"></div></div>
+                            <span class="text-[10px] text-slate-500">Progres 5/10 materi</span>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 space-y-4">
+                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                            <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Materi - Pemrograman Web Dasar</span>
+                            <table class="w-full text-left border-collapse bg-white rounded border border-slate-200">
+                                <thead>
+                                    <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                        <th class="p-2.5">Pertemuan / Materi</th>
+                                        <th class="p-2.5 text-center">Jenis</th>
+                                        <th class="p-2.5 text-center">Status</th>
+                                        <th class="p-2.5 text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr>
+                                        <td class="p-2.5 font-medium">P5 - Struktur Dasar HTML</td>
+                                        <td class="p-2.5 text-center"><i class="fa-solid fa-file-pdf text-rose-500"></i> PDF</td>
+                                        <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Selesai</span></td>
+                                        <td class="p-2.5 text-center"><button onclick="alert('Membuka materi PDF.')" class="text-teal-600 font-medium">Buka</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-medium">P6 - Tag Form & Input</td>
+                                        <td class="p-2.5 text-center"><i class="fa-solid fa-video text-indigo-500"></i> Video</td>
+                                        <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Belum Selesai</span></td>
+                                        <td class="p-2.5 text-center"><button onclick="alert('Materi ditandai selesai dipelajari.')" class="bg-teal-600 text-white px-2 py-0.5 rounded font-medium">Tandai Selesai</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-medium">P7 - Dasar CSS & Styling</td>
+                                        <td class="p-2.5 text-center"><i class="fa-solid fa-display text-amber-500"></i> Presentasi</td>
+                                        <td class="p-2.5 text-center"><span class="bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-semibold"><i class="fa-solid fa-lock mr-1"></i>Rilis 13 Okt</span></td>
+                                        <td class="p-2.5 text-center text-slate-400">-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                                <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Forum Diskusi & Tanya Jawab</span>
+                                <div class="bg-white p-2.5 rounded border border-slate-200">
+                                    <strong class="block">Kenapa form tidak terkirim saat klik submit?</strong>
+                                    <span class="text-slate-500">Fajar (X TKJ) &middot; 4 balasan</span>
+                                </div>
+                                <div class="bg-white p-2.5 rounded border border-slate-200">
+                                    <strong class="block">Perbedaan id dan class di CSS</strong>
+                                    <span class="text-slate-500">Bu Dewi, S.Kom. &middot; 7 balasan</span>
+                                </div>
+                                <button onclick="alert('Membuka forum diskusi kelas.')" class="bg-teal-600 hover:bg-teal-700 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Buat Pertanyaan</button>
+                            </div>
+                            <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                                <span class="text-[10px] font-bold text-indigo-800 uppercase tracking-wider">Pembelajaran Daring (Video Conference)</span>
+                                <h4 class="font-bold text-indigo-900 text-sm">Matematika - Persamaan Linear</h4>
+                                <p class="text-slate-600"><strong>Waktu:</strong> Hari ini, 12.30 - 14.00</p>
+                                <p class="text-slate-600"><strong>Guru:</strong> Pak Hendra, S.Pd.</p>
+                                <button onclick="alert('Bergabung ke sesi video conference (Google Meet).')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-video mr-1"></i> Gabung Kelas Daring</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. TUGAS DAN PROJEK ================= -->
+        <div id="tab-tugas" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-list-check mr-2 text-teal-600"></i>3. Tugas dan Projek (Poin 3.1 - 3.5)</h3>
+                        <p class="text-xs text-slate-500">Daftar tugas, tenggat, rubrik, pengumpulan (file/teks/tautan) dengan revisi sebelum tenggat, tugas kelompok, nilai & umpan balik, serta portofolio digital.</p>
+                    </div>
+                    <button onclick="alert('Formulir pengumpulan tugas dibuka (unggah file, teks, atau tautan).')" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-upload mr-1"></i> Kumpulkan Tugas</button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Daftar Tugas & Status Pengumpulan</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Tugas</th>
+                                <th class="p-2.5">Mapel</th>
+                                <th class="p-2.5 text-center">Tipe</th>
+                                <th class="p-2.5 text-center">Tenggat</th>
+                                <th class="p-2.5 text-center">Status</th>
+                                <th class="p-2.5 text-center">Nilai</th>
+                                <th class="p-2.5 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Membuat Halaman Profil HTML</td>
+                                <td class="p-2.5">Pemrograman Web Dasar</td>
+                                <td class="p-2.5 text-center">File (.zip)</td>
+                                <td class="p-2.5 text-center text-rose-600 font-semibold">7 Okt, 23.59</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Belum Dikumpulkan</span></td>
+                                <td class="p-2.5 text-center">-</td>
+                                <td class="p-2.5 text-center space-x-1">
+                                    <button onclick="alert('Rubrik: Struktur HTML 40%, Kerapian 30%, Kreativitas 30%.')" class="text-slate-600 font-medium">Rubrik</button>
+                                    <button onclick="alert('Unggah file tugas.')" class="bg-teal-600 text-white px-2 py-0.5 rounded font-medium">Kumpulkan</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Projek Kelompok: Instalasi Jaringan LAN Mini <span class="text-[10px] bg-purple-100 text-purple-700 px-1.5 rounded ml-1">Kelompok 3</span></td>
+                                <td class="p-2.5">Komputer & Jaringan Dasar</td>
+                                <td class="p-2.5 text-center">Tautan + Foto</td>
+                                <td class="p-2.5 text-center">9 Okt 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Dikumpulkan (Bisa Revisi)</span></td>
+                                <td class="p-2.5 text-center">-</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Mengganti berkas pengumpulan (revisi sebelum tenggat).')" class="text-teal-600 font-medium">Revisi</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Tugas Topologi Jaringan</td>
+                                <td class="p-2.5">Komputer & Jaringan Dasar</td>
+                                <td class="p-2.5 text-center">File (.pdf)</td>
+                                <td class="p-2.5 text-center">30 Sep 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Dinilai</span></td>
+                                <td class="p-2.5 text-center font-bold text-slate-800">88</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Umpan balik guru: Topologi sudah tepat, perjelas label IP address tiap perangkat.')" class="text-teal-600 font-medium">Lihat Feedback</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Esai Teks Eksposisi</td>
+                                <td class="p-2.5">Bahasa Indonesia</td>
+                                <td class="p-2.5 text-center">Teks</td>
+                                <td class="p-2.5 text-center">25 Sep 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Dinilai</span></td>
+                                <td class="p-2.5 text-center font-bold text-slate-800">82</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Umpan balik guru: Argumen kuat, perbaiki ejaan pada paragraf 2.')" class="text-teal-600 font-medium">Lihat Feedback</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-purple-50 p-4 rounded-lg border border-purple-200 space-y-3 text-xs">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                        <div>
+                            <span class="font-bold text-purple-800 uppercase text-[10px]">Portofolio Digital (Karya Terbaik)</span>
+                            <p class="text-purple-900">Kumpulan karya terbaik yang dapat dilihat guru atau IDUKA bila diizinkan.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <label class="flex items-center gap-1 text-purple-900"><input type="checkbox" checked class="accent-purple-600"> Izinkan dilihat IDUKA</label>
+                            <button onclick="alert('Menambahkan karya ke portofolio.')" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Tambah Karya</button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="bg-white p-3 rounded border border-purple-200">
+                            <i class="fa-solid fa-network-wired text-purple-600 text-lg"></i>
+                            <strong class="block mt-1">Desain Topologi Jaringan Kantor</strong>
+                            <span class="text-slate-500">Nilai 88 &middot; Komputer & Jaringan Dasar</span>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-purple-200">
+                            <i class="fa-solid fa-image text-purple-600 text-lg"></i>
+                            <strong class="block mt-1">Poster Digital Hari Guru</strong>
+                            <span class="text-slate-500">Juara 3 Lomba Desain Poster</span>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-purple-200">
+                            <i class="fa-solid fa-code text-purple-600 text-lg"></i>
+                            <strong class="block mt-1">Landing Page Sederhana</strong>
+                            <span class="text-slate-500">Nilai 90 &middot; Pemrograman Web Dasar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. UJIAN DAN PENILAIAN ================= -->
+        <div id="tab-ujian" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-file-pen mr-2 text-teal-600"></i>4. Ujian dan Penilaian (Poin 4.1 - 4.5)</h3>
+                        <p class="text-xs text-slate-500">Kuis, ulangan harian, STS, dan SAS daring; hasil & pembahasan; nilai pengetahuan, keterampilan, sikap; remedial/pengayaan; serta unduh rapor digital.</p>
+                    </div>
+                    <button onclick="alert('Mengunduh e-rapor digital Rian Pratama (PDF).')" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-download mr-1"></i> Unduh Rapor Digital (PDF)</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="text-[10px] font-bold text-indigo-800 uppercase tracking-wider">Ujian Daring Tersedia</span>
+                        <div class="bg-white p-2.5 rounded border border-indigo-200 space-y-1">
+                            <strong class="block">Ulangan Harian - Dasar HTML</strong>
+                            <p class="text-slate-500">20 soal (acak) &middot; Batas waktu 45 menit</p>
+                            <p class="text-slate-500">Dibuka: hari ini 13.00 - 15.00</p>
+                            <input type="text" placeholder="Masukkan token ujian" class="w-full border border-slate-300 rounded px-2 py-1 mt-1">
+                            <button onclick="alert('Token diverifikasi. Ujian dimulai, waktu berjalan 45 menit.')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded font-medium w-full mt-1"><i class="fa-solid fa-play mr-1"></i> Mulai Kerjakan</button>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-indigo-200">
+                            <strong class="block">Kuis Bab 2 - Subnetting</strong>
+                            <p class="text-slate-500">Dibuka Kamis, 8 Okt 2026</p>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Hasil Ujian & Pembahasan</span>
+                        <table class="w-full text-left border-collapse bg-white rounded border border-slate-200">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                    <th class="p-2.5">Ujian</th>
+                                    <th class="p-2.5 text-center">Nilai</th>
+                                    <th class="p-2.5 text-center">KKM</th>
+                                    <th class="p-2.5 text-center">Status</th>
+                                    <th class="p-2.5 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-2.5 font-medium">Kuis Bab 1 - Pengenalan Jaringan</td>
+                                    <td class="p-2.5 text-center font-bold">90</td>
+                                    <td class="p-2.5 text-center">75</td>
+                                    <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Tuntas</span></td>
+                                    <td class="p-2.5 text-center space-x-1">
+                                        <button onclick="alert('Membuka pembahasan soal yang dipublikasikan guru.')" class="text-teal-600 font-medium">Pembahasan</button>
+                                        <button onclick="alert('Membuka soal pengayaan.')" class="text-indigo-600 font-medium">Pengayaan</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-medium">Ulangan Harian - Persamaan Linear</td>
+                                    <td class="p-2.5 text-center font-bold text-rose-600">68</td>
+                                    <td class="p-2.5 text-center">75</td>
+                                    <td class="p-2.5 text-center"><span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-semibold">Belum Tuntas</span></td>
+                                    <td class="p-2.5 text-center space-x-1">
+                                        <button onclick="alert('Membuka pembahasan soal yang dipublikasikan guru.')" class="text-teal-600 font-medium">Pembahasan</button>
+                                        <button onclick="alert('Remedial dijadwalkan Senin, 12 Okt 2026. Soal remedial dibuka saat jadwal.')" class="bg-rose-600 text-white px-2 py-0.5 rounded font-medium">Ikuti Remedial</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-medium">Ulangan Harian - Teks Eksposisi</td>
+                                    <td class="p-2.5 text-center text-slate-400" colspan="3"><i class="fa-solid fa-lock mr-1"></i>Hasil belum dipublikasikan guru</td>
+                                    <td class="p-2.5 text-center text-slate-400">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto text-xs">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Nilai Saya per Mapel (Pengetahuan, Keterampilan, Sikap) & Ketuntasan KKM</h4>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Mata Pelajaran</th>
+                                <th class="p-2.5 text-center">KKM</th>
+                                <th class="p-2.5 text-center">Pengetahuan</th>
+                                <th class="p-2.5 text-center">Keterampilan</th>
+                                <th class="p-2.5 text-center">Sikap</th>
+                                <th class="p-2.5 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Pemrograman Web Dasar</td>
+                                <td class="p-2.5 text-center">75</td>
+                                <td class="p-2.5 text-center font-bold">85</td>
+                                <td class="p-2.5 text-center font-bold">88</td>
+                                <td class="p-2.5 text-center">Baik</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Tuntas</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Komputer dan Jaringan Dasar</td>
+                                <td class="p-2.5 text-center">75</td>
+                                <td class="p-2.5 text-center font-bold">80</td>
+                                <td class="p-2.5 text-center font-bold">82</td>
+                                <td class="p-2.5 text-center">Sangat Baik</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Tuntas</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Matematika</td>
+                                <td class="p-2.5 text-center">75</td>
+                                <td class="p-2.5 text-center font-bold text-rose-600">70</td>
+                                <td class="p-2.5 text-center font-bold">76</td>
+                                <td class="p-2.5 text-center">Baik</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Remedial</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. KEHADIRAN ================= -->
+        <div id="tab-kehadiran" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-clipboard-user mr-2 text-teal-600"></i>5. Kehadiran (Poin 5.1 - 5.2)</h3>
+                        <p class="text-xs text-slate-500">Rekap kehadiran sendiri per hari, per mapel, dan per bulan, serta presensi mandiri untuk pembelajaran daring/kegiatan tertentu.</p>
+                    </div>
+                    <select class="border border-slate-300 rounded px-2 py-1.5 text-xs">
+                        <option>Oktober 2026</option>
+                        <option>September 2026</option>
+                        <option>Agustus 2026</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Hadir (H)</span>
+                        <strong class="text-emerald-700 text-lg">48 Hari</strong>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Izin (I)</span>
+                        <strong class="text-blue-700 text-lg">2 Hari</strong>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Sakit (S)</span>
+                        <strong class="text-amber-700 text-lg">1 Hari</strong>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Tanpa Keterangan (A)</span>
+                        <strong class="text-rose-700 text-lg">0 Hari</strong>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="md:col-span-2 overflow-x-auto">
+                        <h4 class="font-bold text-slate-700 text-xs mb-2">Rekap Kehadiran per Mapel</h4>
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                    <th class="p-2.5">Mata Pelajaran</th>
+                                    <th class="p-2.5 text-center">Pertemuan</th>
+                                    <th class="p-2.5 text-center">H</th>
+                                    <th class="p-2.5 text-center">I</th>
+                                    <th class="p-2.5 text-center">S</th>
+                                    <th class="p-2.5 text-center">A</th>
+                                    <th class="p-2.5 text-center">%</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr><td class="p-2.5 font-medium">Pemrograman Web Dasar</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">100%</td></tr>
+                                <tr><td class="p-2.5 font-medium">Komputer dan Jaringan Dasar</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">11</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">92%</td></tr>
+                                <tr><td class="p-2.5 font-medium">Matematika</td><td class="p-2.5 text-center">10</td><td class="p-2.5 text-center">9</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">90%</td></tr>
+                                <tr><td class="p-2.5 font-medium">Bahasa Indonesia</td><td class="p-2.5 text-center">8</td><td class="p-2.5 text-center">7</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">88%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="bg-teal-50 p-4 rounded-lg border border-teal-200 space-y-2">
+                        <span class="text-[10px] font-bold text-teal-800 uppercase tracking-wider">Presensi Mandiri (Daring / Kegiatan)</span>
+                        <h4 class="font-bold text-teal-900 text-sm">Matematika - Kelas Daring</h4>
+                        <p class="text-slate-600">Hari ini, 12.30 - 14.00</p>
+                        <p class="text-[11px] text-teal-700 italic">Validasi: presensi hanya dibuka saat sesi berlangsung & tercatat dengan lokasi/waktu.</p>
+                        <button onclick="alert('Presensi mandiri tercatat: Hadir, 12.34 WIB. Menunggu validasi guru.')" class="bg-teal-600 hover:bg-teal-700 text-white px-3 py-1.5 rounded font-medium w-full"><i class="fa-solid fa-fingerprint mr-1"></i> Isi Presensi Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. KEDISIPLINAN DAN BIMBINGAN ================= -->
+        <div id="tab-bimbingan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-shield-halved mr-2 text-teal-600"></i>6. Kedisiplinan dan Bimbingan (Poin 6.1 - 6.2)</h3>
+                        <p class="text-xs text-slate-500">Poin pelanggaran dan prestasi sendiri, serta pengajuan permintaan konseling ke BK beserta jadwalnya.</p>
+                    </div>
+                    <button onclick="alert('Formulir permintaan konseling ke BK dibuka. Isi permintaan bersifat rahasia.')" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-hand-holding-heart mr-1"></i> Ajukan Konseling ke BK</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-teal-600 uppercase text-[10px]">Poin Pelanggaran & Prestasi</span>
+                        <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
+                            <span>Akumulasi Poin Pelanggaran:</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">0 Poin (Aman)</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
+                            <span>Poin Positif / Prestasi:</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">+15 Poin</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <strong class="block">Juara 3 Lomba Desain Poster Tingkat Kota</strong>
+                            <span class="text-slate-500">12 Sep 2026 &middot; dicatat Waka Kesiswaan</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-teal-600 uppercase text-[10px]">Permintaan & Jadwal Konseling</span>
+                        <table class="w-full text-left border-collapse bg-white rounded border border-slate-200">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                    <th class="p-2.5">Tanggal Ajuan</th>
+                                    <th class="p-2.5">Topik</th>
+                                    <th class="p-2.5 text-center">Jadwal</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-2.5">1 Okt 2026</td>
+                                    <td class="p-2.5">Bimbingan karier / peminatan</td>
+                                    <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Kamis 8 Okt, 10.00 - R. BK</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="text-[11px] text-slate-500 italic">Catatan konseling bersifat rahasia dan hanya dapat diakses guru BK.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 7. PKL DAN KARIER (SMK) ================= -->
+        <div id="tab-pkl" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-industry mr-2 text-teal-600"></i>7. PKL dan Karier - Khas SMK (Poin 7.1 - 7.5)</h3>
+                    <p class="text-xs text-slate-500">Tempat & pembimbing PKL, presensi dan jurnal harian, unggah laporan, hasil penilaian & sertifikat, serta informasi lowongan kerja.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Informasi Penempatan PKL</span>
+                        <h4 class="font-bold text-indigo-900 text-sm">PT Telkom Akses Depok</h4>
+                        <p class="text-slate-600"><strong>Periode:</strong> Juli - Oktober 2026</p>
+                        <p class="text-slate-600"><strong>Divisi:</strong> Network Operations</p>
+                        <p class="text-slate-600"><strong>Guru Pembimbing:</strong> Pak San, S.T.</p>
+                        <p class="text-slate-600"><strong>Pembimbing Industri:</strong> Bpk. Rian Hidayat, S.T.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-teal-600 uppercase text-[10px]">Presensi & Jurnal Harian PKL</span>
+                        <div class="flex gap-2">
+                            <button onclick="alert('Presensi PKL hari ini tercatat: Hadir 07.52 WIB.')" class="bg-teal-600 hover:bg-teal-700 text-white px-3 py-1.5 rounded font-medium flex-1"><i class="fa-solid fa-location-dot mr-1"></i> Presensi Hari Ini</button>
+                        </div>
+                        <textarea rows="3" placeholder="Tuliskan kegiatan hari ini..." class="w-full border border-slate-300 rounded px-2 py-1.5">Splicing fiber optic di ODP area Margonda bersama tim teknisi.</textarea>
+                        <button onclick="alert('Jurnal harian terkirim, menunggu verifikasi pembimbing industri.')" class="bg-slate-700 hover:bg-slate-800 text-white px-3 py-1.5 rounded font-medium w-full">Kirim Jurnal</button>
+                        <div class="bg-white p-2 rounded border border-slate-200 flex justify-between">
+                            <span>Jurnal 5 Okt 2026</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 rounded font-semibold">Diverifikasi</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-teal-600 uppercase text-[10px]">Laporan, Penilaian & Sertifikat</span>
+                        <button onclick="alert('Unggah laporan PKL dan dokumen pendukung (PDF).')" class="bg-white border border-teal-600 text-teal-700 px-3 py-1.5 rounded font-medium w-full"><i class="fa-solid fa-file-arrow-up mr-1"></i> Unggah Laporan PKL</button>
+                        <div class="bg-white p-2.5 rounded border border-slate-200 space-y-1">
+                            <p><strong>Status Penilaian:</strong> <span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Belum Final</span></p>
+                            <p class="text-slate-500">Nilai & sertifikat tampil setelah penilaian IDUKA dikunci (tenggat 15 Okt 2026).</p>
+                        </div>
+                        <button disabled class="bg-slate-200 text-slate-400 px-3 py-1.5 rounded font-medium w-full cursor-not-allowed"><i class="fa-solid fa-certificate mr-1"></i> Unduh Sertifikat PKL</button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto text-xs">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Informasi Lowongan Kerja & Kegiatan Karier (dari BK / IDUKA)</h4>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Info</th>
+                                <th class="p-2.5">Sumber</th>
+                                <th class="p-2.5 text-center">Batas</th>
+                                <th class="p-2.5 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Teknisi Jaringan Junior (untuk lulusan)</td>
+                                <td class="p-2.5">PT Telkom Akses Depok</td>
+                                <td class="p-2.5 text-center">30 Nov 2026</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka detail lowongan.')" class="text-teal-600 font-medium">Detail</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Seminar Karier: Siap Kerja di Industri IT</td>
+                                <td class="p-2.5">Guru BK</td>
+                                <td class="p-2.5 text-center">20 Okt 2026</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Pendaftaran seminar berhasil.')" class="text-teal-600 font-medium">Daftar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 8. KOMUNIKASI ================= -->
+        <div id="tab-komunikasi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-comments mr-2 text-teal-600"></i>8. Komunikasi (Poin 8.1 - 8.3)</h3>
+                    <p class="text-xs text-slate-500">Pengumuman dari sekolah, wali kelas, dan guru; pesan ke guru mapel, wali kelas, atau BK; serta notifikasi nilai baru dan perubahan jadwal.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-teal-600 uppercase text-[10px]">Pengumuman</span>
+                        <div class="bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <span class="text-[10px] bg-blue-100 text-blue-700 px-1.5 rounded">Sekolah</span>
+                            <strong class="block">Jadwal STS Ganjil 2026/2027</strong>
+                            <p class="text-slate-500 text-[11px]">STS dilaksanakan 19 - 24 Oktober 2026 secara CBT di lab komputer.</p>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <span class="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 rounded">Wali Kelas</span>
+                            <strong class="block">Piket kelas minggu ini: Kelompok 2</strong>
+                            <p class="text-slate-500 text-[11px]">Bu Sabdal, S.Pd. &middot; 5 Okt 2026</p>
+                        </div>
+                        <div class="bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <span class="text-[10px] bg-purple-100 text-purple-700 px-1.5 rounded">Guru Mapel</span>
+                            <strong class="block">Bawa laptop untuk praktik CSS</strong>
+                            <p class="text-slate-500 text-[11px]">Bu Dewi, S.Kom. &middot; 4 Okt 2026</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-teal-600 uppercase text-[10px]">Kirim Pesan</span>
+                        <select class="w-full border border-slate-300 rounded px-2 py-1.5">
+                            <option>Bu Sabdal, S.Pd. (Wali Kelas)</option>
+                            <option>Bu Dewi, S.Kom. (Pemrograman Web Dasar)</option>
+                            <option>Pak San, S.T. (Komputer & Jaringan Dasar)</option>
+                            <option>Guru BK</option>
+                        </select>
+                        <textarea rows="4" placeholder="Tulis pesan..." class="w-full border border-slate-300 rounded px-2 py-1.5"></textarea>
+                        <button onclick="alert('Pesan terkirim.')" class="bg-teal-600 hover:bg-teal-700 text-white px-3 py-1.5 rounded font-medium w-full"><i class="fa-solid fa-paper-plane mr-1"></i> Kirim Pesan</button>
+                        <p class="text-[11px] text-slate-500 italic">Penerima pesan mengikuti kebijakan sekolah.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-teal-600 uppercase text-[10px]">Notifikasi</span>
+                        <div class="bg-white p-2.5 rounded border-l-4 border-emerald-500 border-y border-r border-slate-200">
+                            <strong class="block"><i class="fa-solid fa-star text-emerald-500 mr-1"></i> Nilai baru</strong>
+                            <span class="text-slate-500">Tugas Topologi Jaringan: 88 &middot; 1 jam lalu</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border-l-4 border-amber-500 border-y border-r border-slate-200">
+                            <strong class="block"><i class="fa-solid fa-calendar-xmark text-amber-500 mr-1"></i> Perubahan jadwal</strong>
+                            <span class="text-slate-500">Matematika hari ini menjadi kelas daring &middot; Hari ini</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border-l-4 border-blue-500 border-y border-r border-slate-200">
+                            <strong class="block"><i class="fa-solid fa-star text-blue-500 mr-1"></i> Nilai baru</strong>
+                            <span class="text-slate-500">Esai Teks Eksposisi: 82 &middot; Kemarin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Siswa &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 8 dengan tampilan antarmuka penuh.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-teal-600', 'border-teal-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-teal-600', 'border-teal-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>
