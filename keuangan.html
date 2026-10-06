@@ -179,6 +179,70 @@
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="border-b border-slate-100 pb-2">
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-coins mr-2 text-emerald-600"></i>Pengelolaan Kelebihan Bayar</h3>
+                        <p class="text-slate-500">Kelebihan bayar dapat dikembalikan atau dialihkan sebagai saldo deposit untuk tagihan berikutnya.</p>
+                    </div>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2">Siswa</th>
+                                <th class="p-2 text-center">Kelebihan</th>
+                                <th class="p-2 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2 font-medium">Siti Rahma <span class="text-slate-400 block">XII PPLG &middot; Transfer VA 2 Okt</span></td>
+                                <td class="p-2 text-center font-bold text-emerald-700">Rp 50.000</td>
+                                <td class="p-2 text-center space-x-1">
+                                    <button onclick="alert('Kelebihan bayar dialihkan menjadi saldo deposit untuk SPP November.')" class="bg-emerald-600 text-white px-2 py-0.5 rounded font-medium">Jadikan Deposit</button>
+                                    <button onclick="alert('Pengembalian dana (refund) dicatat dan menunggu persetujuan bendahara.')" class="bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Refund</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-medium">Fajar Nugroho <span class="text-slate-400 block">X TKJ &middot; Tunai 30 Sep</span></td>
+                                <td class="p-2 text-center font-bold text-emerald-700">Rp 25.000</td>
+                                <td class="p-2 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Deposit Aktif</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="border-b border-slate-100 pb-2 flex justify-between items-start gap-2">
+                        <div>
+                            <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-rotate-left mr-2 text-rose-600"></i>Pembatalan / Koreksi Transaksi & Log Audit</h3>
+                            <p class="text-slate-500">Setiap pembatalan atau koreksi wajib disertai alasan dan tercatat permanen di log audit.</p>
+                        </div>
+                        <button onclick="alert('Formulir pembatalan/koreksi transaksi dibuka. Alasan wajib diisi.')" class="bg-rose-600 hover:bg-rose-700 text-white px-2 py-1 rounded font-medium whitespace-nowrap">Koreksi Transaksi</button>
+                    </div>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2">Waktu / Petugas</th>
+                                <th class="p-2">Transaksi</th>
+                                <th class="p-2">Aksi & Alasan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2">5 Okt 2026 10.12 <span class="text-slate-400 block">Kasir: Bu Yanti</span></td>
+                                <td class="p-2">KW-2026-10-0142 <span class="text-slate-400 block">Rp 350.000</span></td>
+                                <td class="p-2"><span class="bg-rose-100 text-rose-800 px-1.5 rounded font-semibold">Dibatalkan</span> <span class="block text-slate-600 mt-0.5">Salah input siswa (seharusnya Rian Pratama).</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2">3 Okt 2026 14.40 <span class="text-slate-400 block">Bendahara: Pak Joko</span></td>
+                                <td class="p-2">KW-2026-10-0098 <span class="text-slate-400 block">Rp 750.000 &rarr; Rp 700.000</span></td>
+                                <td class="p-2"><span class="bg-amber-100 text-amber-800 px-1.5 rounded font-semibold">Dikoreksi</span> <span class="block text-slate-600 mt-0.5">Potongan beasiswa belum diterapkan.</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <!-- ================= 4. TUNGGAKAN DAN PENAGIHAN ================= -->

@@ -191,8 +191,82 @@
                                 <td class="p-2.5 text-center font-bold text-slate-800">82</td>
                                 <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Tuntas</span></td>
                             </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Matematika</td>
+                                <td class="p-2.5 text-center">75</td>
+                                <td class="p-2.5 text-center font-bold text-rose-600">70</td>
+                                <td class="p-2.5 text-center font-bold text-slate-800">76</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Remedial</span></td>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <!-- Daftar Tugas Anak -->
+                <div class="overflow-x-auto">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Daftar Tugas, Batas Waktu, & Status Pengumpulan</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Tugas</th>
+                                <th class="p-2.5">Mata Pelajaran</th>
+                                <th class="p-2.5 text-center">Batas Waktu</th>
+                                <th class="p-2.5 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Membuat Halaman Profil HTML</td>
+                                <td class="p-2.5">Pemrograman Web Dasar</td>
+                                <td class="p-2.5 text-center text-rose-600 font-semibold">7 Okt 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Belum Dikumpulkan</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Projek Kelompok: Instalasi Jaringan LAN Mini</td>
+                                <td class="p-2.5">Komputer dan Jaringan Dasar</td>
+                                <td class="p-2.5 text-center">9 Okt 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Sudah Dikumpulkan</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Tugas Topologi Jaringan</td>
+                                <td class="p-2.5">Komputer dan Jaringan Dasar</td>
+                                <td class="p-2.5 text-center">30 Sep 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Dinilai (88)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Jadwal Pelajaran, Jadwal Ujian, Catatan Wali Kelas -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Jadwal Pelajaran Hari Ini (Selasa)</span>
+                        <div class="bg-white p-2 rounded border border-slate-200 flex justify-between"><span>07.00 - 08.30</span><strong>Komputer & Jaringan Dasar</strong></div>
+                        <div class="bg-white p-2 rounded border border-slate-200 flex justify-between"><span>08.30 - 10.00</span><strong>Pemrograman Web Dasar</strong></div>
+                        <div class="bg-white p-2 rounded border border-slate-200 flex justify-between"><span>10.15 - 11.45</span><strong>Bahasa Indonesia</strong></div>
+                        <div class="bg-white p-2 rounded border border-slate-200 flex justify-between"><span>12.30 - 14.00</span><strong>Matematika (Daring)</strong></div>
+                        <button onclick="alert('Membuka jadwal pelajaran satu minggu.')" class="text-blue-600 font-medium">Lihat jadwal satu minggu &rarr;</button>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="text-[10px] font-bold text-indigo-800 uppercase tracking-wider">Jadwal Ujian</span>
+                        <div class="bg-white p-2.5 rounded border border-indigo-200">
+                            <strong class="block">Kuis Bab 2 - Subnetting</strong>
+                            <span class="text-slate-500">Kamis, 8 Okt 2026</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-indigo-200">
+                            <strong class="block">Remedial Matematika</strong>
+                            <span class="text-slate-500">Senin, 12 Okt 2026</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-indigo-200">
+                            <strong class="block">STS Ganjil 2026/2027</strong>
+                            <span class="text-slate-500">19 - 24 Okt 2026 &middot; Lab Komputer</span>
+                        </div>
+                    </div>
+                    <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 space-y-2">
+                        <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">Catatan Wali Kelas pada Rapor</span>
+                        <p class="text-emerald-900 italic">"Rian aktif dan bertanggung jawab dalam praktik jaringan. Perlu meningkatkan ketelitian pada pelajaran Matematika dan mengikuti remedial dengan sungguh-sungguh."</p>
+                        <p class="text-slate-500">Bu Sabdal, S.Pd. &middot; Rapor Semester Genap 2025/2026</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -222,6 +296,31 @@
                         <p class="text-rose-900 font-medium">Tidak ada jadwal panggilan atau surat peringatan dari BK saat ini.</p>
                         <p class="text-[11px] text-rose-700 italic">Catatan: Demi privasi anak, rincian catatan konseling rahasia tidak ditampilkan di akun wali murid.</p>
                     </div>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 text-xs">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Jadwal & Permintaan Konseling ke BK</span>
+                        <button onclick="alert('Formulir permintaan konseling ke Guru BK dibuka.')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-hand-holding-heart mr-1"></i> Ajukan Permintaan Konseling</button>
+                    </div>
+                    <table class="w-full text-left border-collapse bg-white rounded border border-slate-200">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Tanggal Ajuan</th>
+                                <th class="p-2.5">Diajukan Oleh</th>
+                                <th class="p-2.5">Topik</th>
+                                <th class="p-2.5 text-center">Jadwal Konseling</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5">1 Okt 2026</td>
+                                <td class="p-2.5">Siswa (Rian)</td>
+                                <td class="p-2.5">Bimbingan karier / peminatan</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Kamis 8 Okt, 10.00 - R. BK</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

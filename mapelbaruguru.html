@@ -260,7 +260,7 @@
                         <button onclick="openModal('cbt_bank')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Buka Bank Soal</button>
                     </div>
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
-                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.4 & 5.5</span><h4 class="font-bold text-slate-800 text-sm mt-1">Input Nilai & Remedial di Bawah KKM</h4></div>
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.4 & 5.5</span><h4 class="font-bold text-slate-800 text-sm mt-1">Input Nilai, Remedial &amp; Pengayaan</h4></div>
                         <button onclick="openModal('cbt_input_nilai')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Input & Kelola Nilai</button>
                     </div>
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
@@ -691,7 +691,20 @@
             'kirim_pengingat_hp': { title: 'Pengingat HP Siswa', html: '<button onclick="alert(\'Notifikasi terkirim ke HP siswa!\')" class="w-full bg-indigo-600 text-white py-2 rounded text-xs">Kirim Push Notification Sekarang</button>' },
             'uh_nilai_murni': { title: 'Portal CBT: Pantau Ujian & Nilai Murni', html: '<p>Sistem merekap nilai ujian pertama (murni) dan daftar siswa yang perlu remedial secara real-time.</p>' },
             'cbt_bank': { title: 'Bank Soal CBT', html: '<p>Kelola paket soal pilihan ganda, esai, dan benar-salah.</p>' },
-            'cbt_input_nilai': { title: 'Input & Remidial CBT', html: '<p>Pengaturan nilai remedial otomatis bagi siswa di bawah KKM.</p>' },
+            'cbt_input_nilai': { title: 'Input Nilai, Remedial & Pengayaan', html: `
+                <p class="text-xs text-slate-500">Siswa di bawah KKM otomatis masuk daftar remedial; siswa tuntas dapat diberi soal pengayaan.</p>
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead><tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200"><th class="p-2">Siswa</th><th class="p-2 text-center">Nilai</th><th class="p-2 text-center">Program</th><th class="p-2 text-center">Nilai Akhir</th></tr></thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr><td class="p-2 font-medium">Fajar Nugroho</td><td class="p-2 text-center text-rose-600 font-bold">68</td><td class="p-2 text-center"><span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-semibold">Remedial</span></td><td class="p-2 text-center">78</td></tr>
+                        <tr><td class="p-2 font-medium">Dina Larasati</td><td class="p-2 text-center text-rose-600 font-bold">72</td><td class="p-2 text-center"><span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-semibold">Remedial</span></td><td class="p-2 text-center text-slate-400">Belum</td></tr>
+                        <tr><td class="p-2 font-medium">Rian Pratama</td><td class="p-2 text-center font-bold">90</td><td class="p-2 text-center"><span class="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-semibold">Pengayaan</span></td><td class="p-2 text-center">Selesai</td></tr>
+                    </tbody>
+                </table>
+                <div class="flex gap-2">
+                    <button onclick="alert('Soal remedial dikirim ke 2 siswa di bawah KKM.')" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white text-xs py-2 rounded font-medium">Kirim Soal Remedial</button>
+                    <button onclick="alert('Materi & soal pengayaan dikirim ke siswa yang sudah tuntas.')" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-xs py-2 rounded font-medium">Kirim Soal Pengayaan</button>
+                </div>` },
             'cbt_analisis': { title: 'Analisis Validitas Butir Soal', html: '<p>Laporan tingkat kesukaran dan daya pembeda butir soal ujian.</p>' },
             'presensi_isi': { title: 'Absensi & Jurnal', html: '<textarea class="w-full text-xs p-2 border rounded" placeholder="Jurnal KBM..."></textarea>' },
             'presensi_jurnal': { title: 'Riwayat Jurnal', html: '<p>Riwayat absensi & jurnal terekam.</p>' },
