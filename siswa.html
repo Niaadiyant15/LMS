@@ -22,11 +22,18 @@
                 </div>
             </div>
             <div class="flex items-center space-x-3">
+                <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700 flex items-center space-x-2 text-xs">
+                    <span class="text-slate-400 hidden md:inline"><i class="fa-solid fa-eye mr-1"></i> Contoh:</span>
+                    <select id="pilihProfil" onchange="gantiProfil(this.value)" class="bg-slate-900 text-white font-bold border-none focus:ring-0 cursor-pointer">
+                        <option value="baik">Rian (Siswa Baik)</option>
+                        <option value="kurang">Fajar (Perlu Pembinaan)</option>
+                    </select>
+                </div>
                 <button onclick="switchTab('komunikasi')" class="relative text-slate-300 hover:text-white">
                     <i class="fa-solid fa-bell text-lg"></i>
                     <span class="absolute -top-1 -right-2 bg-rose-500 text-white text-[10px] px-1.5 rounded-full">3</span>
                 </button>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" data-p="navAkun">
                     <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center font-bold text-sm">RP</div>
                     <div class="hidden md:block leading-tight">
                         <span class="text-sm font-medium block">Rian Pratama</span>
@@ -54,6 +61,11 @@
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
 
+        <!-- Banner keterangan contoh profil -->
+        <div id="bannerProfil" data-p="banner" class="bg-emerald-50 border-l-4 border-emerald-500 p-3 rounded-r-xl text-xs text-emerald-900">
+            <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i> <strong>Contoh siswa baik:</strong> kehadiran tinggi, tugas tepat waktu, nilai tuntas, tanpa pelanggaran, dan punya prestasi. Ganti contoh di pojok kanan atas.
+        </div>
+
         <!-- ================= 1. PROFIL DAN DASHBOARD ================= -->
         <div id="tab-dashboard" class="space-y-6 tab-content">
             <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
@@ -69,7 +81,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2" data-p="profil">
                         <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Profil Saya</span>
                         <h4 class="font-bold text-slate-800 text-sm">Rian Pratama</h4>
                         <p class="text-slate-600"><strong>NIS / NISN:</strong> 10245 / 00812345</p>
@@ -116,7 +128,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 space-y-2">
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 space-y-2" data-p="dashTugas">
                         <span class="text-[10px] font-bold text-amber-800 uppercase tracking-wider"><i class="fa-solid fa-hourglass-half mr-1"></i> Tugas Mendekati Tenggat</span>
                         <div class="bg-white p-2.5 rounded border border-amber-200">
                             <strong class="block">Membuat Halaman Profil HTML</strong>
@@ -138,7 +150,7 @@
                             <span class="text-slate-500">19 - 24 Okt 2026 &middot; Lab Komputer</span>
                         </div>
                     </div>
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2" data-p="dashNotif">
                         <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider"><i class="fa-solid fa-bullhorn mr-1"></i> Pengumuman & Notifikasi</span>
                         <div class="bg-white p-2.5 rounded border border-slate-200">
                             <strong class="block">Nilai baru: Tugas Topologi Jaringan (88)</strong>
@@ -276,7 +288,7 @@
                                 <th class="p-2.5 text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100" data-p="tugasTabel">
                             <tr>
                                 <td class="p-2.5 font-medium">Membuat Halaman Profil HTML</td>
                                 <td class="p-2.5">Pemrograman Web Dasar</td>
@@ -331,7 +343,7 @@
                             <button onclick="alert('Menambahkan karya ke portofolio.')" class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Tambah Karya</button>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3" data-p="portofolio">
                         <div class="bg-white p-3 rounded border border-purple-200">
                             <i class="fa-solid fa-network-wired text-purple-600 text-lg"></i>
                             <strong class="block mt-1">Desain Topologi Jaringan Kantor</strong>
@@ -391,7 +403,7 @@
                                     <th class="p-2.5 text-center">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-100">
+                            <tbody class="divide-y divide-slate-100" data-p="hasilUjian">
                                 <tr>
                                     <td class="p-2.5 font-medium">Kuis Bab 1 - Pengenalan Jaringan</td>
                                     <td class="p-2.5 text-center font-bold">90</td>
@@ -435,7 +447,7 @@
                                 <th class="p-2.5 text-center">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100" data-p="nilaiMapel">
                             <tr>
                                 <td class="p-2.5 font-medium">Pemrograman Web Dasar</td>
                                 <td class="p-2.5 text-center">75</td>
@@ -481,7 +493,7 @@
                     </select>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs" data-p="rekapHadir">
                     <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-center">
                         <span class="text-slate-500 block">Hadir (H)</span>
                         <strong class="text-emerald-700 text-lg">48 Hari</strong>
@@ -515,7 +527,7 @@
                                     <th class="p-2.5 text-center">%</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-100">
+                            <tbody class="divide-y divide-slate-100" data-p="hadirMapel">
                                 <tr><td class="p-2.5 font-medium">Pemrograman Web Dasar</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">100%</td></tr>
                                 <tr><td class="p-2.5 font-medium">Komputer dan Jaringan Dasar</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">11</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">92%</td></tr>
                                 <tr><td class="p-2.5 font-medium">Matematika</td><td class="p-2.5 text-center">10</td><td class="p-2.5 text-center">9</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">90%</td></tr>
@@ -546,7 +558,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3" data-p="poin">
                         <span class="font-bold text-teal-600 uppercase text-[10px]">Poin Pelanggaran & Prestasi</span>
                         <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
                             <span>Akumulasi Poin Pelanggaran:</span>
@@ -571,7 +583,7 @@
                                     <th class="p-2.5 text-center">Jadwal</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-100">
+                            <tbody class="divide-y divide-slate-100" data-p="konseling">
                                 <tr>
                                     <td class="p-2.5">1 Okt 2026</td>
                                     <td class="p-2.5">Bimbingan karier / peminatan</td>
@@ -594,7 +606,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2" data-p="pklInfo">
                         <span class="font-bold text-indigo-800 uppercase text-[10px]">Informasi Penempatan PKL</span>
                         <h4 class="font-bold text-indigo-900 text-sm">PT Telkom Akses Depok</h4>
                         <p class="text-slate-600"><strong>Periode:</strong> Juli - Oktober 2026</p>
@@ -698,7 +710,7 @@
                         <p class="text-[11px] text-slate-500 italic">Penerima pesan mengikuti kebijakan sekolah.</p>
                     </div>
 
-                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2" data-p="notif">
                         <span class="font-bold text-teal-600 uppercase text-[10px]">Notifikasi</span>
                         <div class="bg-white p-2.5 rounded border-l-4 border-emerald-500 border-y border-r border-slate-200">
                             <strong class="block"><i class="fa-solid fa-star text-emerald-500 mr-1"></i> Nilai baru</strong>
@@ -736,6 +748,156 @@
             const activeBtn = document.getElementById('btn-' + tabId);
             activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
             activeBtn.classList.add('text-teal-600', 'border-teal-600', 'font-semibold');
+        }
+
+        // ===== Contoh profil: Rian (siswa baik) vs Fajar (perlu pembinaan) =====
+        // Isi Rian diambil dari HTML di atas saat halaman dimuat; isi Fajar didefinisikan di sini.
+        const badge = (warna, teks) => `<span class="bg-${warna}-100 text-${warna}-800 px-2 py-0.5 rounded font-semibold">${teks}</span>`;
+        const profilKurang = {
+            navAkun: `
+                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center font-bold text-sm">FN</div>
+                <div class="hidden md:block leading-tight">
+                    <span class="text-sm font-medium block">Fajar Nugroho</span>
+                    <span class="text-[10px] text-slate-400">X TKJ</span>
+                </div>`,
+            banner: `<i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i> <strong>Contoh siswa perlu pembinaan:</strong> sering alfa & terlambat, tugas tidak dikumpulkan, beberapa nilai di bawah KKM, ada poin pelanggaran & SP1, serta tunggakan SPP sehingga akses ujian diblokir.`,
+            profil: `
+                <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider">Profil Saya</span>
+                <h4 class="font-bold text-slate-800 text-sm">Fajar Nugroho</h4>
+                <p class="text-slate-600"><strong>NIS / NISN:</strong> 10251 / 00812391</p>
+                <p class="text-slate-600"><strong>Kelas:</strong> X TKJ</p>
+                <p class="text-slate-600"><strong>Jurusan:</strong> Teknik Komputer dan Jaringan</p>
+                <p class="text-slate-600"><strong>Wali Kelas:</strong> Bu Sabdal, S.Pd.</p>
+                <p class="text-slate-600"><strong>Status:</strong> ${badge('emerald', 'Aktif')} ${badge('rose', 'SP1')}</p>
+                <div class="pt-1">
+                    <span class="text-[10px] bg-rose-100 text-rose-800 px-2 py-0.5 rounded"><i class="fa-solid fa-lock mr-1"></i> Akses ujian diblokir: tunggakan SPP Oktober</span>
+                </div>`,
+            dashTugas: `
+                <span class="text-[10px] font-bold text-amber-800 uppercase tracking-wider"><i class="fa-solid fa-hourglass-half mr-1"></i> Tugas Mendekati Tenggat</span>
+                <div class="bg-white p-2.5 rounded border border-rose-300">
+                    <strong class="block">Projek Kelompok: LAN Mini</strong>
+                    <span class="text-slate-500">Komputer & Jaringan Dasar &middot; </span><span class="text-rose-600 font-semibold">Belum ada kontribusi</span>
+                </div>
+                <div class="bg-white p-2.5 rounded border border-rose-300">
+                    <strong class="block">Membuat Halaman Profil HTML</strong>
+                    <span class="text-slate-500">Pemrograman Web Dasar &middot; </span><span class="text-rose-600 font-semibold">Besok, 23.59</span>
+                </div>
+                <div class="bg-rose-50 p-2 rounded border border-rose-200 text-rose-700 font-semibold">2 tugas lewat tenggat belum dikumpulkan</div>`,
+            dashNotif: `
+                <span class="text-[10px] font-bold text-teal-600 uppercase tracking-wider"><i class="fa-solid fa-bullhorn mr-1"></i> Pengumuman & Notifikasi</span>
+                <div class="bg-white p-2.5 rounded border border-rose-200">
+                    <strong class="block text-rose-700">Panggilan BK: Kamis 8 Okt, 09.00</strong>
+                    <span class="text-slate-500">Rujukan wali kelas &middot; Hari ini</span>
+                </div>
+                <div class="bg-white p-2.5 rounded border border-amber-200">
+                    <strong class="block">Jadwal remedial Matematika & KJD</strong>
+                    <span class="text-slate-500">Senin, 12 Okt 2026</span>
+                </div>`,
+            tugasTabel: `
+                <tr>
+                    <td class="p-2.5 font-medium">Membuat Halaman Profil HTML</td><td class="p-2.5">Pemrograman Web Dasar</td><td class="p-2.5 text-center">File (.zip)</td>
+                    <td class="p-2.5 text-center text-rose-600 font-semibold">7 Okt, 23.59</td><td class="p-2.5 text-center">${badge('amber', 'Belum Dikumpulkan')}</td><td class="p-2.5 text-center">-</td>
+                    <td class="p-2.5 text-center"><button onclick="alert('Unggah file tugas.')" class="bg-teal-600 text-white px-2 py-0.5 rounded font-medium">Kumpulkan</button></td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-medium">Projek Kelompok: Instalasi Jaringan LAN Mini <span class="text-[10px] bg-purple-100 text-purple-700 px-1.5 rounded ml-1">Kelompok 3</span></td><td class="p-2.5">Komputer & Jaringan Dasar</td><td class="p-2.5 text-center">Tautan + Foto</td>
+                    <td class="p-2.5 text-center">9 Okt 2026</td><td class="p-2.5 text-center">${badge('rose', 'Belum Berkontribusi')}</td><td class="p-2.5 text-center">-</td>
+                    <td class="p-2.5 text-center"><button onclick="alert('Membuka ruang kerja kelompok.')" class="text-teal-600 font-medium">Buka</button></td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-medium">Tugas Topologi Jaringan</td><td class="p-2.5">Komputer & Jaringan Dasar</td><td class="p-2.5 text-center">File (.pdf)</td>
+                    <td class="p-2.5 text-center">30 Sep 2026</td><td class="p-2.5 text-center">${badge('amber', 'Terlambat 2 Hari')}</td><td class="p-2.5 text-center font-bold text-rose-600">65</td>
+                    <td class="p-2.5 text-center"><button onclick="alert('Umpan balik guru: Topologi belum lengkap dan dikumpulkan terlambat. Perhatikan tenggat berikutnya.')" class="text-teal-600 font-medium">Lihat Feedback</button></td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-medium">Esai Teks Eksposisi</td><td class="p-2.5">Bahasa Indonesia</td><td class="p-2.5 text-center">Teks</td>
+                    <td class="p-2.5 text-center">25 Sep 2026</td><td class="p-2.5 text-center">${badge('rose', 'Tidak Dikumpulkan')}</td><td class="p-2.5 text-center font-bold text-rose-600">0</td>
+                    <td class="p-2.5 text-center"><button onclick="alert('Hubungi guru untuk kesempatan susulan.')" class="text-teal-600 font-medium">Minta Susulan</button></td>
+                </tr>`,
+            portofolio: `
+                <div class="bg-white p-3 rounded border border-dashed border-purple-300 md:col-span-3 text-center text-slate-500">
+                    <i class="fa-solid fa-folder-open text-purple-300 text-lg"></i>
+                    <p class="mt-1">Belum ada karya di portofolio. Karya dengan nilai &ge; KKM dapat ditambahkan di sini.</p>
+                </div>`,
+            hasilUjian: `
+                <tr>
+                    <td class="p-2.5 font-medium">Kuis Bab 1 - Pengenalan Jaringan</td><td class="p-2.5 text-center font-bold text-rose-600">68</td><td class="p-2.5 text-center">75</td>
+                    <td class="p-2.5 text-center">${badge('rose', 'Belum Tuntas')}</td>
+                    <td class="p-2.5 text-center"><button onclick="alert('Remedial dijadwalkan Senin, 12 Okt 2026.')" class="bg-rose-600 text-white px-2 py-0.5 rounded font-medium">Ikuti Remedial</button></td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-medium">Ulangan Harian - Persamaan Linear</td><td class="p-2.5 text-center font-bold text-rose-600">60</td><td class="p-2.5 text-center">75</td>
+                    <td class="p-2.5 text-center">${badge('rose', 'Belum Tuntas')}</td>
+                    <td class="p-2.5 text-center"><button onclick="alert('Remedial dijadwalkan Senin, 12 Okt 2026.')" class="bg-rose-600 text-white px-2 py-0.5 rounded font-medium">Ikuti Remedial</button></td>
+                </tr>
+                <tr>
+                    <td class="p-2.5 font-medium">STS Ganjil 2026/2027</td>
+                    <td class="p-2.5 text-center text-rose-600 font-semibold" colspan="3"><i class="fa-solid fa-lock mr-1"></i>Akses diblokir Bagian Keuangan (tunggakan SPP)</td>
+                    <td class="p-2.5 text-center text-slate-400">-</td>
+                </tr>`,
+            nilaiMapel: `
+                <tr><td class="p-2.5 font-medium">Pemrograman Web Dasar</td><td class="p-2.5 text-center">75</td><td class="p-2.5 text-center font-bold text-rose-600">72</td><td class="p-2.5 text-center font-bold">76</td><td class="p-2.5 text-center">Cukup</td><td class="p-2.5 text-center">${badge('amber', 'Remedial')}</td></tr>
+                <tr><td class="p-2.5 font-medium">Komputer dan Jaringan Dasar</td><td class="p-2.5 text-center">75</td><td class="p-2.5 text-center font-bold text-rose-600">68</td><td class="p-2.5 text-center font-bold text-rose-600">70</td><td class="p-2.5 text-center">Cukup</td><td class="p-2.5 text-center">${badge('rose', 'Belum Tuntas')}</td></tr>
+                <tr><td class="p-2.5 font-medium">Matematika</td><td class="p-2.5 text-center">75</td><td class="p-2.5 text-center font-bold text-rose-600">60</td><td class="p-2.5 text-center font-bold text-rose-600">65</td><td class="p-2.5 text-center">Perlu Bimbingan</td><td class="p-2.5 text-center">${badge('rose', 'Belum Tuntas')}</td></tr>`,
+            rekapHadir: `
+                <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-center"><span class="text-slate-500 block">Hadir (H)</span><strong class="text-emerald-700 text-lg">41 Hari</strong></div>
+                <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center"><span class="text-slate-500 block">Izin (I)</span><strong class="text-blue-700 text-lg">2 Hari</strong></div>
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-center"><span class="text-slate-500 block">Sakit (S) / Terlambat</span><strong class="text-amber-700 text-lg">1 / 5x</strong></div>
+                <div class="bg-rose-50 border border-rose-300 p-3 rounded-lg text-center"><span class="text-slate-500 block">Tanpa Keterangan (A)</span><strong class="text-rose-700 text-lg">6 Hari</strong><span class="block text-[10px] text-rose-600 font-semibold">Peringatan dini</span></div>`,
+            hadirMapel: `
+                <tr><td class="p-2.5 font-medium">Pemrograman Web Dasar</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">10</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center text-rose-600 font-bold">2</td><td class="p-2.5 text-center font-bold text-amber-700">83%</td></tr>
+                <tr><td class="p-2.5 font-medium">Komputer dan Jaringan Dasar</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">9</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center text-rose-600 font-bold">2</td><td class="p-2.5 text-center font-bold text-amber-700">75%</td></tr>
+                <tr><td class="p-2.5 font-medium">Matematika</td><td class="p-2.5 text-center">10</td><td class="p-2.5 text-center">7</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center text-rose-600 font-bold">2</td><td class="p-2.5 text-center font-bold text-rose-600">70%</td></tr>
+                <tr><td class="p-2.5 font-medium">Bahasa Indonesia</td><td class="p-2.5 text-center">8</td><td class="p-2.5 text-center">7</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center font-bold text-emerald-700">88%</td></tr>`,
+            poin: `
+                <span class="font-bold text-teal-600 uppercase text-[10px]">Poin Pelanggaran & Prestasi</span>
+                <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
+                    <span>Akumulasi Poin Pelanggaran:</span>${badge('orange', '30 Poin (Sedang)')}
+                </div>
+                <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
+                    <span>Poin Positif / Prestasi:</span><span class="bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold">0 Poin</span>
+                </div>
+                <div class="bg-white p-2.5 rounded border border-rose-200 space-y-1">
+                    <strong class="block text-rose-700">Membolos jam KBM berulang (3x) &middot; +20 poin</strong>
+                    <strong class="block text-rose-700">Terlambat masuk sekolah (5x) &middot; +10 poin</strong>
+                    <span class="text-slate-500">Tindak lanjut: Surat Peringatan 1 & pemanggilan orang tua (disahkan Waka Kesiswaan)</span>
+                </div>`,
+            konseling: `
+                <tr>
+                    <td class="p-2.5">5 Okt 2026</td><td class="p-2.5">Rujukan Wali Kelas: kehadiran & kedisiplinan</td>
+                    <td class="p-2.5 text-center">${badge('rose', 'Kamis 8 Okt, 09.00 - R. BK (wajib)')}</td>
+                </tr>`,
+            pklInfo: `
+                <span class="font-bold text-indigo-800 uppercase text-[10px]">Informasi Penempatan PKL</span>
+                <h4 class="font-bold text-amber-700 text-sm">Penempatan Ditunda</h4>
+                <p class="text-slate-600">Syarat kesiapan PKL belum terpenuhi: kedisiplinan (SP1) dan kehadiran di bawah 90%.</p>
+                <p class="text-slate-600"><strong>Guru Pembimbing:</strong> Pak San, S.T.</p>
+                <p class="text-slate-600"><strong>Status:</strong> ${badge('amber', 'Menunggu Rekomendasi Waka Kesiswaan')}</p>`,
+            notif: `
+                <span class="font-bold text-teal-600 uppercase text-[10px]">Notifikasi</span>
+                <div class="bg-white p-2.5 rounded border-l-4 border-rose-500 border-y border-r border-slate-200">
+                    <strong class="block"><i class="fa-solid fa-user-xmark text-rose-500 mr-1"></i> Alfa tercatat</strong>
+                    <span class="text-slate-500">Matematika, 5 Okt 2026 &middot; wali murid ikut diberi tahu</span>
+                </div>
+                <div class="bg-white p-2.5 rounded border-l-4 border-amber-500 border-y border-r border-slate-200">
+                    <strong class="block"><i class="fa-solid fa-star text-amber-500 mr-1"></i> Nilai baru</strong>
+                    <span class="text-slate-500">Tugas Topologi Jaringan: 65 (terlambat)</span>
+                </div>
+                <div class="bg-white p-2.5 rounded border-l-4 border-rose-500 border-y border-r border-slate-200">
+                    <strong class="block"><i class="fa-solid fa-lock text-rose-500 mr-1"></i> Akses ujian diblokir</strong>
+                    <span class="text-slate-500">Selesaikan SPP Oktober atau ajukan cicilan ke Bagian Keuangan</span>
+                </div>`
+        };
+
+        const profilBaik = {};
+        document.querySelectorAll('[data-p]').forEach(el => profilBaik[el.dataset.p] = el.innerHTML);
+
+        function gantiProfil(jenis) {
+            const data = jenis === 'kurang' ? profilKurang : profilBaik;
+            document.querySelectorAll('[data-p]').forEach(el => { el.innerHTML = data[el.dataset.p]; });
+            document.getElementById('bannerProfil').className = jenis === 'kurang'
+                ? 'bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-xl text-xs text-amber-900'
+                : 'bg-emerald-50 border-l-4 border-emerald-500 p-3 rounded-r-xl text-xs text-emerald-900';
         }
     </script>
 </body>

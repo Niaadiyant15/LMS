@@ -11,7 +11,7 @@
 
     <!-- Top Navbar -->
     <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap gap-2 justify-between items-center">
             <div class="flex items-center space-x-3">
                 <div class="bg-blue-600 p-2 rounded-lg">
                     <i class="fa-solid fa-user-tie text-xl text-white"></i>
@@ -21,16 +21,24 @@
                     <p class="text-xs text-slate-400">Pusat Pemantauan Kehadiran, Akademik, PKL, Kedisiplinan, & Keuangan Anak</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-3">
-                <!-- Poin 1.2: Multi-Anak Switcher -->
+            <div class="flex flex-wrap items-center gap-2 md:gap-3">
+                <!-- Pengalih contoh akun (siswa baik vs perlu pembinaan) -->
                 <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700 flex items-center space-x-2 text-xs">
+                    <span class="text-slate-400 hidden md:inline"><i class="fa-solid fa-eye mr-1"></i> Contoh:</span>
+                    <select onchange="gantiProfil(this.value)" class="bg-slate-900 text-white font-bold border-none focus:ring-0 cursor-pointer">
+                        <option value="baik">Anak Baik</option>
+                        <option value="kurang">Perlu Pembinaan</option>
+                    </select>
+                </div>
+                <!-- Poin 1.2: Multi-Anak Switcher -->
+                <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700 flex items-center space-x-2 text-xs" data-p="anak">
                     <span class="text-slate-400"><i class="fa-solid fa-children mr-1"></i> Anak Aktif:</span>
                     <select class="bg-slate-900 text-white font-bold border-none focus:ring-0 cursor-pointer">
                         <option>Rian Pratama (X TKJ)</option>
                         <option>Siti Rahma (XII PPLG)</option>
                     </select>
                 </div>
-                <div class="flex items-center space-x-2">
+                <div class="flex items-center space-x-2" data-p="ortu">
                     <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center font-bold text-sm">WM</div>
                     <span class="text-xs md:text-sm font-medium">Bunda Rian</span>
                 </div>
@@ -54,6 +62,11 @@
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
 
+        <!-- Banner keterangan contoh profil -->
+        <div id="bannerProfil" data-p="banner" class="bg-emerald-50 border-l-4 border-emerald-500 p-3 rounded-r-xl text-xs text-emerald-900">
+            <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i> <strong>Contoh wali murid dengan anak berprestasi baik:</strong> kehadiran tinggi, nilai tuntas, tanpa pelanggaran, SPP tertib. Ganti contoh di pojok kanan atas.
+        </div>
+
         <!-- ================= 1. PROFIL DAN RELASI ANAK ================= -->
         <div id="tab-profil" class="space-y-6 tab-content">
             <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
@@ -65,7 +78,7 @@
                     <button onclick="alert('Formulir pengajuan perubahan data kontak dibuka.')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-pen-to-square mr-1"></i> Ajukan Perubahan Kontak</button>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs" data-p="profil">
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
                         <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Identitas Siswa</span>
                         <h4 class="font-bold text-slate-800 text-sm">Rian Pratama</h4>
@@ -108,7 +121,7 @@
                 </div>
 
                 <!-- Kartu Ringkasan Kehadiran -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs" data-p="rekapHadir">
                     <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-center">
                         <span class="text-slate-500 block">Hadir (H)</span>
                         <strong class="text-emerald-700 text-lg">48 Hari</strong>
@@ -139,7 +152,7 @@
                                 <th class="p-2.5 text-center">Status Validasi Wali Kelas</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100" data-p="izinTabel">
                             <tr>
                                 <td class="p-2.5 font-medium">28 Sep 2026</td>
                                 <td class="p-2.5">Sakit</td>
@@ -176,7 +189,7 @@
                                 <th class="p-2.5 text-center">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100" data-p="nilaiMapel">
                             <tr>
                                 <td class="p-2.5 font-medium">Pemrograman Web Dasar</td>
                                 <td class="p-2.5 text-center">75</td>
@@ -214,7 +227,7 @@
                                 <th class="p-2.5 text-center">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100" data-p="tugasTabel">
                             <tr>
                                 <td class="p-2.5 font-medium">Membuat Halaman Profil HTML</td>
                                 <td class="p-2.5">Pemrograman Web Dasar</td>
@@ -262,7 +275,7 @@
                             <span class="text-slate-500">19 - 24 Okt 2026 &middot; Lab Komputer</span>
                         </div>
                     </div>
-                    <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 space-y-2">
+                    <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 space-y-2" data-p="catatanWalas">
                         <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">Catatan Wali Kelas pada Rapor</span>
                         <p class="text-emerald-900 italic">"Rian aktif dan bertanggung jawab dalam praktik jaringan. Perlu meningkatkan ketelitian pada pelajaran Matematika dan mengikuti remedial dengan sungguh-sungguh."</p>
                         <p class="text-slate-500">Bu Sabdal, S.Pd. &middot; Rapor Semester Genap 2025/2026</p>
@@ -279,7 +292,7 @@
                     <p class="text-xs text-slate-500">Akumulasi poin pelanggaran, catatan prestasi positif, serta undangan/panggilan dari BK atau Wali Kelas.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs" data-p="disiplin">
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
                         <span class="font-bold text-blue-600 uppercase text-[10px]">Poin Pelanggaran & Prestasi</span>
                         <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
@@ -312,7 +325,7 @@
                                 <th class="p-2.5 text-center">Jadwal Konseling</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100" data-p="konseling">
                             <tr>
                                 <td class="p-2.5">1 Okt 2026</td>
                                 <td class="p-2.5">Siswa (Rian)</td>
@@ -333,7 +346,7 @@
                     <p class="text-xs text-slate-500">Pemantauan tempat Praktik Kerja Lapangan (PKL), pembimbing industri, serta persetujuan kegiatan sekolah.</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs" data-p="pkl">
                     <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
                         <span class="font-bold text-indigo-800 uppercase text-[10px]">Informasi Penempatan PKL</span>
                         <h4 class="font-bold text-indigo-900 text-sm">PT Telkom Akses Depok</h4>
@@ -396,7 +409,7 @@
                                 <th class="p-2.5 text-center">Status</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-100">
+                        <tbody class="divide-y divide-slate-100" data-p="keuangan">
                             <tr>
                                 <td class="p-2.5 font-medium">SPP Bulan Oktober 2026</td>
                                 <td class="p-2.5 text-center font-bold">Rp 350.000</td>
@@ -424,6 +437,112 @@
 
     <!-- Script Tab Switcher -->
     <script>
+        // ===== Contoh akun: Bunda Rian (anak baik) vs Bpk. Nugroho (anak perlu pembinaan) =====
+        // Isi contoh baik diambil dari HTML saat halaman dimuat; isi contoh perlu pembinaan didefinisikan di sini.
+        const badge = (warna, teks) => `<span class="bg-${warna}-100 text-${warna}-800 px-2 py-0.5 rounded font-semibold">${teks}</span>`;
+        const profilKurang = {
+            banner: `<i class="fa-solid fa-triangle-exclamation mr-1 text-amber-600"></i> <strong>Contoh wali murid dengan anak perlu pembinaan:</strong> notifikasi alfa, nilai di bawah KKM, tugas tidak dikumpulkan, Surat Peringatan & panggilan BK, serta tunggakan SPP.`,
+            anak: `
+                <span class="text-slate-400"><i class="fa-solid fa-children mr-1"></i> Anak Aktif:</span>
+                <select class="bg-slate-900 text-white font-bold border-none focus:ring-0 cursor-pointer"><option>Fajar Nugroho (X TKJ)</option></select>`,
+            ortu: `
+                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center font-bold text-sm">WM</div>
+                <span class="text-xs md:text-sm font-medium">Bpk. Nugroho</span>`,
+            profil: `
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Identitas Siswa</span>
+                    <h4 class="font-bold text-slate-800 text-sm">Fajar Nugroho</h4>
+                    <p class="text-slate-600"><strong>NIS / NISN:</strong> 10251 / 00812391</p>
+                    <p class="text-slate-600"><strong>Kelas:</strong> X TKJ (Teknik Komputer dan Jaringan)</p>
+                    <p class="text-slate-600"><strong>Wali Kelas:</strong> Bu Sabdal, S.Pd.</p>
+                    <p class="text-slate-600"><strong>Status Siswa:</strong> ${badge('emerald', 'Aktif')} ${badge('rose', 'SP1')}</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Data Keluarga & Kontak</span>
+                    <p class="text-slate-600"><strong>Nama Ayah/Ibu:</strong> Bpk. Nugroho & Ibu Wati</p>
+                    <p class="text-slate-600"><strong>No. Handphone:</strong> 0813-2211-4455</p>
+                    <p class="text-slate-600"><strong>Alamat Rumah:</strong> Jl. Kenanga No. 12, Depok</p>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200 space-y-2">
+                    <span class="text-[10px] font-bold text-rose-800 uppercase tracking-wider">Perlu Perhatian Orang Tua</span>
+                    <ul class="list-disc list-inside text-rose-900 space-y-1">
+                        <li>6 hari alfa & 5x terlambat bulan ini</li>
+                        <li>3 mapel di bawah KKM (remedial 12 Okt)</li>
+                        <li>Panggilan BK Kamis 8 Okt, 09.00</li>
+                        <li>SPP Oktober belum dibayar, akses ujian diblokir</li>
+                    </ul>
+                </div>`,
+            rekapHadir: `
+                <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-center"><span class="text-slate-500 block">Hadir (H)</span><strong class="text-emerald-700 text-lg">41 Hari</strong></div>
+                <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center"><span class="text-slate-500 block">Izin (I)</span><strong class="text-blue-700 text-lg">2 Hari</strong></div>
+                <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-center"><span class="text-slate-500 block">Sakit (S)</span><strong class="text-amber-700 text-lg">1 Hari</strong></div>
+                <div class="bg-rose-50 border border-rose-300 p-3 rounded-lg text-center"><span class="text-slate-500 block">Tanpa Keterangan (A)</span><strong class="text-rose-700 text-lg">6 Hari</strong><span class="block text-[10px] text-rose-600 font-semibold">Notifikasi terkirim tiap alfa</span></div>`,
+            izinTabel: `
+                <tr><td class="p-2.5 font-medium">5 Okt 2026</td><td class="p-2.5">Alfa</td><td class="p-2.5">Tidak hadir tanpa keterangan (notifikasi otomatis ke wali murid).</td><td class="p-2.5 text-center">${badge('rose', 'Tanpa Keterangan')}</td></tr>
+                <tr><td class="p-2.5 font-medium">21 Sep 2026</td><td class="p-2.5">Izin</td><td class="p-2.5">Acara keluarga, tanpa lampiran surat.</td><td class="p-2.5 text-center">${badge('amber', 'Ditolak - lampiran kurang')}</td></tr>`,
+            nilaiMapel: `
+                <tr><td class="p-2.5 font-medium">Pemrograman Web Dasar</td><td class="p-2.5 text-center">75</td><td class="p-2.5 text-center font-bold text-rose-600">72</td><td class="p-2.5 text-center font-bold text-slate-800">76</td><td class="p-2.5 text-center">${badge('amber', 'Remedial')}</td></tr>
+                <tr><td class="p-2.5 font-medium">Komputer dan Jaringan Dasar</td><td class="p-2.5 text-center">75</td><td class="p-2.5 text-center font-bold text-rose-600">68</td><td class="p-2.5 text-center font-bold text-rose-600">70</td><td class="p-2.5 text-center">${badge('rose', 'Belum Tuntas')}</td></tr>
+                <tr><td class="p-2.5 font-medium">Matematika</td><td class="p-2.5 text-center">75</td><td class="p-2.5 text-center font-bold text-rose-600">60</td><td class="p-2.5 text-center font-bold text-rose-600">65</td><td class="p-2.5 text-center">${badge('rose', 'Belum Tuntas')}</td></tr>`,
+            tugasTabel: `
+                <tr><td class="p-2.5 font-medium">Membuat Halaman Profil HTML</td><td class="p-2.5">Pemrograman Web Dasar</td><td class="p-2.5 text-center text-rose-600 font-semibold">7 Okt 2026</td><td class="p-2.5 text-center">${badge('amber', 'Belum Dikumpulkan')}</td></tr>
+                <tr><td class="p-2.5 font-medium">Projek Kelompok: Instalasi Jaringan LAN Mini</td><td class="p-2.5">Komputer dan Jaringan Dasar</td><td class="p-2.5 text-center">9 Okt 2026</td><td class="p-2.5 text-center">${badge('rose', 'Belum Berkontribusi')}</td></tr>
+                <tr><td class="p-2.5 font-medium">Tugas Topologi Jaringan</td><td class="p-2.5">Komputer dan Jaringan Dasar</td><td class="p-2.5 text-center">30 Sep 2026</td><td class="p-2.5 text-center">${badge('amber', 'Terlambat (65)')}</td></tr>
+                <tr><td class="p-2.5 font-medium">Esai Teks Eksposisi</td><td class="p-2.5">Bahasa Indonesia</td><td class="p-2.5 text-center">25 Sep 2026</td><td class="p-2.5 text-center">${badge('rose', 'Tidak Dikumpulkan (0)')}</td></tr>`,
+            catatanWalas: `
+                <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">Catatan Wali Kelas pada Rapor</span>
+                <p class="text-emerald-900 italic">"Fajar sebenarnya mampu dalam praktik, namun kehadiran dan kedisiplinan perlu ditingkatkan. Mohon orang tua mendampingi pengerjaan tugas di rumah dan memastikan Fajar berangkat tepat waktu."</p>
+                <p class="text-slate-500">Bu Sabdal, S.Pd. &middot; Rapor Semester Genap 2025/2026</p>`,
+            disiplin: `
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                    <span class="font-bold text-blue-600 uppercase text-[10px]">Poin Pelanggaran & Prestasi</span>
+                    <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200"><span>Akumulasi Poin Pelanggaran:</span>${badge('orange', '30 Poin (Sedang)')}</div>
+                    <div class="bg-white p-2.5 rounded border border-slate-200 space-y-1">
+                        <p>Membolos jam KBM berulang (3x) &middot; +20 poin</p>
+                        <p>Terlambat masuk sekolah (5x) &middot; +10 poin</p>
+                    </div>
+                    <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200"><span>Catatan Prestasi Positif:</span><span class="text-slate-400">Belum ada</span></div>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-lg border border-rose-200 space-y-3">
+                    <span class="font-bold text-rose-700 uppercase text-[10px]">Undangan / Surat Panggilan (Privasi Terjaga)</span>
+                    <div class="bg-white p-2.5 rounded border border-rose-200 space-y-1">
+                        <strong class="block text-rose-800">Surat Peringatan 1 & Panggilan Orang Tua</strong>
+                        <p class="text-slate-600">Kamis, 8 Okt 2026 pukul 09.00 di Ruang BK. Disahkan Waka Kesiswaan.</p>
+                        <button onclick="alert('Kehadiran orang tua untuk panggilan BK dikonfirmasi.')" class="bg-rose-600 hover:bg-rose-700 text-white px-2.5 py-1 rounded font-medium">Konfirmasi Hadir</button>
+                    </div>
+                    <p class="text-[11px] text-rose-700 italic">Catatan: Demi privasi anak, rincian catatan konseling rahasia tidak ditampilkan di akun wali murid.</p>
+                </div>`,
+            konseling: `
+                <tr><td class="p-2.5">5 Okt 2026</td><td class="p-2.5">Wali Kelas (rujukan)</td><td class="p-2.5">Kehadiran & kedisiplinan</td><td class="p-2.5 text-center">${badge('rose', 'Kamis 8 Okt, 09.00 - R. BK')}</td></tr>`,
+            pkl: `
+                <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 space-y-2">
+                    <span class="font-bold text-amber-800 uppercase text-[10px]">Informasi Penempatan PKL</span>
+                    <h4 class="font-bold text-amber-900 text-sm">Penempatan Ditunda</h4>
+                    <p class="text-slate-600">Syarat kesiapan PKL belum terpenuhi: kedisiplinan (SP1) dan kehadiran di bawah 90%.</p>
+                    <p class="text-slate-600"><strong>Guru Pembimbing:</strong> Pak San, S.T.</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                    <span class="font-bold text-indigo-800 uppercase text-[10px]">Persetujuan Digital (Consent Form)</span>
+                    <p class="text-slate-700">Pemberitahuan Kunjungan Industri ke Kantor Google Indonesia / Startup Partner.</p>
+                    <button onclick="alert('Persetujuan keikutsertaan kegiatan berhasil dikirim.')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded font-medium mt-2"><i class="fa-solid fa-check mr-1"></i> Berikan Persetujuan Orang Tua</button>
+                </div>`,
+            keuangan: `
+                <tr><td class="p-2.5 font-medium">SPP Bulan Oktober 2026</td><td class="p-2.5 text-center font-bold">Rp 350.000</td><td class="p-2.5 text-center text-rose-600 font-semibold">10 Okt 2026</td><td class="p-2.5 text-center">${badge('rose', 'Menunggak - Akses Ujian Diblokir')}</td></tr>
+                <tr><td class="p-2.5 font-medium">SPP Bulan September 2026</td><td class="p-2.5 text-center font-bold">Rp 350.000</td><td class="p-2.5 text-center">10 Sep 2026</td><td class="p-2.5 text-center">${badge('amber', 'Lunas Terlambat')}</td></tr>
+                <tr><td colspan="4" class="p-2.5 text-center"><button onclick="alert('Pengajuan cicilan dikirim ke Bagian Keuangan. Akses ujian dapat dibuka setelah disetujui.')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded font-medium">Ajukan Cicilan ke Bagian Keuangan</button></td></tr>`
+        };
+
+        const profilBaik = {};
+        document.querySelectorAll('[data-p]').forEach(el => profilBaik[el.dataset.p] = el.innerHTML);
+
+        function gantiProfil(jenis) {
+            const data = jenis === 'kurang' ? profilKurang : profilBaik;
+            document.querySelectorAll('[data-p]').forEach(el => { el.innerHTML = data[el.dataset.p]; });
+            document.getElementById('bannerProfil').className = jenis === 'kurang'
+                ? 'bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-xl text-xs text-amber-900'
+                : 'bg-emerald-50 border-l-4 border-emerald-500 p-3 rounded-r-xl text-xs text-emerald-900';
+        }
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(el => {
