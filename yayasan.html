@@ -20,7 +20,7 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-base tracking-wide">YAYASAN PENDIDIKAN UTAMA</h1>
-                    <p class="text-xs text-slate-400">Dashboard Eksekutif Lintas Unit Sekolah (Poin 1 - 6)</p>
+                    <p class="text-xs text-slate-400">Dashboard, Monitoring Kinerja, Laporan, Persetujuan Strategis, Komunikasi, & SDM/Keuangan Lintas Unit</p>
                 </div>
             </div>
             <div class="flex items-center space-x-3">
@@ -35,8 +35,23 @@
         </div>
     </header>
 
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-3 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('dashboard')" id="btn-dashboard" class="tab-btn py-3 font-semibold text-indigo-600 border-b-2 border-indigo-600 whitespace-nowrap"><i class="fa-solid fa-chart-pie mr-1.5"></i> 1. Dashboard Lintas Sekolah</button>
+            <button onclick="switchTab('monitoring')" id="btn-monitoring" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-gauge-high mr-1.5"></i> 2. Monitoring Kinerja</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-export mr-1.5"></i> 3. Laporan & Ekspor</button>
+            <button onclick="switchTab('persetujuan')" id="btn-persetujuan" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-stamp mr-1.5"></i> 4. Persetujuan Strategis <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">3</span></button>
+            <button onclick="switchTab('komunikasi')" id="btn-komunikasi" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> 5. Komunikasi</button>
+            <button onclick="switchTab('sdm')" id="btn-sdm" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-users-gear mr-1.5"></i> 6. SDM & Keuangan</button>
+        </div>
+    </nav>
+
     <!-- Main Workspace -->
     <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+
+        <!-- ================= 1. DASHBOARD LINTAS SEKOLAH ================= -->
+        <div id="tab-dashboard" class="space-y-6 tab-content">
 
         <!-- ========================================== -->
         <!-- POIN 5: FILTER GLOBAL LINTAS UNIT         -->
@@ -234,12 +249,474 @@
                 <canvas id="trenSiswaChart"></canvas>
             </div>
         </section>
+        </div>
+
+        <!-- ================= 2. MONITORING KINERJA SEKOLAH ================= -->
+        <div id="tab-monitoring" class="space-y-6 tab-content hidden">
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-graduation-cap text-indigo-600 mr-2"></i>2.1 Capaian Akademik Agregat per Unit</h3>
+                        <p class="text-xs text-slate-500">Rata-rata nilai dan ketuntasan per jenjang semester berjalan (Ganjil 2026/2027).</p>
+                    </div>
+                    <select class="text-xs border border-slate-300 rounded-lg p-2 bg-slate-50">
+                        <option>Semester Ganjil 2026/2027</option>
+                        <option>Semester Genap 2025/2026</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <strong class="text-slate-800 text-sm">SMK Bina Informatika</strong>
+                        <div class="flex justify-between"><span>Rata-rata Nilai</span><strong>85.4</strong></div>
+                        <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width: 85%"></div></div>
+                        <div class="flex justify-between"><span>Ketuntasan KKM</span><strong>92%</strong></div>
+                        <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-emerald-500 h-2 rounded-full" style="width: 92%"></div></div>
+                        <p class="text-slate-500">Mapel terendah: Matematika (78.2)</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <strong class="text-slate-800 text-sm">SMA Teladan Bangsa</strong>
+                        <div class="flex justify-between"><span>Rata-rata Nilai</span><strong>82.1</strong></div>
+                        <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width: 82%"></div></div>
+                        <div class="flex justify-between"><span>Ketuntasan KKM</span><strong>88%</strong></div>
+                        <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-emerald-500 h-2 rounded-full" style="width: 88%"></div></div>
+                        <p class="text-slate-500">Mapel terendah: Fisika (74.5)</p>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 space-y-2">
+                        <strong class="text-slate-800 text-sm">SMP Kreatif Mandiri</strong>
+                        <div class="flex justify-between"><span>Rata-rata Nilai</span><strong>79.8</strong></div>
+                        <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width: 80%"></div></div>
+                        <div class="flex justify-between"><span>Ketuntasan KKM</span><strong>81%</strong></div>
+                        <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-amber-500 h-2 rounded-full" style="width: 81%"></div></div>
+                        <p class="text-amber-700 font-medium">Mapel terendah: Bahasa Inggris (71.3)</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-user-clock text-indigo-600 mr-2"></i>2.2 Rekap Kedisiplinan Guru & Siswa</h3>
+                        <p class="text-xs text-slate-500">Data agregat per unit (rekap, tanpa detail pribadi).</p>
+                    </div>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Unit</th>
+                                <th class="p-2.5 text-center">Kehadiran Guru</th>
+                                <th class="p-2.5 text-center">Siswa Terlambat / Bln</th>
+                                <th class="p-2.5 text-center">Kasus Pelanggaran</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-2.5 font-medium">SMK Bina Informatika</td><td class="p-2.5 text-center">98.5%</td><td class="p-2.5 text-center">42</td><td class="p-2.5 text-center">12 (ringan)</td></tr>
+                            <tr><td class="p-2.5 font-medium">SMA Teladan Bangsa</td><td class="p-2.5 text-center">97.1%</td><td class="p-2.5 text-center">35</td><td class="p-2.5 text-center">8 (ringan)</td></tr>
+                            <tr><td class="p-2.5 font-medium">SMP Kreatif Mandiri</td><td class="p-2.5 text-center text-amber-700 font-bold">92.4%</td><td class="p-2.5 text-center text-amber-700 font-bold">61</td><td class="p-2.5 text-center">15 (2 sedang)</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-laptop text-indigo-600 mr-2"></i>2.3 Keaktifan Penggunaan LMS per Sekolah</h3>
+                        <p class="text-xs text-slate-500">Persentase guru unggah materi, siswa login mingguan, dan tugas dinilai tepat waktu.</p>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="font-medium">SMK Bina Informatika</span><span>Guru 95% &middot; Siswa 91% &middot; Tugas 88%</span></div>
+                            <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width: 91%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="font-medium">SMA Teladan Bangsa</span><span>Guru 88% &middot; Siswa 85% &middot; Tugas 80%</span></div>
+                            <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width: 84%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span class="font-medium">SMP Kreatif Mandiri</span><span>Guru 70% &middot; Siswa 66% &middot; Tugas 62%</span></div>
+                            <div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-amber-500 h-2 rounded-full" style="width: 66%"></div></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-user-tie text-indigo-600 mr-2"></i>2.4 Laporan Kinerja Kepala Sekolah per Periode</h3>
+                        <p class="text-xs text-slate-500">Skor kinerja berdasarkan capaian program, supervisi, dan kelengkapan laporan bidang.</p>
+                    </div>
+                    <select class="text-xs border border-slate-300 rounded-lg p-2 bg-slate-50">
+                        <option>Periode Semester Ganjil 2026/2027</option>
+                        <option>Periode Semester Genap 2025/2026</option>
+                    </select>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Kepala Sekolah</th>
+                                <th class="p-2.5">Unit</th>
+                                <th class="p-2.5 text-center">Capaian Program</th>
+                                <th class="p-2.5 text-center">Supervisi Terlaksana</th>
+                                <th class="p-2.5 text-center">Laporan Bidang</th>
+                                <th class="p-2.5 text-center">Predikat</th>
+                                <th class="p-2.5 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Ibu Sinta Dewi</td>
+                                <td class="p-2.5">SMK Bina Informatika</td>
+                                <td class="p-2.5 text-center">92%</td>
+                                <td class="p-2.5 text-center">36 / 38 guru</td>
+                                <td class="p-2.5 text-center">7 / 7 lengkap</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Sangat Baik</span></td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka laporan kinerja Kepala Sekolah SMK Bina Informatika.')" class="text-indigo-600 font-medium">Lihat</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Bpk. Ahmad Fauzi</td>
+                                <td class="p-2.5">SMA Teladan Bangsa</td>
+                                <td class="p-2.5 text-center">87%</td>
+                                <td class="p-2.5 text-center">28 / 32 guru</td>
+                                <td class="p-2.5 text-center">6 / 7 lengkap</td>
+                                <td class="p-2.5 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Baik</span></td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka laporan kinerja Kepala Sekolah SMA Teladan Bangsa.')" class="text-indigo-600 font-medium">Lihat</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Ibu Lestari Wulan</td>
+                                <td class="p-2.5">SMP Kreatif Mandiri</td>
+                                <td class="p-2.5 text-center">74%</td>
+                                <td class="p-2.5 text-center">12 / 20 guru</td>
+                                <td class="p-2.5 text-center">4 / 7 lengkap</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Perlu Pembinaan</span></td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka laporan kinerja Kepala Sekolah SMP Kreatif Mandiri.')" class="text-indigo-600 font-medium">Lihat</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= 3. LAPORAN DAN EKSPOR ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines text-indigo-600 mr-2"></i>3.1 - 3.2 Laporan Rekap Siswa & Ekspor PDF / Excel</h3>
+                    <p class="text-xs text-slate-500">Laporan bulanan, semester, dan tahunan (rekapan terhadap siswa) per sekolah maupun gabungan, untuk rapat yayasan atau pelaporan ke pihak lain.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+                    <select class="border border-slate-300 rounded-lg p-2 bg-slate-50">
+                        <option>Jenis: Laporan Bulanan</option>
+                        <option>Jenis: Laporan Semester</option>
+                        <option>Jenis: Laporan Tahunan</option>
+                    </select>
+                    <select class="border border-slate-300 rounded-lg p-2 bg-slate-50">
+                        <option>Cakupan: Gabungan (3 Unit)</option>
+                        <option>SMK Bina Informatika</option>
+                        <option>SMA Teladan Bangsa</option>
+                        <option>SMP Kreatif Mandiri</option>
+                    </select>
+                    <select class="border border-slate-300 rounded-lg p-2 bg-slate-50">
+                        <option>Periode: September 2026</option>
+                        <option>Periode: Agustus 2026</option>
+                        <option>Periode: Juli 2026</option>
+                    </select>
+                    <div class="flex gap-2">
+                        <button onclick="alert('Mengekspor laporan ke PDF.')" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-medium px-3 py-2 rounded-lg"><i class="fa-solid fa-file-pdf mr-1"></i> PDF</button>
+                        <button onclick="alert('Mengekspor laporan ke Excel.')" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-3 py-2 rounded-lg"><i class="fa-solid fa-file-excel mr-1"></i> Excel</button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Pratinjau Rekap Siswa - Gabungan September 2026</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Unit</th>
+                                <th class="p-2.5 text-center">Jumlah Siswa</th>
+                                <th class="p-2.5 text-center">Masuk</th>
+                                <th class="p-2.5 text-center">Keluar / Mutasi</th>
+                                <th class="p-2.5 text-center">Kehadiran</th>
+                                <th class="p-2.5 text-center">Ketuntasan</th>
+                                <th class="p-2.5 text-center">Pelanggaran</th>
+                                <th class="p-2.5 text-center">Prestasi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-2.5 font-medium">SMK Bina Informatika</td><td class="p-2.5 text-center">540</td><td class="p-2.5 text-center">3</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">94%</td><td class="p-2.5 text-center">92%</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">9</td></tr>
+                            <tr><td class="p-2.5 font-medium">SMA Teladan Bangsa</td><td class="p-2.5 text-center">450</td><td class="p-2.5 text-center">1</td><td class="p-2.5 text-center">2</td><td class="p-2.5 text-center">90%</td><td class="p-2.5 text-center">88%</td><td class="p-2.5 text-center">8</td><td class="p-2.5 text-center">6</td></tr>
+                            <tr><td class="p-2.5 font-medium">SMP Kreatif Mandiri</td><td class="p-2.5 text-center">250</td><td class="p-2.5 text-center">0</td><td class="p-2.5 text-center">4</td><td class="p-2.5 text-center">85%</td><td class="p-2.5 text-center">81%</td><td class="p-2.5 text-center">15</td><td class="p-2.5 text-center">2</td></tr>
+                            <tr class="bg-indigo-50 font-bold"><td class="p-2.5">Total Gabungan</td><td class="p-2.5 text-center">1.240</td><td class="p-2.5 text-center">4</td><td class="p-2.5 text-center">7</td><td class="p-2.5 text-center">90.5%</td><td class="p-2.5 text-center">88.3%</td><td class="p-2.5 text-center">35</td><td class="p-2.5 text-center">17</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-industry text-indigo-600 mr-2"></i>3.3 Laporan Kegiatan PKL & Kerja Sama Industri <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">SMK</span></h3>
+                        <p class="text-xs text-slate-500">Ringkasan penempatan PKL, mitra IDUKA aktif, dan status MoU dari Waka Humas SMK Bina Informatika.</p>
+                    </div>
+                    <button onclick="alert('Mengekspor laporan PKL & kerja sama industri (PDF/Excel).')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg"><i class="fa-solid fa-download mr-1"></i> Ekspor Laporan PKL</button>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-indigo-50 border border-indigo-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Siswa PKL Aktif</span>
+                        <strong class="text-indigo-700 text-lg">162</strong>
+                    </div>
+                    <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Mitra IDUKA Aktif</span>
+                        <strong class="text-emerald-700 text-lg">28</strong>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">MoU Berakhir &lt; 3 Bln</span>
+                        <strong class="text-amber-700 text-lg">3</strong>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Serapan Lulusan</span>
+                        <strong class="text-blue-700 text-lg">78%</strong>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= 4. PERSETUJUAN STRATEGIS ================= -->
+        <div id="tab-persetujuan" class="space-y-6 tab-content hidden">
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-stamp text-indigo-600 mr-2"></i>4.1 - 4.2 Pengajuan Program, Kebijakan, & Kalender Akademik <span class="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded ml-1">Opsional</span></h3>
+                    <p class="text-xs text-slate-500">Pengajuan program atau kegiatan besar dari sekolah serta pengesahan kebijakan dan kalender akademik.</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Pengajuan</th>
+                                <th class="p-2.5">Unit / Pengaju</th>
+                                <th class="p-2.5 text-center">Jenis</th>
+                                <th class="p-2.5 text-center">Anggaran</th>
+                                <th class="p-2.5 text-center">Status</th>
+                                <th class="p-2.5 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Pembangunan Lab Teaching Factory RPL</td>
+                                <td class="p-2.5">SMK Bina Informatika / Ibu Sinta Dewi</td>
+                                <td class="p-2.5 text-center">Program Besar</td>
+                                <td class="p-2.5 text-center font-bold">Rp 350.000.000</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Menunggu</span></td>
+                                <td class="p-2.5 text-center space-x-1">
+                                    <button onclick="alert('Pengajuan program disetujui Yayasan.')" class="bg-emerald-600 text-white px-2 py-0.5 rounded font-medium">Setujui</button>
+                                    <button onclick="alert('Pengajuan dikembalikan dengan catatan revisi.')" class="bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Revisi</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Kalender Akademik 2026/2027</td>
+                                <td class="p-2.5">SMA Teladan Bangsa / Waka Kurikulum</td>
+                                <td class="p-2.5 text-center">Kalender Akademik</td>
+                                <td class="p-2.5 text-center">-</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Menunggu</span></td>
+                                <td class="p-2.5 text-center space-x-1">
+                                    <button onclick="alert('Kalender akademik disahkan Yayasan.')" class="bg-emerald-600 text-white px-2 py-0.5 rounded font-medium">Sahkan</button>
+                                    <button onclick="alert('Membuka dokumen kalender akademik.')" class="bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Kebijakan Penggunaan Gawai di Sekolah</td>
+                                <td class="p-2.5">SMP Kreatif Mandiri / Ibu Lestari Wulan</td>
+                                <td class="p-2.5 text-center">Kebijakan</td>
+                                <td class="p-2.5 text-center">-</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Menunggu</span></td>
+                                <td class="p-2.5 text-center space-x-1">
+                                    <button onclick="alert('Kebijakan disahkan Yayasan.')" class="bg-emerald-600 text-white px-2 py-0.5 rounded font-medium">Sahkan</button>
+                                    <button onclick="alert('Membuka dokumen kebijakan.')" class="bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">Lihat</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Studi Banding ke Industri Jepang</td>
+                                <td class="p-2.5">SMK Bina Informatika / Waka Humas</td>
+                                <td class="p-2.5 text-center">Kegiatan Besar</td>
+                                <td class="p-2.5 text-center font-bold">Rp 120.000.000</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Disetujui</span></td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka detail pengajuan.')" class="text-indigo-600 font-medium">Detail</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-id-card-clip text-indigo-600 mr-2"></i>4.3 Pencatatan Pengangkatan / Pergantian Kepala Sekolah</h3>
+                        <p class="text-xs text-slate-500">Prosesnya biasanya di luar LMS; di sini cukup dicatat SK dan riwayat masa jabatan.</p>
+                    </div>
+                    <button onclick="alert('Formulir pencatatan SK Kepala Sekolah dibuka.')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium px-3 py-2 rounded-lg"><i class="fa-solid fa-plus mr-1"></i> Catat SK Baru</button>
+                </div>
+                <table class="w-full text-left text-xs border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                            <th class="p-2.5">Unit</th>
+                            <th class="p-2.5">Kepala Sekolah</th>
+                            <th class="p-2.5">No. SK Yayasan</th>
+                            <th class="p-2.5 text-center">Masa Jabatan</th>
+                            <th class="p-2.5 text-center">Dokumen</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr><td class="p-2.5 font-medium">SMK Bina Informatika</td><td class="p-2.5">Ibu Sinta Dewi</td><td class="p-2.5">012/YPU/SK/VII/2024</td><td class="p-2.5 text-center">2024 - 2028</td><td class="p-2.5 text-center"><button onclick="alert('Mengunduh SK (PDF).')" class="text-indigo-600 font-medium">Unduh SK</button></td></tr>
+                        <tr><td class="p-2.5 font-medium">SMA Teladan Bangsa</td><td class="p-2.5">Bpk. Ahmad Fauzi</td><td class="p-2.5">008/YPU/SK/VII/2023</td><td class="p-2.5 text-center">2023 - 2027</td><td class="p-2.5 text-center"><button onclick="alert('Mengunduh SK (PDF).')" class="text-indigo-600 font-medium">Unduh SK</button></td></tr>
+                        <tr><td class="p-2.5 font-medium">SMP Kreatif Mandiri</td><td class="p-2.5">Ibu Lestari Wulan</td><td class="p-2.5">015/YPU/SK/I/2025</td><td class="p-2.5 text-center">2025 - 2029</td><td class="p-2.5 text-center"><button onclick="alert('Mengunduh SK (PDF).')" class="text-indigo-600 font-medium">Unduh SK</button></td></tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <!-- ================= 5. KOMUNIKASI ================= -->
+        <div id="tab-komunikasi" class="space-y-6 tab-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+                <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-bullhorn text-indigo-600 mr-2"></i>5.1 Pengumuman Yayasan</h3>
+                        <p class="text-slate-500">Ke seluruh sekolah atau sekolah tertentu.</p>
+                    </div>
+                    <input type="text" placeholder="Judul pengumuman" class="w-full border border-slate-300 rounded px-2 py-1.5">
+                    <select class="w-full border border-slate-300 rounded px-2 py-1.5">
+                        <option>Target: Seluruh Sekolah (3 Unit)</option>
+                        <option>SMK Bina Informatika</option>
+                        <option>SMA Teladan Bangsa</option>
+                        <option>SMP Kreatif Mandiri</option>
+                        <option>Khusus Kepala Sekolah</option>
+                    </select>
+                    <textarea rows="4" placeholder="Isi pengumuman..." class="w-full border border-slate-300 rounded px-2 py-1.5"></textarea>
+                    <button onclick="alert('Pengumuman Yayasan terkirim ke target.')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded font-medium w-full"><i class="fa-solid fa-paper-plane mr-1"></i> Kirim Pengumuman</button>
+                </section>
+
+                <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-envelope text-indigo-600 mr-2"></i>5.2 Pesan ke Kepala Sekolah</h3>
+                        <p class="text-slate-500">Obrolan langsung dengan Kepala Sekolah tiap unit.</p>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded border border-slate-200 flex justify-between items-center">
+                        <div><strong class="block">Ibu Sinta Dewi</strong><span class="text-slate-500">SMK &middot; "Proposal TEFA sudah dikirim, Pak."</span></div>
+                        <span class="bg-rose-500 text-white text-[10px] px-1.5 rounded-full">1</span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
+                        <strong class="block">Bpk. Ahmad Fauzi</strong><span class="text-slate-500">SMA &middot; "Terima kasih, akan kami tindak lanjuti."</span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
+                        <strong class="block">Ibu Lestari Wulan</strong><span class="text-slate-500">SMP &middot; "Mohon arahan terkait keaktifan LMS."</span>
+                    </div>
+                    <button onclick="alert('Membuka panel chat Kepala Sekolah.')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded font-medium w-full"><i class="fa-solid fa-comments mr-1"></i> Buka Panel Chat</button>
+                </section>
+
+                <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                    <div class="border-b border-slate-100 pb-3">
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-inbox text-indigo-600 mr-2"></i>5.3 Laporan & Kendala dari Unit</h3>
+                        <p class="text-slate-500">Laporan dan kendala yang dikirim tiap sekolah.</p>
+                    </div>
+                    <div class="bg-amber-50 p-2.5 rounded border border-amber-200">
+                        <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 rounded">Kendala</span>
+                        <strong class="block mt-1">Keterbatasan guru Bahasa Inggris</strong>
+                        <span class="text-slate-500">SMP Kreatif Mandiri &middot; 4 Okt 2026</span>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
+                        <span class="text-[10px] bg-blue-100 text-blue-800 px-1.5 rounded">Laporan</span>
+                        <strong class="block mt-1">Laporan Bulanan September 2026</strong>
+                        <span class="text-slate-500">SMK Bina Informatika &middot; 2 Okt 2026</span>
+                    </div>
+                    <div class="bg-amber-50 p-2.5 rounded border border-amber-200">
+                        <span class="text-[10px] bg-amber-100 text-amber-800 px-1.5 rounded">Kendala</span>
+                        <strong class="block mt-1">Perbaikan atap aula bocor</strong>
+                        <span class="text-slate-500">SMA Teladan Bangsa &middot; 1 Okt 2026</span>
+                    </div>
+                    <button onclick="alert('Membuka kotak masuk laporan unit.')" class="bg-slate-700 hover:bg-slate-800 text-white px-3 py-1.5 rounded font-medium w-full"><i class="fa-solid fa-inbox mr-1"></i> Buka Kotak Masuk (3)</button>
+                </section>
+            </div>
+        </div>
+
+        <!-- ================= 6. SDM DAN KEUANGAN ================= -->
+        <div id="tab-sdm" class="space-y-6 tab-content hidden">
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-users text-indigo-600 mr-2"></i>6.1 Rekap Jumlah Guru & Staf per Unit</h3>
+                    <p class="text-xs text-slate-500">Sumber data: Tata Usaha tiap sekolah (modul kepegawaian).</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Unit</th>
+                                <th class="p-2.5 text-center">Guru Tetap</th>
+                                <th class="p-2.5 text-center">Guru Honorer</th>
+                                <th class="p-2.5 text-center">Tendik / Staf</th>
+                                <th class="p-2.5 text-center">Total</th>
+                                <th class="p-2.5 text-center">Rasio Guru : Siswa</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-2.5 font-medium">SMK Bina Informatika</td><td class="p-2.5 text-center">26</td><td class="p-2.5 text-center">12</td><td class="p-2.5 text-center">14</td><td class="p-2.5 text-center font-bold">52</td><td class="p-2.5 text-center">1 : 14</td></tr>
+                            <tr><td class="p-2.5 font-medium">SMA Teladan Bangsa</td><td class="p-2.5 text-center">22</td><td class="p-2.5 text-center">10</td><td class="p-2.5 text-center">10</td><td class="p-2.5 text-center font-bold">42</td><td class="p-2.5 text-center">1 : 14</td></tr>
+                            <tr><td class="p-2.5 font-medium">SMP Kreatif Mandiri</td><td class="p-2.5 text-center">11</td><td class="p-2.5 text-center">9</td><td class="p-2.5 text-center">7</td><td class="p-2.5 text-center font-bold">27</td><td class="p-2.5 text-center">1 : 13</td></tr>
+                            <tr class="bg-indigo-50 font-bold"><td class="p-2.5">Total Yayasan</td><td class="p-2.5 text-center">59</td><td class="p-2.5 text-center">31</td><td class="p-2.5 text-center">31</td><td class="p-2.5 text-center">121</td><td class="p-2.5 text-center">1 : 14</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-3">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-wallet text-indigo-600 mr-2"></i>6.2 Ringkasan Keuangan per Sekolah</h3>
+                        <p class="text-xs text-slate-500">Penerimaan SPP, tunggakan, dan realisasi anggaran (sumber data: Bagian Keuangan tiap unit).</p>
+                    </div>
+                    <button onclick="alert('Mengekspor ringkasan keuangan yayasan (PDF/Excel).')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg"><i class="fa-solid fa-download mr-1"></i> Ekspor Ringkasan</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Unit</th>
+                                <th class="p-2.5 text-center">SPP Diterima (Sep)</th>
+                                <th class="p-2.5 text-center">Tingkat Pelunasan</th>
+                                <th class="p-2.5 text-center">Total Tunggakan</th>
+                                <th class="p-2.5">Realisasi Anggaran (RAPBS)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">SMK Bina Informatika</td>
+                                <td class="p-2.5 text-center font-bold">Rp 172.900.000</td>
+                                <td class="p-2.5 text-center">91%</td>
+                                <td class="p-2.5 text-center">Rp 16.800.000</td>
+                                <td class="p-2.5"><div class="flex items-center gap-2"><div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width: 58%"></div></div><span>58%</span></div></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">SMA Teladan Bangsa</td>
+                                <td class="p-2.5 text-center font-bold">Rp 135.000.000</td>
+                                <td class="p-2.5 text-center">88%</td>
+                                <td class="p-2.5 text-center">Rp 18.000.000</td>
+                                <td class="p-2.5"><div class="flex items-center gap-2"><div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width: 54%"></div></div><span>54%</span></div></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">SMP Kreatif Mandiri</td>
+                                <td class="p-2.5 text-center font-bold">Rp 56.250.000</td>
+                                <td class="p-2.5 text-center text-amber-700 font-bold">75%</td>
+                                <td class="p-2.5 text-center text-rose-600 font-bold">Rp 18.750.000</td>
+                                <td class="p-2.5"><div class="flex items-center gap-2"><div class="w-full bg-slate-200 rounded-full h-2"><div class="bg-amber-500 h-2 rounded-full" style="width: 41%"></div></div><span>41%</span></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
 
     </main>
 
     <!-- Footer -->
     <footer class="text-center py-6 text-xs text-slate-400">
-        Prototype Resmi Sistem Yayasan &copy; 2026. Lengkap Poin 1 - 6 (Dashboard, Ringkasan, Komparasi, Tren, & Filter).
+        Prototype Resmi Sistem Yayasan &copy; 2026. Lengkap sesuai seluruh rincian Dashboard, Monitoring, Laporan, Persetujuan, Komunikasi, & SDM/Keuangan.
     </footer>
 
     <!-- Script Inisialisasi Grafik Tren Siswa -->
@@ -294,5 +771,18 @@
                 }
             });
         }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-indigo-600', 'border-indigo-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-indigo-600', 'border-indigo-600', 'font-semibold');
+        }
     </script>
 </body>
+</html>
