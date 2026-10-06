@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Wali Murid - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-user-tie text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL WALI MURID</h1>
+                    <p class="text-xs text-slate-400">Pusat Pemantauan Kehadiran, Akademik, PKL, Kedisiplinan, & Keuangan Anak</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <!-- Poin 1.2: Multi-Anak Switcher -->
+                <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700 flex items-center space-x-2 text-xs">
+                    <span class="text-slate-400"><i class="fa-solid fa-children mr-1"></i> Anak Aktif:</span>
+                    <select class="bg-slate-900 text-white font-bold border-none focus:ring-0 cursor-pointer">
+                        <option>Rian Pratama (X TKJ)</option>
+                        <option>Siti Rahma (XII PPLG)</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center font-bold text-sm">WM</div>
+                    <span class="text-xs md:text-sm font-medium">Bunda Rian</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-3 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('profil')" id="btn-profil" class="tab-btn py-3 font-semibold text-blue-600 border-b-2 border-blue-600 whitespace-nowrap"><i class="fa-solid fa-id-card mr-1.5"></i> 1. Profil & Relasi Anak</button>
+            <button onclick="switchTab('kehadiran')" id="btn-kehadiran" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-clipboard-user mr-1.5"></i> 2. Kehadiran & Izin</button>
+            <button onclick="switchTab('akademik')" id="btn-akademik" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-graduation-cap mr-1.5"></i> 3. Akademik & Rapor</button>
+            <button onclick="switchTab('kedisiplinan')" id="btn-kedisiplinan" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-shield-halved mr-1.5"></i> 4. Kedisiplinan</button>
+            <button onclick="switchTab('pkl')" id="btn-pkl" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-industry mr-1.5"></i> 5. PKL & Kegiatan <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">SMK</span></button>
+            <button onclick="switchTab('komunikasi')" id="btn-komunikasi" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> 6. Komunikasi & Undangan</button>
+            <button onclick="switchTab('keuangan')" id="btn-keuangan" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-wallet mr-1.5"></i> 7. Keuangan & SPP</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+
+        <!-- ================= 1. PROFIL DAN RELASI ANAK ================= -->
+        <div id="tab-profil" class="space-y-6 tab-content">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-id-badge mr-2 text-blue-600"></i>1. Profil dan Relasi Anak</h3>
+                        <p class="text-xs text-slate-500">Informasi lengkap anak, pilihan multi-akun kakak-adik, serta pengajuan perubahan kontak via verifikasi TU.</p>
+                    </div>
+                    <button onclick="alert('Formulir pengajuan perubahan data kontak dibuka.')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-pen-to-square mr-1"></i> Ajukan Perubahan Kontak</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Identitas Siswa</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rian Pratama</h4>
+                        <p class="text-slate-600"><strong>NIS / NISN:</strong> 10245 / 00812345</p>
+                        <p class="text-slate-600"><strong>Kelas:</strong> X TKJ (Teknik Komputer dan Jaringan)</p>
+                        <p class="text-slate-600"><strong>Wali Kelas:</strong> Bu Sabdal, S.Pd.</p>
+                        <p class="text-slate-600"><strong>Status Siswa:</strong> <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Aktif</span></p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Data Keluarga & Kontak</span>
+                        <p class="text-slate-600"><strong>Nama Ayah/Ibu:</strong> Bpk. Budi & Bunda Rian</p>
+                        <p class="text-slate-600"><strong>No. Handphone:</strong> 0812-3456-7890</p>
+                        <p class="text-slate-600"><strong>Alamat Rumah:</strong> Jl. Merdeka No. 45, Depok</p>
+                        <div class="pt-1">
+                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded"><i class="fa-solid fa-clock mr-1"></i> Perubahan kontak baru diverifikasi TU</span>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 space-y-2">
+                        <span class="text-[10px] font-bold text-blue-800 uppercase tracking-wider">Informasi Multi-Anak</span>
+                        <p class="text-blue-900 font-medium">Anda terhubung dengan 2 siswa di SMK Bina Informatika:</p>
+                        <ul class="list-disc list-inside text-blue-900 space-y-1">
+                            <li>Rian Pratama (X TKJ) — <i>Aktif Saat Ini</i></li>
+                            <li>Siti Rahma (XII PPLG)</li>
+                        </ul>
+                        <p class="text-[11px] text-blue-700 italic pt-1">Gunakan pemilih dropdown di pojok kanan atas navbar untuk beralih profil anak.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. KEHADIRAN ================= -->
+        <div id="tab-kehadiran" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-clipboard-user mr-2 text-blue-600"></i>2. Kehadiran & Pengajuan Izin Digital</h3>
+                        <p class="text-xs text-slate-500">Rekapitulasi absensi harian/bulanan serta pengajuan izin atau surat sakit berlampir foto.</p>
+                    </div>
+                    <button onclick="alert('Form pengajuan izin digital dibuka.')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-file-arrow-up mr-1"></i> Ajukan Izin / Surat Sakit</button>
+                </div>
+
+                <!-- Kartu Ringkasan Kehadiran -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Hadir (H)</span>
+                        <strong class="text-emerald-700 text-lg">48 Hari</strong>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Izin (I)</span>
+                        <strong class="text-blue-700 text-lg">2 Hari</strong>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Sakit (S)</span>
+                        <strong class="text-amber-700 text-lg">1 Hari</strong>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 p-3 rounded-lg text-center">
+                        <span class="text-slate-500 block">Tanpa Keterangan (A)</span>
+                        <strong class="text-rose-700 text-lg">0 Hari</strong>
+                    </div>
+                </div>
+
+                <!-- Riwayat Pengajuan Izin -->
+                <div class="pt-2">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Riwayat Pengajuan Izin / Surat Sakit Digital</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Tanggal</th>
+                                <th class="p-2.5">Jenis</th>
+                                <th class="p-2.5">Keterangan</th>
+                                <th class="p-2.5 text-center">Status Validasi Wali Kelas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">28 Sep 2026</td>
+                                <td class="p-2.5">Sakit</td>
+                                <td class="p-2.5">Demam tinggi, melampirkan surat dokter.</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Disetujui Bu Sabdal</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. AKADEMIK ================= -->
+        <div id="tab-akademik" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-graduation-cap mr-2 text-blue-600"></i>3. Akademik & Rapor Digital</h3>
+                        <p class="text-xs text-slate-500">Nilai mata pelajaran, status ketuntasan KKM, jadwal ujian, dan unduh rapor digital.</p>
+                    </div>
+                    <button onclick="alert('Mengunduh e-rapor digital Rian Pratama (PDF).')" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-download mr-1"></i> Unduh Rapor Digital (PDF)</button>
+                </div>
+
+                <!-- Tabel Nilai Per Mapel -->
+                <div class="overflow-x-auto">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Daftar Nilai Akademik & Ketuntasan KKM</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Mata Pelajaran</th>
+                                <th class="p-2.5 text-center">KKM</th>
+                                <th class="p-2.5 text-center">Pengetahuan</th>
+                                <th class="p-2.5 text-center">Keterampilan</th>
+                                <th class="p-2.5 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Pemrograman Web Dasar</td>
+                                <td class="p-2.5 text-center">75</td>
+                                <td class="p-2.5 text-center font-bold text-slate-800">85</td>
+                                <td class="p-2.5 text-center font-bold text-slate-800">88</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Tuntas</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Komputer dan Jaringan Dasar</td>
+                                <td class="p-2.5 text-center">75</td>
+                                <td class="p-2.5 text-center font-bold text-slate-800">80</td>
+                                <td class="p-2.5 text-center font-bold text-slate-800">82</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Tuntas</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. KEDISIPLINAN ================= -->
+        <div id="tab-kedisiplinan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-shield-halved mr-2 text-blue-600"></i>4. Kedisiplinan & Pembinaan Karakter</h3>
+                    <p class="text-xs text-slate-500">Akumulasi poin pelanggaran, catatan prestasi positif, serta undangan/panggilan dari BK atau Wali Kelas.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin Pelanggaran & Prestasi</span>
+                        <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
+                            <span>Akumulasi Poin Pelanggaran:</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">0 Poin (Aman)</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-white p-2.5 rounded border border-slate-200">
+                            <span>Catatan Prestasi Positif:</span>
+                            <span class="text-slate-800 font-medium">Juara 3 Lomba Desain Poster</span>
+                        </div>
+                    </div>
+                    <div class="bg-rose-50 p-4 rounded-lg border border-rose-200 space-y-3">
+                        <span class="font-bold text-rose-700 uppercase text-[10px]">Undangan / Surat Panggilan (Privasi Terjaga)</span>
+                        <p class="text-rose-900 font-medium">Tidak ada jadwal panggilan atau surat peringatan dari BK saat ini.</p>
+                        <p class="text-[11px] text-rose-700 italic">Catatan: Demi privasi anak, rincian catatan konseling rahasia tidak ditampilkan di akun wali murid.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. PKL & KEGIATAN (SMK) ================= -->
+        <div id="tab-pkl" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-industry mr-2 text-blue-600"></i>5. PKL & Kegiatan Khas SMK</h3>
+                    <p class="text-xs text-slate-500">Pemantauan tempat Praktik Kerja Lapangan (PKL), pembimbing industri, serta persetujuan kegiatan sekolah.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Informasi Penempatan PKL</span>
+                        <h4 class="font-bold text-indigo-900 text-sm">PT Telkom Akses Depok</h4>
+                        <p class="text-slate-600"><strong>Periode:</strong> Juli - Oktober 2026</p>
+                        <p class="text-slate-600"><strong>Guru Pembimbing:</strong> Pak San, S.T.</p>
+                        <p class="text-slate-600"><strong>Status Penilaian:</strong> <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Sangat Baik (Selesai)</span></p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Persetujuan Digital (Consent Form)</span>
+                        <p class="text-slate-700">Pemberitahuan Kunjungan Industri ke Kantor Google Indonesia / Startup Partner.</p>
+                        <button onclick="alert('Persetujuan keikutsertaan kegiatan berhasil dikirim.')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded font-medium mt-2"><i class="fa-solid fa-check mr-1"></i> Berikan Persetujuan Orang Tua</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. KOMUNIKASI & UNDANGAN ================= -->
+        <div id="tab-komunikasi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-comments mr-2 text-blue-600"></i>6. Komunikasi & Undangan Sekolah</h3>
+                    <p class="text-xs text-slate-500">Pengumuman resmi dari sekolah, chat langsung dengan Wali Kelas/BK, serta konfirmasi undangan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Pengumuman Resmi Sekolah</span>
+                        <div class="bg-white p-3 rounded border border-slate-200 space-y-1">
+                            <strong>Rapat Pleno Orang Tua Siswa & Sosialisasi Ujian</strong>
+                            <p class="text-slate-500 text-[11px]">Jumat, 16 Oktober 2026 di Aula SMK Bina Informatika.</p>
+                            <button onclick="alert('Kehadiran rapat berhasil dikonfirmasi.')" class="bg-blue-600 text-white px-2.5 py-1 rounded mt-1 font-medium">Konfirmasi Hadir</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Chat Langsung</span>
+                        <p class="text-slate-600">Hubungi Wali Kelas (Bu Sabdal) atau Guru BK secara langsung melalui panel pesan terintegrasi.</p>
+                        <button onclick="alert('Membuka ruang obrolan wali kelas.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-brands fa-whatsapp mr-1"></i> Buka Chat Wali Kelas / BK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 7. KEUANGAN & SPP ================= -->
+        <div id="tab-keuangan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-wallet mr-2 text-blue-600"></i>7. Keuangan & Tagihan SPP</h3>
+                    <p class="text-xs text-slate-500">Transparansi status tagihan SPP bulanan, uang gedung, riwayat pembayaran, serta Virtual Account.</p>
+                </div>
+
+                <!-- Tabel Keuangan -->
+                <div class="overflow-x-auto">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Rincian Tagihan & Status Pembayaran Administrasi</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Jenis Tagihan</th>
+                                <th class="p-2.5 text-center">Nominal</th>
+                                <th class="p-2.5 text-center">Jatuh Tempo</th>
+                                <th class="p-2.5 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">SPP Bulan Oktober 2026</td>
+                                <td class="p-2.5 text-center font-bold">Rp 350.000</td>
+                                <td class="p-2.5 text-center">10 Okt 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Lunas</span></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Uang Gedung (Angsuran 2)</td>
+                                <td class="p-2.5 text-center font-bold">Rp 750.000</td>
+                                <td class="p-2.5 text-center">20 Okt 2026</td>
+                                <td class="p-2.5 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Belum Bayar</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Wali Murid &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 7 dengan tampilan antarmuka penuh.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-blue-600', 'border-blue-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-blue-600', 'border-blue-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>

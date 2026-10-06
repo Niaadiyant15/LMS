@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard Bimbingan Konseling (BK) - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-rose-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-hand-holding-heart text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL BIMBINGAN KONSELING (BK)</h1>
+                    <p class="text-xs text-slate-400">Pusat Data Siswa, Kedisiplinan, Konseling, Karier SMK, & Laporan</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-user-shield mr-1 text-rose-400"></i> Layanan Konseling & Karakter
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-rose-500 rounded-full flex items-center justify-center font-bold text-sm">BK</div>
+                    <span class="text-xs md:text-sm font-medium">Guru BK</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Sesuai Poin 1 - 6 Bimbingan Konseling) -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-4 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab(' data-siswa')" id="btn-data-siswa" class="tab-btn py-3 font-semibold text-rose-600 border-b-2 border-rose-600 whitespace-nowrap"><i class="fa-solid fa-address-card mr-1.5"></i> 1. Data Siswa untuk BK</button>
+            <button onclick="switchTab('disiplin')" id="btn-disiplin" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 2. Kedisiplinan & Pelanggaran</button>
+            <button onclick="switchTab('konseling')" id="btn-konseling" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> 3. Konseling <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Rahasia</span></button>
+            <button onclick="switchTab('karier')" id="btn-karier" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-briefcase mr-1.5"></i> 4. Bimbingan Karier (SMK)</button>
+            <button onclick="switchTab('komunikasi')" id="btn-komunikasi" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-network-wired mr-1.5"></i> 5. Komunikasi & Koordinasi</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-lines mr-1.5"></i> 6. Laporan & Statistik</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. DATA SISWA UNTUK BK ================= -->
+        <div id="tab-data-siswa" class="space-y-6 tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-address-book mr-2 text-rose-600"></i>1. Data Siswa untuk BK (Sesuai Poin 1.1 - 1.3)</h3>
+                    <p class="text-xs text-slate-500">Profil siswa (read-only TU), rekap kehadiran/nilai, serta daftar peringatan dini siswa bermasalah.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 1.1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Profil & Riwayat (Read-Only TU)</h4>
+                        <p class="text-slate-500">Melihat profil siswa, riwayat kelas, dan latar belakang keluarga yang bersumber dari data induk Tata Usaha.</p>
+                        <button onclick="alert('Membuka profil siswa (Read-Only dari TU).')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Buka Profil Siswa</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 1.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rekap Kehadiran & Nilai Siswa</h4>
+                        <p class="text-slate-500">Melihat rekapitulasi kehadiran dan nilai akademik siswa untuk mendeteksi potensi masalah lebih awal.</p>
+                        <button onclick="alert('Membuka rekap kehadiran dan nilai siswa.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Lihat Rekap Absen & Nilai</button>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 space-y-2">
+                        <span class="font-bold text-amber-700 uppercase text-[10px]">Poin 1.3</span>
+                        <h4 class="font-bold text-amber-900 text-sm">Peringatan Dini (Early Warning)</h4>
+                        <p class="text-amber-700">Memantau siswa dengan alfa tinggi, nilai menurun, atau sering terlambat untuk ditindaklanjuti.</p>
+                        <button onclick="alert('Membuka daftar peringatan dini siswa.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Buka Peringatan Dini</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. KEDISIPLINAN DAN PELANGGARAN ================= -->
+        <div id="tab-disiplin" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-gavel mr-2 text-rose-600"></i>2. Kedisiplinan dan Pelanggaran (Sesuai Poin 2.1 - 2.5)</h3>
+                        <p class="text-xs text-slate-500">Pencatatan pelanggaran, master tata tertib, akumulasi poin otomatis, poin positif, dan cetak surat peringatan/panggilan.</p>
+                    </div>
+                    <button onclick="alert('Membuka form catat pelanggaran.')" class="bg-rose-600 text-white text-xs px-3 py-2 rounded">+ Catat Pelanggaran / Prestasi</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 2.1, 2.2 & 2.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pencatatan, Master Poin & Akumulasi Otomatis</h4>
+                        <p class="text-slate-500">Catat jenis/tanggal/poin/tindak lanjut pelanggaran, master tata tertib (ringan, sedang, berat), serta pemicu tindakan (teguran/SP/panggilan ortu).</p>
+                        <button onclick="alert('Membuka master tata tertib & pencatatan pelanggaran.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Kelola Tata Tertib & Pelanggaran</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 2.4 & 2.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Poin Positif & Cetak Surat Panggilan/SP</h4>
+                        <p class="text-slate-500">Pencatatan prestasi atau poin positif siswa, serta pencetakan resmi surat panggilan orang tua atau surat peringatan (SP).</p>
+                        <button onclick="alert('Mencetak Surat Panggilan Orang Tua / SP.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-print mr-1"></i> Cetak Surat Panggilan / SP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. KONSELING ================= -->
+        <div id="tab-konseling" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-comments mr-2 text-rose-600"></i>3. Konseling (Sesuai Poin 3.1 - 3.5)</h3>
+                    <p class="text-xs text-slate-500">Jadwal konseling individu/kelompok, catatan kasus rahasia, home visit, pertemuan orang tua, dan tiket permintaan konseling.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 3.1 & 3.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Jadwal & Catatan Kasus Konseling</h4>
+                        <p class="text-slate-500">Jadwal konseling individu/kelompok serta pencatatan kasus (masalah, tindakan, hasil, tindak lanjut).</p>
+                        <button onclick="alert('Membuka rekam konseling rahasia.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Buka Jadwal & Catatan Kasus</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 3.3 & 3.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Home Visit & Pertemuan Orang Tua</h4>
+                        <p class="text-slate-500">Pencatatan jadwal & laporan kunjungan rumah (home visit) serta pertemuan dengan orang tua/wali siswa.</p>
+                        <button onclick="alert('Membuka jadwal home visit & temu ortu.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Kelola Home Visit & Ortu</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 3.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Permintaan Konseling</h4>
+                        <p class="text-slate-500">Pencatatan permintaan konseling yang diajukan langsung oleh siswa, wali kelas, atau orang tua.</p>
+                        <button onclick="alert('Membuka tiket permintaan konseling.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Lihat Permintaan Konseling</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. BIMBINGAN KARIER DAN PEMINATAN ================= -->
+        <div id="tab-karier" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-briefcase mr-2 text-rose-600"></i>4. Bimbingan Karier dan Peminatan Khas SMK (Sesuai Poin 4.1 - 4.4)</h3>
+                    <p class="text-xs text-slate-500">Pencatatan minat bakat, bimbingan persiapan PKL bersama Kaprog, lowongan kerja IDUKA, dan dukungan tracer study alumni.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Poin 4.1 & 4.2</span>
+                        <h4 class="font-bold text-indigo-900 text-sm">Minat Bakat & Persiapan PKL (Vokasi)</h4>
+                        <p class="text-slate-600">Pencatatan minat & bakat siswa serta bimbingan persiapan PKL & dunia kerja berkolaborasi dengan Kaprog dan pembimbing PKL.</p>
+                        <button onclick="alert('Membuka modul pemetaan minat bakat & persiapan PKL.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Kelola Minat Bakat & PKL</button>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Poin 4.3 & 4.4</span>
+                        <h4 class="font-bold text-indigo-900 text-sm">Lowongan Kerja IDUKA & Tracer Study Alumni</h4>
+                        <p class="text-slate-600">Informasi lowongan pekerjaan hasil kerja sama dengan IDUKA serta dukungan pelacakan tracer study alumni.</p>
+                        <button onclick="alert('Membuka informasi lowongan kerja IDUKA & tracer study.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Kelola Loker IDUKA & Alumni</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. KOMUNIKASI DAN KOORDINASI ================= -->
+        <div id="tab-komunikasi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-network-wired mr-2 text-rose-600"></i>5. Komunikasi dan Koordinasi (Sesuai Poin 5.1 - 5.3)</h3>
+                    <p class="text-xs text-slate-500">Menerima laporan siswa bermasalah dari wali kelas/piket/mapel, memberikan rekomendasi terbatas, serta pengumuman/materi bimbingan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 5.1 & 5.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Laporan Masuk & Umpan Balik Terbatas ke Wali Kelas</h4>
+                        <p class="text-slate-500">Menerima laporan guru piket/wali kelas/mapel tentang siswa bermasalah serta memberikan rekomendasi umpan balik terbatas (menjaga privasi konseling).</p>
+                        <button onclick="alert('Membuka kotak laporan masuk guru.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Lihat Laporan Guru</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 5.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pengumuman atau Materi Bimbingan</h4>
+                        <p class="text-slate-500">Pengiriman materi bimbingan atau pengumuman penting kepada siswa atau wali murid.</p>
+                        <button onclick="alert('Membuka form pengumuman/materi BK.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Buat Pengumuman / Materi BK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. LAPORAN ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines mr-2 text-rose-600"></i>6. Laporan (Sesuai Poin 6.1 - 6.5)</h3>
+                    <p class="text-xs text-slate-500">Rekap pelanggaran per kelas/jurusan/periode, statistik rekap kasus konseling (tanpa identitas), laporan program BK untuk Kasek, serta ekspor PDF/Excel.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 6.1 & 6.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rekap Pelanggaran & Statistik Kasus (Anonim)</h4>
+                        <p class="text-slate-500">Rekap pelanggaran per kelas/jurusan/periode serta rekap kasus konseling dalam bentuk statistik (jumlah kasus per kategori, tanpa identitas).</p>
+                        <button onclick="alert('Membuka statistik rekap kasus anonim.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Lihat Statistik & Rekap Pelanggaran</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 6.3 & 6.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Laporan Program BK & Ekspor PDF / Excel</h4>
+                        <p class="text-slate-500">Laporan program BK (rencana kerja, realisasi, evaluasi) untuk Kepala Sekolah serta ekspor format PDF/Excel resmi.</p>
+                        <button onclick="alert('Mengunduh laporan program BK format PDF/Excel.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-download mr-1"></i> Ekspor Laporan BK (PDF/Excel)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Bimbingan Konseling &copy; 2026. Disesuaikan presisi 100% dengan rincian poin 1 sampai 6.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-rose-600', 'border-rose-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-rose-600', 'border-rose-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>

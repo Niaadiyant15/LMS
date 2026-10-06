@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard Waka Sarpras - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-boxes-stacked text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL WAKA SARPRAS</h1>
+                    <p class="text-xs text-slate-400">Pusat Aset, Ruang, Lab/Bengkel Vokasi, Perawatan, & Pengadaan</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-warehouse mr-1 text-amber-400"></i> Bidang Sarana & Prasarana
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center font-bold text-sm">SP</div>
+                    <span class="text-xs md:text-sm font-medium">Waka Sarpras</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Sesuai Poin 1 - 7 Waka Sarpras) -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-5 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('inventaris')" id="btn-inventaris" class="tab-btn py-3 font-semibold text-amber-600 border-b-2 border-amber-600 whitespace-nowrap"><i class="fa-solid fa-box-archive mr-1.5"></i> 1. Inventaris & Aset</button>
+            <button onclick="switchTab('gedung')" id="btn-gedung" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-building mr-1.5"></i> 2. Gedung & Ruang</button>
+            <button onclick="switchTab('bengkel')" id="btn-bengkel" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-screwdriver-wrench mr-1.5"></i> 3. Lab & Bengkel Vokasi <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Khas SMK</span></button>
+            <button onclick="switchTab('perawatan')" id="btn-perawatan" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-wrench mr-1.5"></i> 4. Perawatan & Perbaikan</button>
+            <button onclick="switchTab('pengadaan')" id="btn-pengadaan" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-cart-shopping mr-1.5"></i> 5. Pengadaan & RKAS</button>
+            <button onclick="switchTab('keamanan')" id="btn-keamanan" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-shield-halved mr-1.5"></i> 6. Keamanan & Lingkungan</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-lines mr-1.5"></i> 7. Komunikasi & Laporan</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. INVENTARIS DAN ASET ================= -->
+        <div id="tab-inventaris" class="space-y-6 tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-3 gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-boxes-packing mr-2 text-amber-600"></i>1.1 - 1.7 Manajemen Daftar Aset, Mutasi, Stok Opname, & QR Code</h3>
+                        <p class="text-xs text-slate-500">Kelola rincian aset per ruang, mutasi barang, penghapusan dengan berita acara, cetak QR code, dan rekap Dapodik.</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="alert('Membuka form tambah data aset baru.')" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-plus mr-1"></i> Tambah Aset Baru</button>
+                        <button onclick="alert('Mencetak label QR Code untuk pelacakan aset.')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-qrcode mr-1"></i> Cetak QR Code Aset</button>
+                    </div>
+                </div>
+
+                <!-- Ringkasan Statistik Aset -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <span class="text-slate-500 uppercase font-bold text-[10px]">Total Item Aset</span>
+                        <p class="text-xl font-bold text-slate-800 mt-1">1,420 Unit</p>
+                    </div>
+                    <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200">
+                        <span class="text-emerald-700 uppercase font-bold text-[10px]">Kondisi Baik</span>
+                        <p class="text-xl font-bold text-emerald-800 mt-1">1,310 Unit</p>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                        <span class="text-amber-700 uppercase font-bold text-[10px]">Rusak Ringan (Perbaikan)</span>
+                        <p class="text-xl font-bold text-amber-800 mt-1">85 Unit</p>
+                    </div>
+                    <div class="bg-rose-50 p-3 rounded-lg border border-rose-200">
+                        <span class="text-rose-700 uppercase font-bold text-[10px]">Rusak Berat / Hilang</span>
+                        <p class="text-xl font-bold text-rose-800 mt-1">25 Unit</p>
+                    </div>
+                </div>
+
+                <!-- Tabel Aset Per Ruang (Poin 1.2 & 1.3) -->
+                <div class="overflow-x-auto pt-2">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Daftar Inventaris Utama & Penanggung Jawab Ruangan</h4>
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase text-xs border-b border-slate-200">
+                                <th class="p-3">Kode & Nama Barang</th>
+                                <th class="p-3">Kategori & Sumber</th>
+                                <th class="p-3 text-center">Lokasi Ruang</th>
+                                <th class="p-3 text-center">Kondisi</th>
+                                <th class="p-3 text-center">Aksi Mutasi / Hapus</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-xs">
+                            <tr>
+                                <td class="p-3 font-medium text-slate-800">PC-LAB1-01 <span class="block text-slate-400 font-normal">PC Core i7 (Lenovo)</span></td>
+                                <td class="p-3 text-slate-600">Elektronik <span class="text-[10px] bg-blue-50 text-blue-700 px-1.5 py-0.5 rounded ml-1">BOS 2024</span></td>
+                                <td class="p-3 text-center font-medium">Lab Komputer 1</td>
+                                <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Baik</span></td>
+                                <td class="p-3 text-center space-x-1">
+                                    <button onclick="alert('Membuka form mutasi antar ruang.')" class="bg-amber-50 text-amber-700 hover:bg-amber-100 px-2.5 py-1 rounded font-medium">Mutasi</button>
+                                    <button onclick="alert('Membuka form berita acara penghapusan aset.')" class="bg-slate-100 text-slate-700 hover:bg-slate-200 px-2.5 py-1 rounded">Hapus/BA</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. GEDUNG, RUANG, DAN FASILITAS ================= -->
+        <div id="tab-gedung" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-building-user mr-2 text-amber-600"></i>2.1 - 2.4 Manajemen Ruang, Peminjaman Fasilitas, & Deteksi Bentrok</h3>
+                    <p class="text-xs text-slate-500">Kelola data ruang (kapasitas, kondisi), peminjaman fasilitas aula/lab dengan deteksi bentrok otomatis, dan persetujuan peminjaman.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 2.1 & 2.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Data Gedung, Lahan, & Riwayat Renovasi</h4>
+                        <p class="text-slate-500">Kelola spesifikasi teknis ruang kelas, kapasitas, luas bangunan, serta riwayat perbaikan fisik gedung.</p>
+                        <button onclick="alert('Membuka data master gedung & riwayat renovasi.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kelola Data Gedung & Ruang</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 2.2 & 2.3 (Peminjaman & Persetujuan)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Jadwal & Persetujuan Peminjaman Fasilitas</h4>
+                        <p class="text-slate-500">Peminjaman aula, lab, atau lapangan oleh guru, OSIS, atau pihak luar dengan sistem deteksi jadwal bentrok otomatis.</p>
+                        <button onclick="alert('Membuka panel persetujuan peminjaman fasilitas (1 menunggu).')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Persetujuan Peminjaman (1)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. LABORATORIUM DAN BENGKEL (KHAS SMK) ================= -->
+        <div id="tab-bengkel" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-laptop-code mr-2 text-amber-600"></i>3.1 - 3.6 Lab & Bengkel Vokasi: Rasio Alat, Bahan Habis Pakai, & Standar K3</h3>
+                    <p class="text-xs text-slate-500">Kelola inventaris praktik, rasio alat terhadap siswa, peminjaman alat, stok bahan habis pakai, standar K3 (APAR/P3K), serta jadwal kalibrasi.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Poin 3.1 & 3.2</span>
+                        <h4 class="font-bold text-indigo-900 text-sm">Inventaris Praktik & Rasio Alat</h4>
+                        <p class="text-slate-600">Koordinasi dengan Kaprog & teknisi lab untuk memantau rasio peralatan praktik terhadap jumlah siswa.</p>
+                        <button onclick="alert('Membuka kalkulator rasio alat praktik.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Cek Rasio Alat & Siswa</button>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Poin 3.3 & 3.4</span>
+                        <h4 class="font-bold text-indigo-900 text-sm">Peminjaman Alat & Bahan Habis Pakai</h4>
+                        <p class="text-slate-600">Pencatatan kondisi alat saat keluar/kembali serta pengelolaan stok bahan habis pakai (komponen, tinta, dll).</p>
+                        <button onclick="alert('Membuka manajemen stok bahan habis pakai.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Kelola Bahan & Alat Praktik</button>
+                    </div>
+                    <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-lg space-y-2">
+                        <span class="font-bold text-indigo-800 uppercase text-[10px]">Poin 3.5 & 3.6 (K3 & Kalibrasi)</span>
+                        <h4 class="font-bold text-indigo-900 text-sm">Standar K3 & Kalibrasi Alat</h4>
+                        <p class="text-slate-600">Pemeriksaan APAR, kotak P3K, rambu evakuasi, serta jadwal perawatan dan kalibrasi alat bengkel.</p>
+                        <button onclick="alert('Membuka jadwal pemeriksaan K3 & kalibrasi.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Jadwal K3 & Kalibrasi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. PERAWATAN DAN PERBAIKAN ================= -->
+        <div id="tab-perawatan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-triangle-exclamation mr-2 text-amber-600"></i>4.1 - 4.5 Tiket Kerusakan, Alur Penanganan, & Riwayat Biaya</h3>
+                    <p class="text-xs text-slate-500">Terima laporan kerusakan berfoto, verifikasi, penjadwalan teknisi, perawatan berkala otomatis, serta riwayat analisis biaya perbaikan aset.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 4.1 & 4.2 (Alur Penanganan)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Laporan Kerusakan & Alur Perbaikan</h4>
+                        <p class="text-slate-500">Menerima tiket laporan dari guru/teknisi (dilengkapi foto & lokasi). Alur: Dilaporkan -> Diverifikasi -> Dikerjakan -> Selesai.</p>
+                        <button onclick="alert('Membuka daftar tiket laporan kerusakan (2 aktif).')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kelola Tiket Kerusakan (2)</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 4.3, 4.4 & 4.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Perawatan Berkala, Biaya, & Penugasan Petugas</h4>
+                        <p class="text-slate-500">Pengingat otomatis perawatan AC/jaringan, riwayat biaya perbaikan aset (analisis aset boros biaya), serta penugasan teknisi/kebersihan.</p>
+                        <button onclick="alert('Membuka jadwal perawatan berkala & penugasan.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Jadwal Perawatan & Penugasan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. PENGADAAN ================= -->
+        <div id="tab-pengadaan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-invoice-dollar mr-2 text-amber-600"></i>5.1 - 5.5 Usulan RKAS, Persetujuan Berjenjang, & Bantuan Sarpras</h3>
+                    <p class="text-xs text-slate-500">Susun usulan kebutuhan berdasarkan kondisi aset, pengajuan berjenjang ke Kepala Sekolah/Yayasan, pencatatan penerimaan barang, vendor, dan bantuan hibah/DAK.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 5.1 & 5.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Usulan Kebutuhan (RKAS) & Pengajuan Berjenjang</h4>
+                        <p class="text-slate-500">Penyusunan anggaran sarpras berdasarkan masukan jurusan dan kondisi aset, dengan alur persetujuan ke Kepala Sekolah & Yayasan.</p>
+                        <button onclick="alert('Membuka modul penyusunan RKAS Sarpras.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Susun Usulan RKAS</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 5.3, 5.4 & 5.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Penerimaan Barang, Vendor, & Bantuan Pemerintah (DAK/Hibah)</h4>
+                        <p class="text-slate-500">Pencatatan penerimaan barang sesuai pesanan bersama Bendahara, direktori vendor, serta pengelolaan hibah industri/bantuan DAK.</p>
+                        <button onclick="alert('Membuka data penerimaan barang & bantuan.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kelola Penerimaan & Vendor</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. KEAMANAN DAN LINGKUNGAN ================= -->
+        <div id="tab-keamanan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-shield-cat mr-2 text-amber-600"></i>6.1 - 6.4 Keamanan, Kebersihan, Evakuasi, & Kendaraan Sekolah</h3>
+                    <p class="text-xs text-slate-500">Pencatatan insiden keamanan bersama guru piket, jadwal piket kebersihan, pemeriksaan keselamatan gedung/evakuasi, dan pengelolaan kendaraan operasional.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 6.1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Insiden Keamanan & Akses</h4>
+                        <p class="text-slate-500">Pencatatan kehilangan, kerusakan, atau akses tidak sah berkoordinasi dengan guru piket & satpam.</p>
+                        <button onclick="alert('Membuka log insiden keamanan.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Log Insiden Keamanan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 6.2 & 6.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Kebersihan & Simulasi Evakuasi</h4>
+                        <p class="text-slate-500">Jadwal piket petugas kebersihan, pengecekan sanitasi, serta pemeriksaan keselamatan gedung & jalur evakuasi.</p>
+                        <button onclick="alert('Membuka jadwal kebersihan & evakuasi.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kelola Kebersihan & Evakuasi</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 6.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Kendaraan & Inventaris Khusus</h4>
+                        <p class="text-slate-500">Manajemen peminjaman kendaraan operasional sekolah, servis berkala, dan surat jalan.</p>
+                        <button onclick="alert('Membuka jadwal kendaraan sekolah.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kelola Kendaraan Sekolah</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 7. KOMUNIKASI DAN LAPORAN ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines mr-2 text-amber-600"></i>7.1 - 7.5 Pengumuman Gangguan, Notifikasi, & Ekspor Laporan Sarpras</h3>
+                    <p class="text-xs text-slate-500">Siarkan pengumuman gangguan fasilitas (listrik padam, ruang rusak), notifikasi peminjaman/kerusakan, dan ekspor laporan PDF/Excel untuk Kepala Sekolah, Yayasan, atau Dinas.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 7.1 & 7.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pengumuman Gangguan & Notifikasi Tindakan</h4>
+                        <p class="text-slate-500">Kirim siaran pengumuman gangguan fasilitas ke seluruh warga sekolah serta pantau antrean tiket peminjaman/kerusakan.</p>
+                        <button onclick="alert('Membuka form siaran pengumuman gangguan sarpras.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Buat Pengumuman Gangguan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 7.3 & 7.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pusat Ekspor Laporan Sarpras (PDF / Excel)</h4>
+                        <p class="text-slate-500">Daftar aset & kondisi, aset rusak, rekap peminjaman, biaya perawatan, realisasi pengadaan untuk Kepala Sekolah, Yayasan, atau Dinas.</p>
+                        <button onclick="alert('Mengunduh laporan komprehensif Waka Sarpras format PDF/Excel.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-download mr-1"></i> Ekspor Laporan Sarpras (PDF/Excel)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Waka Sarpras &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 7 (termasuk fitur khas SMK).
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-amber-600', 'border-amber-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-amber-600', 'border-amber-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>

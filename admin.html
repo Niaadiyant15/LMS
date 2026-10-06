@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard Admin Sekolah - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-server text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL ADMIN SEKOLAH</h1>
+                    <p class="text-xs text-slate-400">Pusat Pengelolaan Sistem, Data Master, & Operasional</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-shield-halved mr-1 text-blue-400"></i> Level: Administrator Utama
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center font-bold text-sm">AD</div>
+                    <span class="text-xs md:text-sm font-medium">Admin Sekolah</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Sesuai Poin 1 - 6 Admin Sekolah) -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-6 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('pengguna')" id="btn-pengguna" class="tab-btn py-3 font-semibold text-blue-600 border-b-2 border-blue-600 whitespace-nowrap"><i class="fa-solid fa-users-gear mr-1.5"></i> 1. Manajemen Pengguna</button>
+            <button onclick="switchTab('master')" id="btn-master" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-database mr-1.5"></i> 2. Data Master Akademik</button>
+            <button onclick="switchTab('penugasan')" id="btn-penugasan" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-calendar-check mr-1.5"></i> 3. Penugasan & Jadwal</button>
+            <button onclick="switchTab('pengaturan')" id="btn-pengaturan" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-gears mr-1.5"></i> 4. Pengaturan Sekolah</button>
+            <button onclick="switchTab('monitoring')" id="btn-monitoring" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-eye mr-1.5"></i> 5. Monitoring Operasional <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">2</span></button>
+            <button onclick="switchTab('dukungan')" id="btn-dukungan" class="tab-btn py-3 font-medium text-slate-600 hover:text-blue-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-life-ring mr-1.5"></i> 6. Dukungan & Pemeliharaan</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. MANAJEMEN PENGGUNA ================= -->
+        <div id="tab-pengguna" class="space-y-6 tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-3 gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-users mr-2 text-blue-600"></i>1.1 - 1.6 Manajemen Akun & Pengguna Sistem</h3>
+                        <p class="text-xs text-slate-500">Kelola akun guru, siswa, staf, wali murid, dan IDUKA (Satuan atau Impor Massal Excel/CSV).</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="alert('Membuka modal tambah akun satuan (Guru/Siswa/Staf/Wali/IDUKA).')" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-user-plus mr-1"></i> Tambah Akun</button>
+                        <button onclick="alert('Membuka wizard impor massal file Excel / CSV.')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-file-excel mr-1"></i> Impor Massal (Excel/CSV)</button>
+                    </div>
+                </div>
+
+                <!-- Subfitur: Hubungkan Wali Murid & Log Aktivitas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-blue-600 uppercase">Poin 1.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Hubungkan Akun Wali Murid dengan Siswa</h4>
+                        <p class="text-xs text-slate-500">Satu akun wali murid dapat dihubungkan ke beberapa anak sekaligus (kakak-beradik dalam satu yayasan/sekolah).</p>
+                        <button onclick="alert('Membuka panel mapping Wali Murid ke Siswa.')" class="bg-blue-50 text-blue-600 hover:bg-blue-100 px-3 py-1.5 rounded font-medium text-xs">Atur Hubungan Wali & Anak</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-blue-600 uppercase">Poin 1.3 & 1.6</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Reset Password & Log Aktivitas Login</h4>
+                        <p class="text-xs text-slate-500">Aktivasi akun baru, reset kata sandi mandiri, dan pantau log riwayat masuk sistem.</p>
+                        <button onclick="alert('Menampilkan tabel log aktivitas login pengguna terakhir.')" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1.5 rounded font-medium text-xs">Lihat Log Aktivitas Login</button>
+                    </div>
+                </div>
+
+                <!-- Tabel Pengguna Simulasi -->
+                <div class="overflow-x-auto pt-2">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase text-xs border-b border-slate-200">
+                                <th class="p-3">Nama Pengguna</th>
+                                <th class="p-3 text-center">Role / Peran (Poin 1.4)</th>
+                                <th class="p-3 text-center">Email / Kontak</th>
+                                <th class="p-3 text-center">Status Akun</th>
+                                <th class="p-3 text-center">Aksi (Reset/Ubah)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-xs">
+                            <tr>
+                                <td class="p-3 font-medium text-slate-800">Pak San, S.Kom</td>
+                                <td class="p-3 text-center"><span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded font-semibold">Guru / Waka</span></td>
+                                <td class="p-3 text-center text-slate-500">san@binainformatika.sch.id</td>
+                                <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Aktif</span></td>
+                                <td class="p-3 text-center">
+                                    <button onclick="alert('Reset password berhasil dikirim ke Pak San.')" class="text-blue-600 hover:underline mr-2">Reset Password</button>
+                                    <button onclick="alert('Menonaktifkan akun.')" class="text-rose-600 hover:underline">Nonaktifkan</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-slate-800">Darel (Siswa X TKJ)</td>
+                                <td class="p-3 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Siswa</span></td>
+                                <td class="p-3 text-center text-slate-500">darel@siswa.sch.id</td>
+                                <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Aktif</span></td>
+                                <td class="p-3 text-center">
+                                    <button onclick="alert('Reset password berhasil.')" class="text-blue-600 hover:underline mr-2">Reset Password</button>
+                                    <button onclick="alert('Menonaktifkan akun.')" class="text-rose-600 hover:underline">Nonaktifkan</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. DATA MASTER AKADEMIK ================= -->
+        <div id="tab-master" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-database mr-2 text-blue-600"></i>2.1 - 2.5 Pengelolaan Data Master Akademik</h3>
+                    <p class="text-xs text-slate-500">Tahun ajaran, jurusan/konsentrasi, rombel, mata pelajaran, ruang kelas, dan kalender akademik.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 2.1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Tahun Ajaran & Semester</h4>
+                        <p class="text-slate-500">Aktifkan atau tutup tahun ajaran berjalan.</p>
+                        <button onclick="alert('Mengatur status Tahun Ajaran aktif.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Kelola TA & Semester</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 2.2 & 2.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Jurusan, Tingkat, Rombel & Mapel</h4>
+                        <p class="text-slate-500">Kelompok mapel TKJ, PPLG, AKL, dan rombel kelas.</p>
+                        <button onclick="alert('Membuka data master jurusan & rombel.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Kelola Jurusan & Rombel</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 2.4 & 2.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Ruang Kelas & Kalender Akademik</h4>
+                        <p class="text-slate-500">Hari efektif, hari libur nasional, dan jadwal ujian sekolah.</p>
+                        <button onclick="alert('Membuka kalender akademik & fasilitas.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Kelola Kalender & Ruang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. PENUGASAN DAN PENJADWALAN ================= -->
+        <div id="tab-penugasan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-calendar-check mr-2 text-blue-600"></i>3.1 - 3.4 Penugasan, Penjadwalan, & Kenaikan Kelas</h3>
+                    <p class="text-xs text-slate-500">Plotting siswa, penugasan wali kelas/guru piket, jadwal pelajaran, dan proses kenaikan kelas akhir tahun.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 3.1 & 3.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Plotting Siswa & Penugasan Guru</h4>
+                        <p class="text-slate-500">Tetapkan siswa ke rombel, tentukan wali kelas, guru mapel, dan guru piket secara kontekstual.</p>
+                        <button onclick="alert('Membuka panel plotting siswa & guru.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Atur Plotting & Penugasan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 3.3 & 3.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Penyusunan Jadwal & Kenaikan Kelas</h4>
+                        <p class="text-slate-500">Input jadwal pelajaran mingguan dan proses perpindahan rombel/kenaikan kelas di akhir tahun ajaran.</p>
+                        <button onclick="alert('Membuka wizard kenaikan kelas & jadwal.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Proses Jadwal & Kenaikan Kelas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. PENGATURAN SEKOLAH ================= -->
+        <div id="tab-pengaturan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-gears mr-2 text-blue-600"></i>4.1 - 4.4 Pengaturan Umum Satuan Pendidikan</h3>
+                    <p class="text-xs text-slate-500">Profil sekolah, jam masuk/pulang, KKM, template dokumen rapor/sertifikat, serta pengumuman global.</p>
+                </div>
+
+                <div class="space-y-3 text-xs">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div>
+                            <label class="font-bold block mb-1">Jam Masuk Sekolah (Poin 4.1)</label>
+                            <input type="time" value="07:00" class="w-full border rounded p-2">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-1">Jam Pulang Sekolah (Poin 4.1)</label>
+                            <input type="time" value="15:30" class="w-full border rounded p-2">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-1">Kontak HP Admin (Poin 4.1)</label>
+                            <input type="text" value="0812-3456-7890" class="w-full border rounded p-2">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="font-bold block mb-1">Pengaturan Penilaian & KKM (Poin 4.2)</label>
+                        <input type="text" value="KKM Standar: 75 | Skala Predikat: A (90-100), B (80-89), C (75-79)" class="w-full border rounded p-2">
+                    </div>
+                    <div>
+                        <label class="font-bold block mb-1">Pengumuman Global Sekolah (Poin 4.4)</label>
+                        <textarea rows="2" placeholder="Tulis pengumuman global sistem..." class="w-full border rounded p-2">Selamat datang di Sistem Akademik Terpadu SMK Bina Informatika.</textarea>
+                    </div>
+                    <button onclick="alert('Pengaturan sekolah berhasil disimpan!')" class="bg-blue-600 text-white px-4 py-2 rounded font-medium">Simpan Perubahan Pengaturan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. MONITORING OPERASIONAL ================= -->
+        <div id="tab-monitoring" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-eye mr-2 text-blue-600"></i>5.1 - 5.3 Monitoring Operasional Sistem</h3>
+                    <p class="text-xs text-slate-500">Melihat status kelas guru, memantau akun bermasalah, dan rekap data untuk TU / Kepala Sekolah.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 5.1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Status Pembuatan Kelas Guru</h4>
+                        <p class="text-slate-500">Cek daftar guru yang sudah/belum menyiapkan materi kelas.</p>
+                        <button onclick="alert('Menampilkan status kelas guru.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Cek Status Kelas</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 5.2 (Perhatian: 2)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Akun Bermasalah / Belum Aktif</h4>
+                        <p class="text-slate-500">Ada 2 akun siswa dengan data tidak lengkap atau belum aktivasi.</p>
+                        <button onclick="alert('Menampilkan daftar akun bermasalah.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Periksa Akun Bermasalah</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 5.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rekap Data untuk TU & Kepala Sekolah</h4>
+                        <p class="text-slate-500">Unduh ringkasan data operasional harian.</p>
+                        <button onclick="alert('Mengunduh rekap operasional sistem.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Unduh Rekap Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. DUKUNGAN DAN PEMELIHARAAN DATA ================= -->
+        <div id="tab-dukungan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-life-ring mr-2 text-blue-600"></i>6.1 - 6.3 Dukungan & Pemeliharaan Data</h3>
+                    <p class="text-xs text-slate-500">Pencadangan (backup) data, pembersihan data ganda/salah input, serta penanganan tiket kendala pengguna.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 6.1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Backup / Ekspor Database Sekolah</h4>
+                        <p class="text-slate-500">Amankan salinan data keseluruhan sesuai kebijakan yayasan.</p>
+                        <button onclick="alert('Memulai proses backup data sekolah...')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Cadangkan Data Sekarang</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 6.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pembersihan Data Ganda (Duplicate)</h4>
+                        <p class="text-slate-500">Deteksi otomatis data siswa atau guru yang terinput ganda.</p>
+                        <button onclick="alert('Menjalankan pemindai data ganda.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Pindai & Bersihkan Data</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-blue-600 uppercase text-[10px]">Poin 6.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Tiket Kendala Pengguna (Helpdesk)</h4>
+                        <p class="text-slate-500">Tangani laporan masalah dari guru, siswa, atau orang tua.</p>
+                        <button onclick="alert('Membuka panel helpdesk kendala pengguna.')" class="bg-blue-600 text-white px-3 py-1.5 rounded font-medium">Buka Tiket Kendala (0)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Admin Sekolah &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 6.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-blue-600', 'border-blue-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-blue-600', 'border-blue-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>

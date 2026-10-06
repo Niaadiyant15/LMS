@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Staf Penilaian & CBT - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-file-shield text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL STAF PENILAIAN & CBT</h1>
+                    <p class="text-xs text-slate-400">Pusat Jadwal Ujian, Bank Soal Terenkripsi, Monitoring Real-Time, & Analisis Nilai</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-laptop-code mr-1 text-indigo-400"></i> Panitia Ujian Sekolah
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center font-bold text-sm">PN</div>
+                    <span class="text-xs md:text-sm font-medium">Staf Penilaian</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Sesuai Poin 1 - 6 Staf Penilaian) -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-4 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('periode')" id="btn-periode" class="tab-btn py-3 font-semibold text-indigo-600 border-b-2 border-indigo-600 whitespace-nowrap"><i class="fa-solid fa-calendar-days mr-1.5"></i> 1. Pengaturan Periode & Sesi</button>
+            <button onclick="switchTab('soal')" id="btn-soal" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-circle-check mr-1.5"></i> 2. Pengelolaan Soal <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Terenkripsi</span></button>
+            <button onclick="switchTab('pelaksanaan')" id="btn-pelaksanaan" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-desktop mr-1.5"></i> 3. Pelaksanaan Ujian (Real-Time)</button>
+            <button onclick="switchTab('penilaian')" id="btn-penilaian" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-square-poll-vertical mr-1.5"></i> 4. Penilaian & Analisis</button>
+            <button onclick="switchTab('komunikasi')" id="btn-komunikasi" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-bullhorn mr-1.5"></i> 5. Komunikasi & Pengingat</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-lines mr-1.5"></i> 6. Laporan & Ekspor</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. PENGATURAN PERIODE UJIAN ================= -->
+        <div id="tab-periode" class="space-y-6 tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-3 gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-calendar-alt mr-2 text-indigo-600"></i>1.1 - 1.6 Jadwal, Sesi Lab, Plotting Peserta, Pengawas, & Kartu Ujian</h3>
+                        <p class="text-xs text-slate-500">Buat jadwal ujian CBT, atur ruang lab komputer, plotting peserta/pengawas otomatis (aturan cegah guru mengawas kelas sendiri), serta cetak kartu peserta.</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="alert('Membuka wizard buat jadwal ujian baru.')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-plus mr-1"></i> Buat Jadwal Ujian</button>
+                        <button onclick="alert('Mencetak Kartu Peserta Ujian & Daftar Hadir (PDF).')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-id-card mr-1"></i> Cetak Kartu Peserta & Absen</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 1.1 & 1.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Jadwal & Kapasitas Lab Komputer</h4>
+                        <p class="text-slate-500">Atur sesi ujian daring, tanggal, jam, mapel, serta kapasitas laboratorium.</p>
+                        <button onclick="alert('Membuka jadwal sesi lab komputer.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Kelola Jadwal & Sesi Lab</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 1.3 & 1.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Plotting Peserta per Ruang</h4>
+                        <p class="text-slate-500">Tetapkan siswa ke ruang ujian secara otomatis (random/urut) atau manual.</p>
+                        <button onclick="alert('Menjalankan auto-plotting peserta.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Auto-Plotting Peserta</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1.5 (Aturan Pengawas)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Plotting Pengawas (Anti-Conflict)</h4>
+                        <p class="text-slate-500">Sistem mengunci otomatis agar guru tidak mengawasi kelas/mapel yang diampunya sendiri.</p>
+                        <button onclick="alert('Membuka plotting pengawas ujian.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Atur Plotting Pengawas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. PENGELOAAN SOAL ================= -->
+        <div id="tab-soal" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-lock mr-2 text-indigo-600"></i>2.1 - 2.5 Pengumpulan Soal, Validasi, Enkripsi, & Pembatasan Akses Panitia</h3>
+                        <p class="text-xs text-slate-500">Koleksi soal dari guru mapel, validasi bersama Waka Kurikulum, susun paket A/B acak, kunci terenkripsi, dan proteksi akses panitia.</p>
+                    </div>
+                    <span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Akses Panitia Dibatasi</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 2.1 & 2.2 (Validasi Guru)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Status Penyerahan & Validasi Soal</h4>
+                        <p class="text-slate-500">Pantau guru yang sudah/belum mengunggah soal (Status: Belum, Sudah, Direvisi, Disetujui bersama Waka Kurikulum).</p>
+                        <button onclick="alert('Membuka status validasi soal guru.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Periksa Validasi Soal Guru</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 2.3, 2.4 & 2.5 (Enkripsi & Keamanan)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Paket Soal Acak & Penguncian Enkripsi</h4>
+                        <p class="text-slate-500">Penyusunan paket A/B, pengacakan opsi, serta enkripsi soal yang hanya terbuka otomatis saat waktu ujian tiba (staf panitia tidak bisa sembarangan membuka isi soal mapel lain).</p>
+                        <button onclick="alert('Mengatur enkripsi dan penguncian soal.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Kelola Paket & Enkripsi Soal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. PELAKSANAAN UJIAN ================= -->
+        <div id="tab-pelaksanaan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-desktop mr-2 text-indigo-600"></i>3.1 - 3.6 Monitoring Real-Time, Token, Reset Login, & Berita Acara</h3>
+                    <p class="text-xs text-slate-500">Pantau siswa login/mengerjakan secara real-time, buka token per sesi, tangani reset login/putus koneksi, catat berita acara, dan ujian susulan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 3.1 & 3.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Monitoring Real-Time & Token Ujian</h4>
+                        <p class="text-slate-500">Pantau siapa sudah login/selesai mengerjakan serta buka token ujian sesuai sesi.</p>
+                        <button onclick="alert('Membuka live monitor CBT ujian.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-signal mr-1"></i> Buka Live Monitor CBT</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 3.3 & 3.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Penanganan Kendala & Susulan</h4>
+                        <p class="text-slate-500">Reset login siswa putus koneksi, tambah waktu individual, dan jadwalkan ujian susulan (izin/sakit).</p>
+                        <button onclick="alert('Membuka panel penanganan kendala siswa.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Panel Kendala & Susulan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 3.4 & 3.6</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Berita Acara & Deteksi Kecurangan</h4>
+                        <p class="text-slate-500">Pencatatan berita acara per ruang serta pemantauan indikasi kecurangan (pindah tab browser).</p>
+                        <button onclick="alert('Membuka rekap berita acara ujian.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Berita Acara & Log Curang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. PENILAIAN DAN HASIL ================= -->
+        <div id="tab-penilaian" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-square-poll-vertical mr-2 text-indigo-600"></i>4.1 - 4.5 Rekap Nilai, Analisis Butir Soal, Remedial, & Serah Terima Rapor</h3>
+                    <p class="text-xs text-slate-500">Pantau koreksi guru, rekap nilai per mapel/kelas, analisis ketuntasan terhadap KKM, daftar siswa remedial, dan penyerahan ke wali kelas.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 4.1, 4.2 & 4.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rekap Nilai & Analisis Butir Soal KKM</h4>
+                        <p class="text-slate-500">Pantau kelengkapan input nilai guru, rekapitulasi nilai ujian, serta analisis butir soal dan tingkat ketuntasan siswa terhadap KKM.</p>
+                        <button onclick="alert('Membuka rekapitulasi nilai & analisis butir soal.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Buka Analisis Soal & Nilai</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 4.4 & 4.5 (Remedial & Wali Kelas)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Daftar Remedial & Serah Terima ke Wali Kelas</h4>
+                        <p class="text-slate-500">Identifikasi siswa yang perlu remedial serta serah terima rekap nilai akhir ujian kepada wali kelas untuk pengisian rapor.</p>
+                        <button onclick="alert('Menyerahkan rekap nilai ke wali kelas.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Serahkan Rekap ke Wali Kelas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. KOMUNIKASI ================= -->
+        <div id="tab-komunikasi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-bullhorn mr-2 text-indigo-600"></i>5.1 - 5.3 Pengumuman Jadwal, Pengingat Soal, & Notifikasi Perubahan</h3>
+                    <p class="text-xs text-slate-500">Kirim pengumuman tata tertib ujian ke siswa/guru/pengawas, pengingat tenggat soal, dan notifikasi perubahan ruang.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 5.1 & 5.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Siarkan Pengumuman & Tata Tertib Ujian</h4>
+                        <p class="text-slate-500">Kirim pemberitahuan jadwal, tata tertib, atau perubahan ruang ke siswa, wali murid, guru, dan pengawas.</p>
+                        <button onclick="alert('Membuka form pengumuman ujian.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Buat Pengumuman Ujian</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 5.2 (Pengingat Soal Guru)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Kirim Pengingat Tenggat Soal ke Guru Mapel</h4>
+                        <p class="text-slate-500">Kirim notifikasi otomatis bagi guru yang belum mengunggah soal ujian sesuai tenggat waktu.</p>
+                        <button onclick="alert('Mengirim pengingat WhatsApp massal ke guru pengunggah soal.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-brands fa-whatsapp mr-1"></i> Kirim Pengingat Soal ke Guru</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. LAPORAN & EKSPOR ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines mr-2 text-indigo-600"></i>6.1 - 6.4 Laporan Pelaksanaan Ujian, Kehadiran Pengawas, & Ekspor PDF/Excel</h3>
+                    <p class="text-xs text-slate-500">Unduh laporan pelaksanaan ujian, rekap kehadiran peserta & pengawas, rekap hasil untuk Kasek/Kurikulum, serta ekspor format PDF/Excel resmi.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 6.1 & 6.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rekap Kehadiran Peserta & Pengawas Ujian</h4>
+                        <p class="text-slate-500">Laporan rekapitulasi kehadiran siswa per sesi serta daftar hadir guru pengawas.</p>
+                        <button onclick="alert('Membuka rekap kehadiran peserta & pengawas.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Lihat Rekap Kehadiran</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 6.3 & 6.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pusat Ekspor Laporan Ujian (PDF / Excel)</h4>
+                        <p class="text-slate-500">Ekspor rekap hasil ujian komprehensif untuk Kepala Sekolah dan Waka Kurikulum dalam format PDF atau Excel.</p>
+                        <button onclick="alert('Mengunduh laporan hasil ujian lengkap format PDF/Excel.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-download mr-1"></i> Ekspor Laporan Ujian (PDF/Excel)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Staf Penilaian & CBT &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 6.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-indigo-600', 'border-indigo-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-indigo-600', 'border-indigo-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>

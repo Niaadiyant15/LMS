@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Guru Mata Pelajaran - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-chalkboard text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL GURU MATA PELAJARAN</h1>
+                    <p class="text-xs text-slate-400">Pusat Kelas Virtual, Tugas & Projek, Ulangan Harian Bi-Smart, CBT, & Rekap</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-book mr-1 text-emerald-400"></i> Pengampu Mapel Produktif TKJ
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center font-bold text-sm">GM</div>
+                    <span class="text-xs md:text-sm font-medium">Nia Adiyanti, S.Kom.</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-3 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('manajemen')" id="btn-manajemen" class="tab-btn py-3 font-semibold text-emerald-600 border-b-2 border-emerald-600 whitespace-nowrap"><i class="fa-solid fa-laptop-code mr-1.5"></i>1. Manajemen Kelas</button>
+            <button onclick="switchTab('perangkat')" id="btn-perangkat" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-contract mr-1.5"></i>2. Perangkat Ajar</button>
+            <button onclick="switchTab('materi')" id="btn-materi" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-book-open mr-1.5"></i>3. Materi Pembelajaran</button>
+            <button onclick="switchTab('tugas')" id="btn-tugas" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-pen mr-1.5"></i>4. Tugas, Projek & Offline <span class="bg-emerald-600 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Live</span></button>
+            <button onclick="switchTab('cbt')" id="btn-cbt" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-shield mr-1.5"></i>5. CBT & Ulangan Harian (Bi-Smart) <span class="bg-indigo-600 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Wizard</span></button>
+            <button onclick="switchTab('presensi')" id="btn-presensi" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-calendar-check mr-1.5"></i>6. Presensi & Jurnal</button>
+            <button onclick="switchTab('interaksi')" id="btn-interaksi" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i>7. Interaksi & Supervisi</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-lines mr-1.5"></i>8. Laporan & Leger</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. MANAJEMEN KELAS ================= -->
+        <div id="tab-manajemen" class="space-y-6 tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-laptop-code mr-2 text-emerald-600"></i>1. Manajemen Kelas dan Pengampuan</h3>
+                        <p class="text-xs text-slate-500">Daftar mapel dan rombel, siswa per kelas (read-only), pengaturan kelas virtual, & arsip.</p>
+                    </div>
+                    <button onclick="openModal('buat_kelas')" class="bg-emerald-600 text-white text-xs px-3 py-2 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Buat Kelas Virtual Baru</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1.1 & 1.2</span><h4 class="font-bold text-slate-800 text-sm mt-1">Daftar Mapel, Rombel, & Siswa</h4></div>
+                        <button onclick="openModal('lihat_rombel')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Buka Rombel</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1.3</span><h4 class="font-bold text-slate-800 text-sm mt-1">Kelas Virtual & Kelompok Praktik</h4></div>
+                        <button onclick="openModal('kelompok_praktik')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Atur Kelompok</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1.4 & 1.5</span><h4 class="font-bold text-slate-800 text-sm mt-1">Arsip Kelas Akhir Semester</h4></div>
+                        <button onclick="openModal('arsip_kelas')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Arsipkan Kelas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. PERANGKAT AJAR ================= -->
+        <div id="tab-perangkat" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-contract mr-2 text-emerald-600"></i>2. Perangkat Ajar</h3>
+                        <p class="text-xs text-slate-500">CP/ATP, Modul Ajar, KKTP, pengajuan ke Waka Kurikulum, & status revisi.</p>
+                    </div>
+                    <button onclick="openModal('unggah_perangkat')" class="bg-emerald-600 text-white text-xs px-3 py-2 rounded font-medium"><i class="fa-solid fa-upload mr-1"></i> Unggah Perangkat</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 2.1</span><h4 class="font-bold text-slate-800 text-sm mt-1">Repositori CP, ATP, Modul Ajar, & KKTP</h4></div>
+                        <button onclick="openModal('repositori_dokumen')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Buka Repositori</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 2.2 & 2.3</span><h4 class="font-bold text-slate-800 text-sm mt-1">Status Persetujuan Kurikulum & Catatan Revisi</h4></div>
+                        <button onclick="openModal('status_revisi')" class="w-full bg-indigo-600 text-white py-1.5 rounded font-medium mt-2">Lihat Status Revisi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. MATERI PEMBELAJARAN ================= -->
+        <div id="tab-materi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-book-open mr-2 text-emerald-600"></i>3. Materi Pembelajaran</h3>
+                        <p class="text-xs text-slate-500">Unggah dokumen/video/tautan, jadwal rilis, salin kelas lama, & log pembaca materi.</p>
+                    </div>
+                    <button onclick="openModal('unggah_dokumen')" class="bg-emerald-600 text-white text-xs px-3 py-2 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Unggah Dokumen Baru</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[10px]">Aktivitas 1</span><h4 class="font-bold text-slate-800 text-sm mt-1">Unggah dokumen / video / tautan</h4></div>
+                        <button onclick="openModal('unggah_dokumen')" class="w-full bg-emerald-600 text-white py-2 rounded font-medium">Input Unggahan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[10px]">Aktivitas 2</span><h4 class="font-bold text-slate-800 text-sm mt-1">Jadwal rilis</h4></div>
+                        <button onclick="openModal('jadwal_rilis')" class="w-full bg-emerald-600 text-white py-2 rounded font-medium">Atur Waktu Rilis</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[10px]">Aktivitas 3</span><h4 class="font-bold text-slate-800 text-sm mt-1">Salin kelas lama</h4></div>
+                        <button onclick="openModal('salin_kelas')" class="w-full bg-emerald-600 text-white py-2 rounded font-medium">Pilih & Salin Kelas</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[10px]">Aktivitas 4</span><h4 class="font-bold text-slate-800 text-sm mt-1">& Log pembaca materi</h4></div>
+                        <button onclick="openModal('log_pembaca')" class="w-full bg-emerald-600 text-white py-2 rounded font-medium">Cek Log Siswa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. TUGAS, PROJEK & TUGAS OFFLINE (TERINTEGRASI) ================= -->
+        <div id="tab-tugas" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-3 gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-pen mr-2 text-emerald-600"></i>4. Tugas, Praktik, Projek, Portofolio, Rubrik & Tugas Offline (Data Siswa)</h3>
+                        <p class="text-xs text-slate-500">Pengelolaan tugas offline/praktik guru, rekap siapa yang sudah & belum mengerjakan, penilaian dengan catatan, serta pengingat ke HP siswa.</p>
+                    </div>
+                    <button onclick="openTambahTugasModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-4 py-2.5 rounded-lg font-medium shadow-sm flex items-center space-x-1.5 transition">
+                        <i class="fa-solid fa-plus"></i> <span>+ Tambah Tugas / Upload Guru</span>
+                    </button>
+                </div>
+
+                <div class="overflow-x-auto border border-slate-200 rounded-lg">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                <th class="p-3">Kelas</th>
+                                <th class="p-3">Nama Mapel</th>
+                                <th class="p-3">Nama Tugas / Projek</th>
+                                <th class="p-3">Tgl Pembuatan</th>
+                                <th class="p-3">Batas Pengumpulan</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3 text-center">Action & Rekap Pengerjaan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-600">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="p-3 font-semibold text-slate-800">XII TKJ 1</td>
+                                <td class="p-3">AIJ (Admin Infrastruktur Jaringan)</td>
+                                <td class="p-3 font-medium text-slate-800">Tugas Offline 3 - Analisis Subnetting CIDR</td>
+                                <td class="p-3">06 Okt 2026</td>
+                                <td class="p-3">10 Okt 2026, 15:00 WIB</td>
+                                <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold text-[10px]">Aktif / Buka</span></td>
+                                <td class="p-3 text-center space-x-1">
+                                    <button onclick="openNilaiTugasModal('Tugas Offline 3 - Analisis Subnetting CIDR', 'XII TKJ 1')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 rounded font-medium shadow-sm transition inline-flex items-center space-x-1">
+                                        <i class="fa-solid fa-eye"></i> <span>Lihat & Nilai Siswa</span>
+                                    </button>
+                                    <button onclick="openModal('edit_tugas')" class="bg-blue-50 text-blue-600 hover:bg-blue-100 p-1.5 rounded transition" title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button onclick="confirm('Kirim rekap pengerjaan tugas ini ke Wali Kelas dan Guru BK?') && alert('Rekap data tugas berhasil dikirim ke Wali Kelas dan Guru BK!')" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 p-1.5 rounded transition" title="Kirim ke Wali Kelas & BK"><i class="fa-solid fa-paper-plane"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs pt-2">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 4.1, 4.2 & 4.4</span>
+                            <h4 class="font-bold text-slate-800 text-sm mt-1">Manajemen Praktik, Projek, Portofolio & Rubrik</h4>
+                        </div>
+                        <button onclick="openModal('kelola_rubrik_projek')" class="w-full bg-emerald-600 text-white py-2 rounded font-medium mt-2">Kelola Rubrik & Jenis Tugas</button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <span class="font-bold text-indigo-600 uppercase text-[10px]">Poin 4.3 & 4.5</span>
+                            <h4 class="font-bold text-slate-800 text-sm mt-1">Pengingat Otomatis di Aplikasi HP Siswa</h4>
+                        </div>
+                        <button onclick="openModal('kirim_pengingat_hp')" class="w-full bg-indigo-600 text-white py-2 rounded font-medium mt-2"><i class="fa-solid fa-bell mr-1"></i> Kirim Pengingat ke HP Siswa</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= 5. CBT & ULANGAN HARIAN (BI-SMART) ================= -->
+        <div id="tab-cbt" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-3 gap-2">
+                    <div>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-bold text-[10px]">Portal CBT v3.2 & Bi-Smart</span>
+                        <h3 class="font-bold text-slate-800 text-base mt-0.5"><i class="fa-solid fa-file-shield mr-2 text-indigo-600"></i>5. CBT, Ujian, STS, SAS & Ulangan Harian (Bi-Smart)</h3>
+                        <p class="text-xs text-slate-500">Kelola bank soal, pantau ujian online/ulangan harian aktif, analisis butir soal, serta input nilai.</p>
+                    </div>
+                    <button onclick="openWizardModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-4 py-2.5 rounded-lg font-medium shadow-sm flex items-center space-x-1.5 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> <span>+ Wizard Buat Ulangan Harian / Ujian</span>
+                    </button>
+                </div>
+
+                <!-- Statistik Ringkas CBT -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><p class="text-slate-400">Ujian/UH Aktif</p><p class="text-lg font-bold text-slate-800">2 Event</p></div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><p class="text-slate-400">Bank Soal Guru</p><p class="text-lg font-bold text-slate-800">45 Paket</p></div>
+                    <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-200"><p class="text-indigo-600 font-medium">Total Soal Terimpor</p><p class="text-lg font-bold text-indigo-800">32,915 Soal</p></div>
+                    <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200"><p class="text-emerald-700 font-medium">Status Server CBT</p><p class="text-lg font-bold text-emerald-800">Online / Stabil</p></div>
+                </div>
+
+                <!-- Tabel Pantau Ujian & Ulangan Harian -->
+                <div class="space-y-2">
+                    <h4 class="font-bold text-slate-700 text-xs uppercase tracking-wider"><i class="fa-solid fa-clock-rotate-left mr-1.5 text-indigo-600"></i> Pantau Ulangan Harian & Ujian Online Terkini</h4>
+                    <div class="overflow-x-auto border border-slate-200 rounded-lg">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                                    <th class="p-3">Kategori</th>
+                                    <th class="p-3">Nama Ujian / Ulangan Harian</th>
+                                    <th class="p-3">Mata Pelajaran</th>
+                                    <th class="p-3">Jadwal Pelaksanaan</th>
+                                    <th class="p-3">Status</th>
+                                    <th class="p-3 text-center">Action / Pantau Siswa</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-slate-600">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="p-3"><span class="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-semibold text-[10px]">ULANGAN HARIAN</span></td>
+                                    <td class="p-3 font-medium text-slate-800">UH 1 - Routing Dinamis OSPF (Bi-Smart)</td>
+                                    <td class="p-3">Administrasi Infrastruktur Jaringan (AIJ)</td>
+                                    <td class="p-3 text-[11px]">05 Okt 2026 s.d. 16 Okt 2026</td>
+                                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold text-[10px]">Aktif / Berjalan</span></td>
+                                    <td class="p-3 text-center space-x-1">
+                                        <button onclick="openModal('uh_nilai_murni')" class="bg-indigo-50 text-indigo-600 hover:bg-indigo-100 px-2.5 py-1 rounded font-medium"><i class="fa-solid fa-eye mr-1"></i> Pantau Live</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Menu Fitur Pendukung CBT & Ulangan Harian -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs pt-2">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.1 - 5.3</span><h4 class="font-bold text-slate-800 text-sm mt-1">Kelola Bank Soal, STS, & SAS</h4></div>
+                        <button onclick="openModal('cbt_bank')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Buka Bank Soal</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.4 & 5.5</span><h4 class="font-bold text-slate-800 text-sm mt-1">Input Nilai & Remedial di Bawah KKM</h4></div>
+                        <button onclick="openModal('cbt_input_nilai')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Input & Kelola Nilai</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.6</span><h4 class="font-bold text-slate-800 text-sm mt-1">Analisis Validitas Butir Soal CBT</h4></div>
+                        <button onclick="openModal('cbt_analisis')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Lihat Analisis</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= 6. PRESENSI & JURNAL ================= -->
+        <div id="tab-presensi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-calendar-check mr-2 text-emerald-600"></i>6. Presensi dan Jurnal Mengajar</h3>
+                        <p class="text-xs text-slate-500">Absensi sesi KBM, jurnal materi, metode, & catatan sikap siswa.</p>
+                    </div>
+                    <button onclick="openModal('presensi_isi')" class="bg-emerald-600 text-white text-xs px-3 py-2 rounded font-medium"><i class="fa-solid fa-pen-to-square mr-1"></i> Isi Absensi & Jurnal</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 6.1 & 6.2</span><h4 class="font-bold text-slate-800 text-sm mt-1">Absensi Kehadiran & Riwayat Jurnal KBM</h4></div>
+                        <button onclick="openModal('presensi_jurnal')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Lihat Riwayat Jurnal</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-rose-600 uppercase text-[10px]">Poin 6.3</span><h4 class="font-bold text-slate-800 text-sm mt-1">Catatan Sikap Siswa ke Wali Kelas / BK</h4></div>
+                        <button onclick="openModal('presensi_sikap')" class="w-full bg-rose-600 text-white py-1.5 rounded font-medium mt-2">Laporkan ke Wali Kelas / BK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 7. INTERAKSI DAN KOMUNIKASI ================= -->
+        <div id="tab-interaksi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-comments mr-2 text-emerald-600"></i>7. Interaksi dan Komunikasi</h3>
+                    <p class="text-xs text-slate-500">Forum diskusi, pengumuman, pesan kasus siswa, daring, & catatan tindak lanjut supervisi kepala sekolah.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1, 2 & 3</span><h4 class="font-bold text-slate-800 text-sm mt-1">Forum Diskusi, Pengumuman, & Pesan Kasus</h4></div>
+                        <button onclick="openModal('interaksi_forum')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Buka Forum & Pesan</button>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-indigo-700 uppercase text-[10px]">Poin 4 & 6 (Revisi Supervisi Kasek)</span><h4 class="font-bold text-indigo-900 text-sm mt-1">Pembelajaran Daring & Catatan Supervisi</h4></div>
+                        <button onclick="openModal('interaksi_supervisi')" class="w-full bg-indigo-600 text-white py-2 rounded font-medium flex items-center justify-center space-x-1 mt-2"><i class="fa-solid fa-file-arrow-down mr-1"></i> <span>Lihat & Unduh Catatan Supervisi Kasek</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 8. LAPORAN ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines mr-2 text-emerald-600"></i>8. Laporan (Poin 8.1 - 8.4)</h3>
+                    <p class="text-xs text-slate-500">Rekap nilai, presensi, ketuntasan, keaktifan LMS, leger mapel, & ekspor PDF/Excel.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 8.1 & 8.3</span><h4 class="font-bold text-slate-800 text-sm mt-1">Rekap Nilai, Ketuntasan, & Keaktifan LMS</h4></div>
+                        <button onclick="openModal('laporan_rekap')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2">Buka Rekap LMS</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3 flex flex-col justify-between">
+                        <div><span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 8.2 & 8.4</span><h4 class="font-bold text-slate-800 text-sm mt-1">Leger Mapel & Ekspor Format PDF / Excel</h4></div>
+                        <button onclick="openModal('laporan_leger')" class="w-full bg-emerald-600 text-white py-1.5 rounded font-medium mt-2"><i class="fa-solid fa-download mr-1"></i> Ekspor Leger & Laporan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ================= MODAL TAMBAH TUGAS (UPLOAD GURU) ================= -->
+    <div id="tambahTugasModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full p-6 space-y-4 border border-slate-200 max-h-[95vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <div>
+                    <p class="text-[11px] text-slate-400">LMS / Tugas & Projek / <span class="text-emerald-600 font-semibold">Tambah Data Tugas Offline</span></p>
+                    <h3 class="font-bold text-slate-800 text-base mt-0.5"><i class="fa-solid fa-plus-circle mr-2 text-emerald-600"></i>Upload Tugas Offline Baru</h3>
+                </div>
+                <button onclick="closeTambahTugasModal()" class="text-slate-400 hover:text-slate-700 text-sm font-bold px-2 py-1">&times;</button>
+            </div>
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Mata Pelajaran <span class="text-rose-500">*</span></label>
+                    <select class="w-full p-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-emerald-600">
+                        <option value="">- Pilih Mapel -</option>
+                        <option>Administrasi Infrastruktur Jaringan (AIJ)</option>
+                        <option>Teknologi WAN</option>
+                        <option>Jaringan Dasar</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Kelas <span class="text-rose-500">*</span></label>
+                    <select class="w-full p-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-emerald-600">
+                        <option value="">- Pilih Kelas -</option>
+                        <option>XII TKJ 1</option>
+                        <option>XII TKJ 2</option>
+                        <option>XI TKJ 1</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Judul Tugas <span class="text-rose-500">*</span></label>
+                    <input type="text" placeholder="Masukkan judul tugas..." class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-emerald-600">
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Deskripsi Tugas <span class="text-rose-500">*</span></label>
+                    <textarea rows="3" placeholder="Tulis instruksi pengerjaan tugas..." class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-emerald-600"></textarea>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Batas Pengumpulan (Deadline) <span class="text-rose-500">*</span></label>
+                    <input type="datetime-local" class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-emerald-600">
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Status Tugas <span class="text-rose-500">*</span></label>
+                    <select class="w-full p-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-emerald-600">
+                        <option>Aktif / Buka</option>
+                        <option>Ditutup</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">File Tugas (Soal / Modul dari Guru)</label>
+                    <div class="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center bg-slate-50 hover:bg-slate-100 transition cursor-pointer">
+                        <i class="fa-solid fa-cloud-arrow-up text-3xl text-emerald-600 mb-2"></i>
+                        <p class="font-medium text-slate-700">Drag & Drop file disini</p>
+                        <p class="text-slate-400 text-[11px] my-1">atau</p>
+                        <span class="inline-block bg-white border border-slate-300 px-3 py-1 rounded text-xs font-medium text-slate-700 shadow-sm">Pilih File dari Komputer</span>
+                        <p class="text-[10px] text-slate-400 mt-3">*Format yang didukung : .doc .docx .xls .xlsx .ppt .pptx .pdf .jpg .jpeg .png</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-100 pt-3 flex justify-end space-x-2">
+                <button onclick="closeTambahTugasModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2.5 rounded-lg font-medium transition">Batal</button>
+                <button onclick="alert('Tugas offline berhasil diupload!'); closeTambahTugasModal();" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-5 py-2.5 rounded-lg font-medium shadow-sm transition"><i class="fa-solid fa-upload mr-1"></i> Upload & Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL LIHAT, NILAI & REKAPAN SISWA ================= -->
+    <div id="nilaiTugasModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full p-6 space-y-4 border border-slate-200 max-h-[95vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <div>
+                    <span id="modalMapelKelas" class="text-[11px] text-emerald-600 font-semibold uppercase">Mapel & Kelas</span>
+                    <h3 id="modalJudulTugas" class="font-bold text-slate-800 text-base mt-0.5"><i class="fa-solid fa-clipboard-user mr-2 text-emerald-600"></i>Rekap Pengerjaan & Penilaian Siswa</h3>
+                </div>
+                <button onclick="closeNilaiTugasModal()" class="text-slate-400 hover:text-slate-700 text-sm font-bold px-2 py-1">&times;</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><p class="text-slate-400">Total Siswa Rombel</p><p class="text-base font-bold text-slate-800">35 Siswa</p></div>
+                <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-200"><p class="text-emerald-700 font-medium">Sudah Mengerjakan</p><p class="text-base font-bold text-emerald-800">32 Siswa</p></div>
+                <div class="bg-rose-50 p-3 rounded-lg border border-rose-200"><p class="text-rose-700 font-medium">Belum Mengerjakan</p><p class="text-base font-bold text-rose-800">3 Siswa</p></div>
+            </div>
+            <div class="overflow-x-auto border border-slate-200 rounded-lg">
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                            <th class="p-2.5">No</th><th class="p-2.5">Nama Siswa</th><th class="p-2.5">Status Pengerjaan</th><th class="p-2.5">File Jawaban</th><th class="p-2.5 w-20">Nilai</th><th class="p-2.5">Catatan / Feedback</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-600">
+                        <tr>
+                            <td class="p-2.5">1</td>
+                            <td class="p-2.5 font-semibold text-slate-800">Ahmad Fajar</td>
+                            <td class="p-2.5"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold text-[10px]">Sudah Mengerjakan</span></td>
+                            <td class="p-2.5"><a href="#" onclick="alert('Download jawaban')" class="text-blue-600 underline">Jawaban_Fajar.pdf</a></td>
+                            <td class="p-2.5"><input type="number" value="88" class="w-16 p-1 border rounded text-center font-bold"></td>
+                            <td class="p-2.5 space-y-1"><input type="text" value="Perhitungan benar." class="w-full p-1 border rounded text-xs"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="border-t border-slate-100 pt-3 flex justify-between items-center">
+                <button onclick="alert('Rekap dikirim ke Wali Kelas & BK!')" class="bg-indigo-600 text-white text-xs px-4 py-2.5 rounded font-medium"><i class="fa-solid fa-paper-plane mr-1"></i> Kirim Rekap ke Wali Kelas & BK</button>
+                <button onclick="closeNilaiTugasModal()" class="bg-emerald-600 text-white text-xs px-5 py-2 rounded font-medium">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MODAL WIZARD: BUAT ULANGAN HARIAN & UJIAN CBT ================= -->
+    <div id="wizardModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full p-6 space-y-4 border border-slate-200 max-h-[95vh] overflow-y-auto">
+            
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <div>
+                    <p class="text-[11px] text-slate-400">Portal CBT / Ulangan Harian Bi-Smart / <span class="text-indigo-600 font-semibold">Wizard Buat Event Ujian</span></p>
+                    <h3 class="font-bold text-slate-800 text-base mt-0.5"><i class="fa-solid fa-wand-magic-sparkles mr-2 text-indigo-600"></i>3 Langkah Praktis Buat Ulangan Harian & Ujian Online</h3>
+                </div>
+                <button onclick="closeWizardModal()" class="text-slate-400 hover:text-slate-700 text-sm font-bold px-2 py-1">&times;</button>
+            </div>
+
+            <!-- Wizard Step Indicators -->
+            <div class="grid grid-cols-3 gap-2 text-xs font-semibold text-center">
+                <div id="step-indicator-1" class="p-2 rounded-lg bg-indigo-600 text-white">1. Pengaturan Event Ujian</div>
+                <div id="step-indicator-2" class="p-2 rounded-lg bg-slate-100 text-slate-500">2. Soal & Template Excel</div>
+                <div id="step-indicator-3" class="p-2 rounded-lg bg-slate-100 text-slate-500">3. Pratinjau & Publikasi</div>
+            </div>
+
+            <!-- STEP 1: PENGATURAN EVENT UJIAN -->
+            <div id="wizard-step-1" class="space-y-3 text-xs pt-2">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Judul Ujian / Ulangan Harian <span class="text-rose-500">*</span></label>
+                        <input type="text" placeholder="Contoh: UH 1 - Routing Dinamis OSPF" class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-600">
+                    </div>
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Kategori Event <span class="text-rose-500">*</span></label>
+                        <select class="w-full p-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-indigo-600">
+                            <option>Ulangan Harian (Bi-Smart)</option>
+                            <option>Pre-Test / Post-Test</option>
+                            <option>Sumatif Tengah Semester (STS)</option>
+                            <option>Sumatif Akhir Semester (SAS)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Mata Pelajaran <span class="text-rose-500">*</span></label>
+                    <select class="w-full p-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-indigo-600">
+                        <option value="">- Pilih Mapel -</option>
+                        <option>Administrasi Infrastruktur Jaringan (AIJ)</option>
+                        <option>Teknologi WAN</option>
+                        <option>Pemrograman Web & Perangkat Bergerak</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block font-medium text-slate-700 mb-1">Keterangan / Petunjuk Pengerjaan <span class="text-rose-500">*</span></label>
+                    <textarea rows="2" placeholder="Tulis instruksi pengerjaan..." class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-600"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Waktu Mulai <span class="text-rose-500">*</span></label>
+                        <input type="datetime-local" class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-600">
+                    </div>
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Waktu Selesai <span class="text-rose-500">*</span></label>
+                        <input type="datetime-local" class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-600">
+                    </div>
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Durasi (Menit) <span class="text-rose-500">*</span></label>
+                        <input type="number" value="60" class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-600">
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2: SOAL & TEMPLATE EXCEL -->
+            <div id="wizard-step-2" class="space-y-4 text-xs pt-2 hidden">
+                
+                <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg flex justify-between items-center">
+                    <div>
+                        <span class="font-bold text-indigo-900 block"><i class="fa-solid fa-folder-open mr-1"></i> Ambil Soal dari Bank Soal Guru</span>
+                        <span class="text-indigo-700 text-[11px]">Gunakan kembali bank soal berkualitas yang pernah Anda buat sebelumnya di server CBT.</span>
+                    </div>
+                    <button onclick="alert('Membuka Repositori Bank Soal Guru...')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium shadow-sm whitespace-nowrap">Pilih dari Bank Soal</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Bentuk Soal <span class="text-rose-500">*</span></label>
+                        <select class="w-full p-2.5 border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-indigo-600">
+                            <option>a. Pilihan Ganda (PG)</option>
+                            <option>b. Pilihan Ganda Kompleks</option>
+                            <option>c. Pencocokan (Matching)</option>
+                            <option>d. Benar - Salah</option>
+                            <option>e. Esai (Uraian)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Label Soal / Tingkat Kesulitan</label>
+                        <input type="text" placeholder="Contoh: Modul 3 - Intermediate" class="w-full p-2.5 border border-slate-300 rounded-lg focus:outline-none focus:border-indigo-600">
+                    </div>
+                </div>
+
+                <!-- Template Impor Soal Excel Sesuai Gambar -->
+                <div class="p-4 bg-slate-50 border border-slate-300 rounded-lg space-y-3">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                        <div>
+                            <span class="font-bold text-slate-800 block"><i class="fa-solid fa-file-excel text-emerald-600 mr-1"></i> Impor Soal Cepat via Template Excel (.xlsx)</span>
+                            <p class="text-slate-600 text-[11px]">Format kolom: <code class="bg-white px-1.5 py-0.5 border rounded font-mono">No | Jenis (SOAL / JAWABAN) | Isi | Jawaban (1=Benar, 0=Salah)</code></p>
+                        </div>
+                        <button onclick="alert('Berhasil mengunduh Template Soal Excel format No | Jenis | Isi | Jawaban!')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] px-3.5 py-2 rounded-lg font-medium shadow-sm transition whitespace-nowrap">
+                            <i class="fa-solid fa-download mr-1.5"></i> Download Template Soal (.xlsx)
+                        </button>
+                    </div>
+                    <input type="file" class="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                    <label class="flex items-center space-x-2 bg-slate-50 p-2.5 rounded border border-slate-200 cursor-pointer">
+                        <input type="checkbox" checked class="rounded text-indigo-600">
+                        <span>Soal Acak (Randomized)</span>
+                    </label>
+                    <label class="flex items-center space-x-2 bg-slate-50 p-2.5 rounded border border-slate-200 cursor-pointer">
+                        <input type="checkbox" checked class="rounded text-indigo-600">
+                        <span>Tampilkan Nilai Ujian</span>
+                    </label>
+                    <label class="flex items-center space-x-2 bg-slate-50 p-2.5 rounded border border-slate-200 cursor-pointer">
+                        <input type="checkbox" class="rounded text-indigo-600">
+                        <span>Tampilkan Jawaban Soal</span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!-- STEP 3: PRATINJAU & PUBLIKASI -->
+            <div id="wizard-step-3" class="space-y-4 text-xs pt-2 hidden">
+                <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-lg space-y-2">
+                    <div class="flex items-center justify-between border-b border-emerald-200 pb-2">
+                        <span class="font-bold text-emerald-900 text-sm"><i class="fa-solid fa-circle-check text-emerald-600 mr-1.5"></i> Pratinjau Event Ulangan Harian & CBT</span>
+                        <span class="bg-emerald-600 text-white text-[10px] px-2 py-0.5 rounded font-semibold">Siap Publikasi</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-slate-700 pt-1">
+                        <p><b>Judul:</b> UH 1 - Routing Dinamis OSPF</p>
+                        <p><b>Mapel:</b> Administrasi Infrastruktur Jaringan</p>
+                        <p><b>Jumlah Soal:</b> 25 Soal (Autosave Aktif)</p>
+                        <p><b>Total Nilai Maksimal:</b> 100</p>
+                        <p><b>Waktu Mulai:</b> Rabu, 07/10/2026, 12:26</p>
+                        <p><b>Kelas Peserta:</b> XII TKJ 1 & XII TKJ 2</p>
+                    </div>
+                </div>
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded text-slate-600">
+                    <p><b>Catatan Kasek:</b> Setelah disimpan, event ujian otomatis masuk ke antrean supervisi Kepala Sekolah dan room ujian terbuka sesuai jadwal untuk siswa di aplikasi handphone mereka.</p>
+                </div>
+            </div>
+
+            <!-- Wizard Navigation Buttons -->
+            <div class="border-t border-slate-100 pt-3 flex justify-between">
+                <button id="btn-prev" onclick="changeWizardStep(-1)" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2.5 rounded-lg font-medium transition hidden">Sebelumnya</button>
+                <div class="ml-auto flex space-x-2">
+                    <button onclick="closeWizardModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs px-4 py-2.5 rounded-lg font-medium transition">Batal</button>
+                    <button id="btn-next" onclick="changeWizardStep(1)" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-5 py-2.5 rounded-lg font-medium shadow-sm transition">Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Umum -->
+    <div id="interactiveModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-xl w-full p-6 space-y-4 border border-slate-200 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 id="modalTitle" class="font-bold text-slate-800 text-sm">Judul Fitur</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 text-sm font-bold px-2 py-1">&times;</button>
+            </div>
+            <div id="modalBody" class="text-xs md:text-sm text-slate-600 space-y-3"></div>
+            <div class="border-t border-slate-100 pt-3 flex justify-end">
+                <button onclick="closeModal()" class="bg-indigo-600 text-white text-xs px-4 py-2 rounded font-medium">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Guru Mata Pelajaran SMK Bina Informatika &copy; 2026. Lengkap terintegrasi dari poin 1 sampai 8 beserta Portal CBT & Ulangan Harian Bi-Smart.
+    </footer>
+
+    <!-- Script Utama -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-emerald-600', 'border-emerald-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-emerald-600', 'border-emerald-600', 'font-semibold');
+        }
+
+        let currentWizardStep = 1;
+        function openWizardModal() {
+            currentWizardStep = 1;
+            updateWizardView();
+            document.getElementById('wizardModal').classList.remove('hidden');
+        }
+        function closeWizardModal() {
+            document.getElementById('wizardModal').classList.add('hidden');
+        }
+
+        function changeWizardStep(direction) {
+            currentWizardStep += direction;
+            if (currentWizardStep < 1) currentWizardStep = 1;
+            if (currentWizardStep > 3) {
+                alert('Event Ujian / Ulangan Harian Bi-Smart berhasil dibuat & dipublikasikan ke Portal CBT!');
+                closeWizardModal();
+                return;
+            }
+            updateWizardView();
+        }
+
+        function updateWizardView() {
+            document.getElementById('wizard-step-1').classList.add('hidden');
+            document.getElementById('wizard-step-2').classList.add('hidden');
+            document.getElementById('wizard-step-3').classList.add('hidden');
+            document.getElementById('wizard-step-' + currentWizardStep).classList.remove('hidden');
+
+            document.getElementById('step-indicator-1').className = 'p-2 rounded-lg ' + (currentWizardStep === 1 ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-500');
+            document.getElementById('step-indicator-2').className = 'p-2 rounded-lg ' + (currentWizardStep === 2 ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-500');
+            document.getElementById('step-indicator-3').className = 'p-2 rounded-lg ' + (currentWizardStep === 3 ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-500');
+
+            document.getElementById('btn-prev').classList.toggle('hidden', currentWizardStep === 1);
+            document.getElementById('btn-next').innerHTML = currentWizardStep === 3 ? 'Simpan & Publikasikan <i class="fa-solid fa-floppy-disk ml-1"></i>' : 'Selanjutnya <i class="fa-solid fa-arrow-right ml-1"></i>';
+        }
+
+        function openTambahTugasModal() { document.getElementById('tambahTugasModal').classList.remove('hidden'); }
+        function closeTambahTugasModal() { document.getElementById('tambahTugasModal').classList.add('hidden'); }
+
+        const modalContents = {
+            'buat_kelas': { title: 'Manajemen Kelas', html: '<p>Form Buat Kelas Virtual Baru</p><input type="text" class="w-full text-xs p-2 border rounded" value="TKJ-12">' },
+            'lihat_rombel': { title: 'Poin 1.1 & 1.2: Daftar Rombel & Siswa', html: '<p>Daftar siswa read-only.</p>' },
+            'kelompok_praktik': { title: 'Poin 1.3: Kelompok Praktik', html: '<p>Pengaturan kelompok lab.</p>' },
+            'arsip_kelas': { title: 'Poin 1.4 & 1.5: Arsip Kelas', html: '<p>Arsip kelas semester lalu.</p>' },
+            'unggah_perangkat': { title: 'Perangkat Ajar', html: '<input type="file" class="w-full text-xs p-1 border rounded">' },
+            'repositori_dokumen': { title: 'Poin 2.1: Repositori', html: '<p>Modul ajar dan ATP.</p>' },
+            'status_revisi': { title: 'Poin 2.2 & 2.3: Status Persetujuan', html: '<p>Catatan revisi Waka Kurikulum.</p>' },
+            'unggah_dokumen': { title: 'Aktivitas 1: Unggah Materi', html: '<input type="file" class="w-full text-xs p-1 border rounded">' },
+            'jadwal_rilis': { title: 'Aktivitas 2: Jadwal Rilis', html: '<input type="datetime-local" class="w-full text-xs p-2 border rounded">' },
+            'salin_kelas': { title: 'Aktivitas 3: Salin Kelas', html: '<select class="w-full text-xs p-2 border rounded"><option>Arsip 2025</option></select>' },
+            'log_pembaca': { title: 'Aktivitas 4: Log Pembaca', html: '<p>Log analitik siswa membaca materi.</p>' },
+            'kelola_rubrik_projek': { title: 'Manajemen Rubrik', html: '<textarea class="w-full text-xs p-2 border rounded">1. Persiapan\n2. Proses\n3. Hasil</textarea>' },
+            'kirim_pengingat_hp': { title: 'Pengingat HP Siswa', html: '<button onclick="alert(\'Notifikasi terkirim ke HP siswa!\')" class="w-full bg-indigo-600 text-white py-2 rounded text-xs">Kirim Push Notification Sekarang</button>' },
+            'uh_nilai_murni': { title: 'Portal CBT: Pantau Ujian & Nilai Murni', html: '<p>Sistem merekap nilai ujian pertama (murni) dan daftar siswa yang perlu remedial secara real-time.</p>' },
+            'cbt_bank': { title: 'Bank Soal CBT', html: '<p>Kelola paket soal pilihan ganda, esai, dan benar-salah.</p>' },
+            'cbt_input_nilai': { title: 'Input & Remidial CBT', html: '<p>Pengaturan nilai remedial otomatis bagi siswa di bawah KKM.</p>' },
+            'cbt_analisis': { title: 'Analisis Validitas Butir Soal', html: '<p>Laporan tingkat kesukaran dan daya pembeda butir soal ujian.</p>' },
+            'presensi_isi': { title: 'Absensi & Jurnal', html: '<textarea class="w-full text-xs p-2 border rounded" placeholder="Jurnal KBM..."></textarea>' },
+            'presensi_jurnal': { title: 'Riwayat Jurnal', html: '<p>Riwayat absensi & jurnal terekam.</p>' },
+            'presensi_sikap': { title: 'Catatan Sikap ke BK', html: '<textarea class="w-full text-xs p-2 border rounded" placeholder="Catatan khusus..."></textarea>' },
+            'interaksi_forum': { title: 'Forum & Diskusi', html: '<textarea class="w-full text-xs p-2 border rounded" placeholder="Tulis pesan..."></textarea>' },
+            'interaksi_supervisi': { title: 'Catatan Supervisi Kasek', html: '<p>Catatan tindak lanjut supervisi Kepala Sekolah.</p>' },
+            'laporan_rekap': { title: 'Rekap Nilai & LMS', html: '<p>Statistik keaktifan LMS siswa.</p>' },
+            'laporan_leger': { title: 'Ekspor Leger', html: '<button onclick="alert(\'Leger terunduh!\')" class="bg-emerald-600 text-white text-xs px-3 py-1.5 rounded">Download Leger (.xlsx)</button>' }
+        };
+
+        function openModal(key) {
+            document.getElementById('modalTitle').innerText = modalContents[key]?.title || 'Informasi';
+            document.getElementById('modalBody').innerHTML = modalContents[key]?.html || '<p>Konten sistem CBT Bi-Smart.</p>';
+            document.getElementById('interactiveModal').classList.remove('hidden');
+        }
+
+        function closeModal() { document.getElementById('interactiveModal').classList.add('hidden'); }
+    </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Bagian Keuangan - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-emerald-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-wallet text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL KEUANGAN</h1>
+                    <p class="text-xs text-slate-400">Pusat SPP, Tagihan Massal, Pembayaran, Blokir Ujian, & Anggaran</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-shield-dollar mr-1 text-emerald-400"></i> Manajemen Keuangan & Kasir
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center font-bold text-sm">KE</div>
+                    <span class="text-xs md:text-sm font-medium">Staf Keuangan</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Sesuai Poin 1 - 6 Keuangan + Fitur Blokir Ujian) -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-4 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('master')" id="btn-master" class="tab-btn py-3 font-semibold text-emerald-600 border-b-2 border-emerald-600 whitespace-nowrap"><i class="fa-solid fa-coins mr-1.5"></i> 1. Master Data Keuangan</button>
+            <button onclick="switchTab('tagihan')" id="btn-tagihan" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-invoice-dollar mr-1.5"></i> 2. Tagihan & Blokir Ujian <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Penting</span></button>
+            <button onclick="switchTab('pembayaran')" id="btn-pembayaran" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-cash-register mr-1.5"></i> 3. Penerimaan Pembayaran</button>
+            <button onclick="switchTab('tunggakan')" id="btn-tunggakan" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 4. Tunggakan & Penagihan</button>
+            <button onclick="switchTab('anggaran')" id="btn-anggaran" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-chart-pie mr-1.5"></i> 5. Pengeluaran & Anggaran</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-emerald-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-lines mr-1.5"></i> 6. Laporan & Ekspor</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. MASTER DATA KEUANGAN ================= -->
+        <div id="tab-master" class="space-y-6 tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-3 gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-coins mr-2 text-emerald-600"></i>1.1 - 1.6 Jenis Pembayaran, Tarif, Periode, & Rekening Sekolah</h3>
+                        <p class="text-xs text-slate-500">Kelola rincian jenis pembayaran (SPP, gedung, seragam, ujian), tarif per tingkat/jurusan, pos anggaran, dan rekening sekolah.</p>
+                    </div>
+                    <button onclick="alert('Membuka form tambah jenis pembayaran & tarif baru.')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-plus mr-1"></i> Tambah Tarif Pembayaran</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1.1 & 1.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Jenis & Tarif Pembayaran</h4>
+                        <p class="text-slate-500">SPP Bulanan, Uang Gedung, Seragam, Kegiatan, Ujian, dan PKL dengan variasi tarif per jurusan.</p>
+                        <button onclick="alert('Membuka daftar tarif per jurusan.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Kelola Tarif</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1.3 & 1.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Periode Tagihan & Tahun Ajaran</h4>
+                        <p class="text-slate-500">Pengaturan siklus tagihan bulanan atau semester mengikuti tahun ajaran aktif.</p>
+                        <button onclick="alert('Membuka pengaturan periode tagihan.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Atur Periode Tagihan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 1.5 & 1.6</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pos Anggaran & Rekening Sekolah</h4>
+                        <p class="text-slate-500">Daftar rekening bank, Virtual Account, dan kategori pos pemasukan/pengeluaran.</p>
+                        <button onclick="alert('Membuka data rekening & pos anggaran.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Kelola Rekening & Pos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. TAGIHAN & BLOKIR UJIAN ================= -->
+        <div id="tab-tagihan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-3 gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-invoice-dollar mr-2 text-emerald-600"></i>2.1 - 2.4 Generasi Tagihan & Fitur Blokir Akses Ujian Siswa</h3>
+                        <p class="text-xs text-slate-500">Buat tagihan massal/individual, kelola keringanan/beasiswa, serta aktifkan blokir ujian bagi siswa yang menunggak.</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="alert('Wizard pembuatan tagihan massal per kelas/jurusan.')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-bolt mr-1"></i> Generate Tagihan Massal</button>
+                        <button onclick="alert('Membuka panel manajemen keringanan / cicilan.')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-percent mr-1"></i> Atur Keringanan / Beasiswa</button>
+                    </div>
+                </div>
+
+                <!-- FITUR KHUSUS: Blokir Akses Ujian Siswa Nunggak -->
+                <div class="bg-rose-50 border border-rose-200 p-4 rounded-xl space-y-3">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="bg-rose-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Fitur Kontrol Akses Ujian</span>
+                            <h4 class="font-bold text-rose-900 text-sm mt-1">Blokir Siswa Tidak Bisa Ujian Karena Belum Bayar</h4>
+                            <p class="text-xs text-rose-700">Siswa yang menunggak melewati batas jatuh tempo dapat dinonaktifkan akses token ujiannya secara otomatis atau manual.</p>
+                        </div>
+                        <button onclick="alert('Membuka daftar blokir akses ujian CBT.')" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-medium px-3 py-2 rounded transition"><i class="fa-solid fa-ban mr-1"></i> Kelola Blokir Ujian Siswa</button>
+                    </div>
+                </div>
+
+                <!-- Tabel Tagihan Siswa -->
+                <div class="overflow-x-auto pt-2">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Daftar Status Tagihan & Status Ujian Siswa</h4>
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase text-xs border-b border-slate-200">
+                                <th class="p-3">Nama Siswa & Kelas</th>
+                                <th class="p-3">Jenis Tagihan</th>
+                                <th class="p-3 text-center">Nominal</th>
+                                <th class="p-3 text-center">Status Pembayaran</th>
+                                <th class="p-3 text-center">Akses Ujian (CBT)</th>
+                                <th class="p-3 text-center">Aksi Keuangan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-xs">
+                            <tr>
+                                <td class="p-3 font-medium text-slate-800">Rian Pratama <span class="block text-slate-400 font-normal">X TKJ 2</span></td>
+                                <td class="p-3 text-slate-600">SPP Bulan Oktober 2026</td>
+                                <td class="p-3 text-center font-bold text-slate-800">Rp 350.000</td>
+                                <td class="p-3 text-center"><span class="bg-rose-100 text-rose-800 px-2 py-0.5 rounded font-semibold">Belum Bayar (Menunggak)</span></td>
+                                <td class="p-3 text-center">
+                                    <span class="bg-rose-500 text-white px-2 py-0.5 rounded font-bold text-[10px]"><i class="fa-solid fa-lock mr-1"></i> Diblokir Ujian</span>
+                                </td>
+                                <td class="p-3 text-center space-x-1">
+                                    <button onclick="alert('Status ujian Rian diaktifkan kembali karena telah diberi izin cicilan.')" class="bg-emerald-600 text-white px-2.5 py-1 rounded font-medium">Buka Blokir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium text-slate-800">Darel <span class="block text-slate-400 font-normal">X TKJ</span></td>
+                                <td class="p-3 text-slate-600">SPP Bulan Oktober 2026</td>
+                                <td class="p-3 text-center font-bold text-slate-800">Rp 350.000</td>
+                                <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Lunas</span></td>
+                                <td class="p-3 text-center">
+                                    <span class="bg-emerald-500 text-white px-2 py-0.5 rounded font-bold text-[10px]"><i class="fa-solid fa-unlock mr-1"></i> Akses Normal</span>
+                                </td>
+                                <td class="p-3 text-center">
+                                    <button onclick="alert('Melihat detail tagihan.')" class="bg-slate-100 text-slate-700 px-2.5 py-1 rounded">Detail</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. PENERIMAAN PEMBAYARAN ================= -->
+        <div id="tab-pembayaran" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-cash-register mr-2 text-emerald-600"></i>3.1 - 3.5 Kasir Tunai, Rekonsiliasi VA, Cicilan, & Kuitansi Otomatis</h3>
+                        <p class="text-xs text-slate-500">Catat pembayaran tunai, rekonsiliasi transfer/Virtual Account, cicilan, koreksi transaksi, dan cetak kuitansi ulang.</p>
+                    </div>
+                    <button onclick="alert('Membuka panel kasir / input pembayaran baru.')" class="bg-emerald-600 text-white text-xs px-3 py-2 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Input Pembayaran Baru (Kasir)</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 3.1 & 3.5 (Kasir & Kuitansi)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pembayaran Tunai & Kuitansi Otomatis</h4>
+                        <p class="text-slate-500">Pencatatan uang masuk secara tunai di loket kasir sekolah dengan penerbitan nomor kuitansi otomatis dan cetak ulang.</p>
+                        <button onclick="alert('Mencetak kuitansi pembayaran terakhir.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Cetak Kuitansi Terakhir</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 3.2 & 3.3 (Virtual Account & Cicilan)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rekonsiliasi Bank VA & Pembayaran Sebagian</h4>
+                        <p class="text-slate-500">Pencocokan otomatis mutasi transfer/VA dari bank mitra serta pengelolaan pembayaran cicilan/angsuran siswa.</p>
+                        <button onclick="alert('Menjalankan rekonsiliasi mutasi bank VA.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Sinkronisasi VA Bank</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. TUNGGAKAN DAN PENAGIHAN ================= -->
+        <div id="tab-tunggakan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-bell mr-2 text-emerald-600"></i>4.1 - 4.4 Daftar Tunggakan, Pengingat WhatsApp, & Surat Tagihan</h3>
+                    <p class="text-xs text-slate-500">Pantau siswa menunggak, kirim pengingat otomatis ke WhatsApp wali murid, dan cetak surat tagihan bersama TU.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 4.1 & 4.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pengingat Otomatis WhatsApp ke Wali Murid</h4>
+                        <p class="text-slate-500">Kirim pesan pengingat tagihan SPP jatuh tempo secara otomatis ke nomor WhatsApp orang tua siswa.</p>
+                        <button onclick="alert('Mengirim pesan pengingat WhatsApp massal ke orang tua penunggak.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-brands fa-whatsapp mr-1"></i> Kirim Broadcast Pengingat WA</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 4.3 & 4.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Surat Tagihan Resmi (Kolaborasi dengan TU)</h4>
+                        <p class="text-slate-500">Pembuatan dan pencetakan surat pemberitahuan tunggakan untuk dibawa pulang siswa serta riwayat komunikasi penagihan.</p>
+                        <button onclick="alert('Mencetak surat tagihan resmi.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Cetak Surat Tagihan Resmi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. PENGELUARAN DAN ANGGARAN ================= -->
+        <div id="tab-anggaran" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-chart-pie mr-2 text-emerald-600"></i>5.1 - 5.4 Pengeluaran Operasional, RAPBS, & Pencatatan Dana BOS</h3>
+                    <p class="text-xs text-slate-500">Catat pengeluaran gaji/listrik/ATK dengan bukti, ajukan anggaran ke Kepala Sekolah/Yayasan, pantau realisasi vs RAPBS, dan kelola Dana BOS.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.1 & 5.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pengeluaran & Persetujuan Anggaran</h4>
+                        <p class="text-slate-500">Catat operasional harian (listrik, ATK, gaji) dan ajukan persetujuan ke Kasek/Yayasan.</p>
+                        <button onclick="alert('Mencatat pengeluaran operasional baru.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Catat Pengeluaran</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Realisasi Anggaran vs RAPBS</h4>
+                        <p class="text-slate-500">Pantau perbandingan realisasi penggunaan dana terhadap Rencana Anggaran Pendapatan Belanja Sekolah.</p>
+                        <button onclick="alert('Membuka laporan realisasi RAPBS.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Lihat Grafik RAPBS</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 5.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pencatatan Dana BOS & Pemerintah</h4>
+                        <p class="text-slate-500">Administrasi pencairan, alokasi, dan pelaporan penggunaan Dana Bantuan Operasional Sekolah (BOS).</p>
+                        <button onclick="alert('Membuka pencatatan Dana BOS.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Kelola Dana BOS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. LAPORAN & EKSPOR ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines mr-2 text-emerald-600"></i>6.1 - 6.4 Rekap Penerimaan, Arus Kas, & Ekspor PDF/Excel</h3>
+                    <p class="text-xs text-slate-500">Unduh laporan penerimaan harian/bulanan, laporan tunggakan, arus kas sederhana, serta ekspor format PDF/Excel resmi untuk Kepala Sekolah dan Yayasan.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 6.1 & 6.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Laporan Kas, Arus Kas Sederhana, & Tunggakan</h4>
+                        <p class="text-slate-500">Ringkasan kas masuk/keluar, posisi saldo kasir, serta laporan tunggakan pembayaran siswa.</p>
+                        <button onclick="alert('Membuka laporan arus kas.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium">Lihat Laporan Arus Kas</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Poin 6.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pusat Ekspor Laporan Keuangan (PDF / Excel)</h4>
+                        <p class="text-slate-500">Ekspor laporan finansial lengkap siap cetak untuk rapat pleno Kepala Sekolah dan pengurus Yayasan.</p>
+                        <button onclick="alert('Mengunduh laporan keuangan lengkap format PDF/Excel.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-download mr-1"></i> Ekspor Laporan Keuangan (PDF/Excel)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Bagian Keuangan &copy; 2026. Lengkap sesuai rincian poin 1 sampai 6 + Fitur Blokir Akses Ujian Siswa Menunggak.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-emerald-600', 'border-emerald-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-emerald-600', 'border-emerald-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>

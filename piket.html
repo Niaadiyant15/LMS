@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Guru Piket - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-clipboard-user text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL GURU PIKET</h1>
+                    <p class="text-xs text-slate-400">Pusat Kehadiran Guru, Jam Kosong, Keterlambatan Siswa, Jurnal & Buku Tamu</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-bell-concierge mr-1 text-amber-400"></i> Piket Harian Sekolah
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center font-bold text-sm">GP</div>
+                    <span class="text-xs md:text-sm font-medium">Guru Piket Hari Ini</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Sesuai Poin 1 - 5 Guru Piket) -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-4 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('guru')" id="btn-guru" class="tab-btn py-3 font-semibold text-amber-600 border-b-2 border-amber-600 whitespace-nowrap"><i class="fa-solid fa-user-clock mr-1.5"></i> 1. Kehadiran Guru & Jam Kosong</button>
+            <button onclick="switchTab('siswa')" id="btn-siswa" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-user-slash mr-1.5"></i> 2. Siswa Terlambat & Ketertiban</button>
+            <button onclick="switchTab('jurnal')" id="btn-jurnal" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-book-open mr-1.5"></i> 3. Jurnal & Buku Tamu Harian</button>
+            <button onclick="switchTab('komunikasi')" id="btn-komunikasi" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-bullhorn mr-1.5"></i> 4. Komunikasi & Notifikasi</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-amber-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-lines mr-1.5"></i> 5. Laporan & Ekspor Piket</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. KEHADIRAN GURU ================= -->
+        <div id="tab-guru" class="space-y-6 tab-content">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-user-clock mr-2 text-amber-600"></i>1. Kehadiran Guru & Penanganan Jam Kosong (Sesuai Poin 1.1 - 1.5)</h3>
+                        <p class="text-xs text-slate-500">Melihat daftar guru mengajar hari ini, mencatat status hadir/izin/sakit, menandai jam kosong, serta menunjuk guru pengganti/tugas mandiri.</p>
+                    </div>
+                    <button onclick="alert('Membuka panel penunjukan guru pengganti / tugas mandiri.')" class="bg-amber-600 text-white text-xs px-3 py-2 rounded font-medium"><i class="fa-solid fa-user-plus mr-1"></i> Atur Guru Pengganti / Tugas Kelas</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 1.1, 1.2 & 1.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pencatatan Kehadiran Guru Hari Ini</h4>
+                        <p class="text-slate-500">Melihat daftar guru berdasarkan jadwal pelajaran hari ini serta mencatat status guru yang hadir, terlambat, izin, sakit, atau tanpa keterangan.</p>
+                        <button onclick="alert('Membuka absensi harian guru mengajar.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Buka Absensi Guru Hari Ini</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 1.4 & 1.5</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Penandaan Jam Kosong & Guru Pengganti</h4>
+                        <p class="text-slate-500">Menandai kelas tanpa guru (jam kosong) beserta penyebabnya serta langsung menunjuk guru pengganti atau memberi tugas mandiri.</p>
+                        <button onclick="alert('Membuka daftar kelas dengan jam kosong.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kelola Jam Kosong & Pengganti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. KEHADIRAN DAN KETERTIBAN SISWA ================= -->
+        <div id="tab-siswa" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-user-slash mr-2 text-amber-600"></i>2. Kehadiran dan Ketertiban Siswa (Sesuai Poin 2.1 - 2.3)</h3>
+                        <p class="text-xs text-slate-500">Pencatatan siswa terlambat & izin masuk kelas, izin keluar jam pelajaran (sakit/dijemput), serta pelanggaran tata tertib langsung ke BK/Wali Kelas.</p>
+                    </div>
+                    <button onclick="alert('Membuka form input siswa terlambat / izin keluar.')" class="bg-amber-600 text-white text-xs px-3 py-2 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Catat Siswa Terlambat / Izin</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 2.1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pencatatan Siswa Terlambat</h4>
+                        <p class="text-slate-500">Mencatat jam kedatangan dan alasan siswa terlambat serta menerbitkan izin masuk kelas.</p>
+                        <button onclick="alert('Membuka log siswa terlambat.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Catat Keterlambatan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 2.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Izin Keluar Saat Jam Pelajaran</h4>
+                        <p class="text-slate-500">Mencatat izin keluar siswa selama KBM berlangsung (sakit di UKS, dijemput orang tua, atau keperluan mendesak).</p>
+                        <button onclick="alert('Mencuka pencatatan izin keluar siswa.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Catat Izin Keluar</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Poin 2.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pelanggaran Tata Tertib Langsung</h4>
+                        <p class="text-slate-500">Mencatat pelanggaran atribut, merokok, membolos, dll. secara langsung dan meneruskannya ke BK atau wali kelas.</p>
+                        <button onclick="alert('Meneruskan laporan pelanggaran ke BK & Wali Kelas.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Laporkan ke BK / Wali Kelas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. PENCATATAN KEJADIAN HARIAN ================= -->
+        <div id="tab-jurnal" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-book-open mr-2 text-amber-600"></i>3. Pencatatan Kejadian Harian (Sesuai Poin 3.1 - 3.4)</h3>
+                    <p class="text-xs text-slate-500">Jurnal piket harian, pencatatan buku tamu (wali murid/IDUKA), kejadian khusus (sakit/kecelakaan ringan), serta laporan kendala sarpras.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 3.1 & 3.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Jurnal Piket Harian & Buku Tamu Resmi</h4>
+                        <p class="text-slate-500">Rekapitulasi kejadian harian (guru absen, terlambat, insiden) serta pencatatan tamu yang berkunjung (wali murid, IDUKA, pihak luar) beserta tujuannya.</p>
+                        <button onclick="alert('Membuka buku tamu & jurnal piket harian.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Buka Jurnal & Buku Tamu</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 3.3 & 3.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Kejadian Khusus & Laporan Kendala Sarpras</h4>
+                        <p class="text-slate-500">Pencatatan insiden siswa sakit/kecelakaan ringan serta pembuatan laporan otomatis kendala sarana prasarana untuk diteruskan ke Waka Sarpras.</p>
+                        <button onclick="alert('Membuat laporan kendala sarpras ke Waka Sarpras.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Laporkan Kendala ke Sarpras</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. KOMUNIKASI ================= -->
+        <div id="tab-komunikasi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-bullhorn mr-2 text-amber-600"></i>4. Komunikasi & Notifikasi Otomatis (Sesuai Poin 4.1 - 4.3)</h3>
+                    <p class="text-xs text-slate-500">Kirim notifikasi otomatis ke wali kelas/BK untuk siswa bermasalah, Waka Kurikulum/Kepala Sekolah untuk guru absen, serta pemberitahuan ke wali murid.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 4.1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Notifikasi ke Wali Kelas / BK</h4>
+                        <p class="text-slate-500">Kirim notifikasi instan kepada wali kelas atau guru BK terkait pelanggaran atau keterlambatan siswa.</p>
+                        <button onclick="alert('Mengirim notifikasi ke Wali Kelas & BK.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kirim Notif ke Wali Kelas / BK</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 4.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Notifikasi ke Kurikulum / Kasek</h4>
+                        <p class="text-slate-500">Pemberitahuan otomatis ke Waka Kurikulum atau Kepala Sekolah apabila terdapat guru pengajar yang berhalangan hadir.</p>
+                        <button onclick="alert('Mengirim notifikasi guru absen ke Kurikulum & Kasek.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kirim Notif ke Kurikulum / Kasek</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 4.3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pemberitahuan ke Wali Murid</h4>
+                        <p class="text-slate-500">Mengirim pesan kepada orang tua/wali murid apabila siswa harus izin pulang lebih awal karena sakit atau keperluan penting.</p>
+                        <button onclick="alert('Mengirim pemberitahuan izin pulang ke wali murid.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Kirim Pesan ke Wali Murid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. LAPORAN ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines mr-2 text-amber-600"></i>5. Laporan & Ekspor Piket (Sesuai Poin 5.1 - 5.4)</h3>
+                    <p class="text-xs text-slate-500">Rekap harian piket, rekap mingguan/bulanan untuk evaluasi disiplin, serta cetak lembar piket atau ekspor PDF/Excel.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 5.1 & 5.2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Rekap Harian, Mingguan, & Bulanan</h4>
+                        <p class="text-slate-500">Rekapitulasi guru absen, jam kosong, siswa terlambat, dan insiden harian serta rekap mingguan/bulanan untuk evaluasi tingkat kedisiplinan.</p>
+                        <button onclick="alert('Membuka rekapitulasi data piket.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium">Lihat Rekap Harian & Bulanan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-amber-600 uppercase text-[10px]">Poin 5.3 & 5.4</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Cetak Lembar Piket & Ekspor (PDF / Excel)</h4>
+                        <p class="text-slate-500">Cetak lembar jurnal piket fisik atau unduh laporan lengkap dalam format PDF dan Excel untuk arsip sekolah.</p>
+                        <button onclick="alert('Mengunduh laporan piket / mencetak lembar piket format PDF/Excel.')" class="bg-amber-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-print mr-1"></i> Cetak Lembar Piket / Ekspor PDF/Excel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Guru Piket &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 5.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-amber-600', 'border-amber-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-amber-600', 'border-amber-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>

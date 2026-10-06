@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Yayasan - LMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js untuk visualisasi tren dan grafik -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2 rounded-lg text-white">
+                    <i class="fa-solid fa-layer-group text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base tracking-wide">YAYASAN PENDIDIKAN UTAMA</h1>
+                    <p class="text-xs text-slate-400">Dashboard Eksekutif Lintas Unit Sekolah (Poin 1 - 6)</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="text-xs bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-md text-slate-300">
+                    <i class="fa-regular fa-clock mr-1"></i> Data Real-Time
+                </span>
+                <div class="flex items-center space-x-2 border-l border-slate-700 pl-3">
+                    <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center font-bold text-xs">KY</div>
+                    <span class="text-sm font-medium hidden sm:inline">Ketua Yayasan</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+
+        <!-- ========================================== -->
+        <!-- POIN 5: FILTER GLOBAL LINTAS UNIT         -->
+        <!-- ========================================== -->
+        <section class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-2 w-full md:w-auto">
+                    <i class="fa-solid fa-filter text-indigo-600"></i>
+                    <h2 class="font-bold text-sm text-slate-700">Filter Analisis Yayasan:</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full md:w-auto">
+                    <select id="filterSekolah" onchange="filterData()" class="text-xs border border-slate-300 rounded-lg p-2 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
+                        <option value="semua">Semua Sekolah (3 Unit)</option>
+                        <option value="smk">SMK Bina Informatika</option>
+                        <option value="sma">SMA Teladan Bangsa</option>
+                        <option value="smp">SMP Kreatif Mandiri</option>
+                    </select>
+                    <select id="filterJenjang" onchange="filterData()" class="text-xs border border-slate-300 rounded-lg p-2 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
+                        <option value="semua">Semua Jenjang</option>
+                        <option value="smk">SMK (Vokasi)</option>
+                        <option value="sma">SMA (Menengah Atas)</option>
+                        <option value="smp">SMP (Menengah Pertama)</option>
+                    </select>
+                    <select id="filterJurusan" onchange="filterData()" class="text-xs border border-slate-300 rounded-lg p-2 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
+                        <option value="semua">Semua Jurusan</option>
+                        <option value="rpl">Rekayasa Perangkat Lunak</option>
+                        <option value="tkj">Teknik Komputer Jaringan</option>
+                        <option value="ipa">MIPA / Umum</option>
+                    </select>
+                    <select id="filterTahun" onchange="filterData()" class="text-xs border border-slate-300 rounded-lg p-2 bg-slate-50 focus:ring-2 focus:ring-indigo-500">
+                        <option value="2026">TA 2025/2026</option>
+                        <option value="2025">TA 2024/2025</option>
+                        <option value="2024">TA 2023/2024</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- POIN 1 & 2: DASHBOARD LINTAS SEKOLAH & RINGKASAN (Siswa, Guru, Rombel) -->
+        <!-- ========================================== -->
+        <section>
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-chart-pie text-indigo-600 mr-2"></i>Ringkasan Kapasitas Unit Sekolah (Poin 1 & 2)</h3>
+                <span class="text-xs text-slate-500">Total Akumulasi Seluruh Unit</span>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Card SMK -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 border-t-4 border-t-indigo-600 unit-card" data-unit="smk">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded">SMK Vokasi</span>
+                            <h4 class="font-bold text-slate-800 text-base mt-1">SMK Bina Informatika</h4>
+                        </div>
+                        <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded"><i class="fa-solid fa-circle-check"></i> Sehat</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-100 text-center">
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Siswa</span>
+                            <span class="font-bold text-slate-800 text-sm">540</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Guru</span>
+                            <span class="font-bold text-slate-800 text-sm">38</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Rombel</span>
+                            <span class="font-bold text-slate-800 text-sm">18</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card SMA -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 border-t-4 border-t-blue-500 unit-card" data-unit="sma">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2 py-0.5 rounded">SMA Umum</span>
+                            <h4 class="font-bold text-slate-800 text-base mt-1">SMA Teladan Bangsa</h4>
+                        </div>
+                        <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded"><i class="fa-solid fa-circle-check"></i> Sehat</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-100 text-center">
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Siswa</span>
+                            <span class="font-bold text-slate-800 text-sm">450</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Guru</span>
+                            <span class="font-bold text-slate-800 text-sm">32</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Rombel</span>
+                            <span class="font-bold text-slate-800 text-sm">15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card SMP -->
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 border-t-4 border-t-amber-500 unit-card" data-unit="smp">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold bg-amber-50 text-amber-700 px-2 py-0.5 rounded">SMP Umum</span>
+                            <h4 class="font-bold text-slate-800 text-base mt-1">SMP Kreatif Mandiri</h4>
+                        </div>
+                        <span class="text-xs text-amber-600 font-bold bg-amber-50 px-2 py-1 rounded"><i class="fa-solid fa-triangle-exclamation"></i> Perhatian</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-100 text-center">
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Siswa</span>
+                            <span class="font-bold text-slate-800 text-sm">250</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Guru</span>
+                            <span class="font-bold text-slate-800 text-sm">20</span>
+                        </div>
+                        <div class="bg-slate-50 p-2 rounded-lg">
+                            <span class="block text-xs text-slate-500">Rombel</span>
+                            <span class="font-bold text-slate-800 text-sm">9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- POIN 3 & 6: PERBANDINGAN ANTAR SEKOLAH & MONITORING KINERJA -->
+        <!-- ========================================== -->
+        <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-scale-balanced text-indigo-600 mr-2"></i>Perbandingan Kinerja & Akademik Lintas Sekolah (Poin 3 & 6)</h3>
+                    <p class="text-xs text-slate-500">Evaluasi indikator kehadiran siswa, rata-rata nilai siswa, ketuntasan siswa, dan kelulusan antar unit siswa.</p>
+                </div>
+                <button onclick="alert('Mengekspor data tabel perbandingan ke format Excel/PDF.')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                    <i class="fa-solid fa-download mr-1"></i> Ekspor Tabel
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 uppercase text-xs border-b border-slate-200">
+                            <th class="p-3 font-semibold">Unit Sekolah</th>
+                            <th class="p-3 font-semibold text-center">Kehadiran</th>
+                            <th class="p-3 font-semibold text-center">Rata-rata Nilai</th>
+                            <th class="p-3 font-semibold text-center">Ketuntasan Belajar</th>
+                            <th class="p-3 font-semibold text-center">Kelulusan Target</th>
+                            <th class="p-3 font-semibold text-center">Status Monitoring</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-xs sm:text-sm">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-bold text-slate-800">SMK Bina Informatika</td>
+                            <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-semibold">94%</span></td>
+                            <td class="p-3 text-center font-bold text-slate-700">85.4</td>
+                            <td class="p-3 text-center">92%</td>
+                            <td class="p-3 text-center font-semibold text-emerald-600">99.5%</td>
+                            <td class="p-3 text-center"><span class="text-emerald-600 font-bold">Optimal</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-bold text-slate-800">SMA Teladan Bangsa</td>
+                            <td class="p-3 text-center"><span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full font-semibold">90%</span></td>
+                            <td class="p-3 text-center font-bold text-slate-700">82.1</td>
+                            <td class="p-3 text-center">88%</td>
+                            <td class="p-3 text-center font-semibold text-emerald-600">98.0%</td>
+                            <td class="p-3 text-center"><span class="text-indigo-600 font-bold">Stabil</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-3 font-bold text-slate-800">SMP Kreatif Mandiri</td>
+                            <td class="p-3 text-center"><span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-semibold">85%</span></td>
+                            <td class="p-3 text-center font-bold text-slate-700">79.8</td>
+                            <td class="p-3 text-center">81%</td>
+                            <td class="p-3 text-center font-semibold text-amber-600">95.0%</td>
+                            <td class="p-3 text-center"><span class="text-amber-600 font-bold">Perlu Perhatian</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- POIN 4: TREN JUMLAH SISWA MASUK & KELUAR   -->
+        <!-- ========================================== -->
+        <section class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-chart-line text-indigo-600 mr-2"></i>Tren Siswa Masuk vs Keluar Per Tahun Ajaran (Poin 4)</h3>
+                    <p class="text-xs text-slate-500">Grafik pergerakan mobilitas siswa lintas tahun ajaran di seluruh unit yayasan.</p>
+                </div>
+            </div>
+            
+            <!-- Canvas Grafik Chart.js -->
+            <div class="h-64 relative w-full">
+                <canvas id="trenSiswaChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Prototype Resmi Sistem Yayasan &copy; 2026. Lengkap Poin 1 - 6 (Dashboard, Ringkasan, Komparasi, Tren, & Filter).
+    </footer>
+
+    <!-- Script Inisialisasi Grafik Tren Siswa -->
+    <script>
+        // Grafik Tren Siswa Masuk dan Keluar (Poin 4)
+        const ctx = document.getElementById('trenSiswaChart').getContext('2d');
+        const trenSiswaChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['TA 2023/2024', 'TA 2024/2025', 'TA 2025/2026'],
+                datasets: [
+                    {
+                        label: 'Siswa Masuk (Baru)',
+                        data: [380, 420, 450],
+                        backgroundColor: '#4f46e5',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Siswa Keluar / Lulus',
+                        data: [310, 340, 360],
+                        backgroundColor: '#cbd5e1',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 11 } }
+                    }
+                },
+                scales: {
+                    y: { beginAtZero: true, grid: { color: '#f1f5f9' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // Simulasi Aksi Filter (Poin 5)
+        function filterData() {
+            const sekolah = document.getElementById('filterSekolah').value;
+            const cards = document.querySelectorAll('.unit-card');
+            
+            cards.forEach(card => {
+                if (sekolah === 'semua' || card.getAttribute('data-unit') === sekolah) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>

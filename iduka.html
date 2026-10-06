@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Mitra IDUKA - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-industry text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PORTAL MITRA IDUKA</h1>
+                    <p class="text-xs text-slate-400">Pusat Kerja Sama MoU, Penempatan PKL Siswa, Monitoring Harian, & Penilaian Industri</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                    <i class="fa-solid fa-handshake mr-1 text-indigo-400"></i> Mitra Industri Vokasi
+                </span>
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center font-bold text-sm">ID</div>
+                    <span class="text-xs md:text-sm font-medium">PT Telkom Akses Depok</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Sesuai Poin 1 - 7 IDUKA) -->
+    <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-3 overflow-x-auto text-xs md:text-sm">
+            <button onclick="switchTab('profil')" id="btn-profil" class="tab-btn py-3 font-semibold text-indigo-600 border-b-2 border-indigo-600 whitespace-nowrap"><i class="fa-solid fa-building mr-1.5"></i> 1. Profil & MoU</button>
+            <button onclick="switchTab('penempatan')" id="btn-penempatan" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-users-viewfinder mr-1.5"></i> 2. Penempatan PKL</button>
+            <button onclick="switchTab('monitoring')" id="btn-monitoring" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-clipboard-check mr-1.5"></i> 3. Monitoring Harian</button>
+            <button onclick="switchTab('penilaian')" id="btn-penilaian" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-star mr-1.5"></i> 4. Penilaian PKL <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Kunci</span></button>
+            <button onclick="switchTab('keselarasan')" id="btn-keselarasan" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-book-bookmark mr-1.5"></i> 5. Keselarasan & Loker</button>
+            <button onclick="switchTab('komunikasi')" id="btn-komunikasi" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> 6. Komunikasi</button>
+            <button onclick="switchTab('laporan')" id="btn-laporan" class="tab-btn py-3 font-medium text-slate-600 hover:text-indigo-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-file-lines mr-1.5"></i> 7. Laporan & Riwayat</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+
+        <!-- ================= 1. PROFIL MITRA DAN KERJA SAMA ================= -->
+        <div id="tab-profil" class="space-y-6 tab-content">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-building mr-2 text-indigo-600"></i>1. Profil Mitra dan Kerja Sama (Sesuai Poin 1.1 - 1.4)</h3>
+                        <p class="text-xs text-slate-500">Kelola profil perusahaan, dokumen MoU, pembimbing industri, serta pengajuan kuota & kebutuhan kompetensi siswa.</p>
+                    </div>
+                    <button onclick="alert('Membuka form perbarui profil perusahaan & kuota PKL.')" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-pen-to-square mr-1"></i> Edit Profil & Kuota</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-indigo-600 uppercase">Informasi Perusahaan</span>
+                        <h4 class="font-bold text-slate-800 text-sm">PT Telkom Akses Depok</h4>
+                        <p class="text-slate-600"><strong>Bidang Usaha:</strong> Telekomunikasi & Jaringan Fiber Optic</p>
+                        <p class="text-slate-600"><strong>Alamat:</strong> Jl. Margonda Raya No. 88, Depok</p>
+                        <p class="text-slate-600"><strong>Kuota PKL:</strong> 10 Siswa / Tahun</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="text-[10px] font-bold text-indigo-600 uppercase">Dokumen MoU & Pembimbing</span>
+                        <p class="text-slate-600"><strong>Status MoU:</strong> <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Aktif (2024 - 2027)</span></p>
+                        <p class="text-slate-600"><strong>Dokumen MoU:</strong> <a href="#" onclick="alert('Mengunduh file PDF MoU.')" class="text-indigo-600 underline">MoU_SMK_TelkomAkses.pdf</a></p>
+                        <p class="text-slate-600"><strong>Pembimbing Industri:</strong> Bpk. Rian Hidayat, S.T.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-2">
+                        <span class="text-[10px] font-bold text-indigo-800 uppercase">Kebutuhan Kompetensi</span>
+                        <p class="text-indigo-900">Mengajukan kebutuhan teknis khusus untuk siswa magang tahun ini:</p>
+                        <p class="text-indigo-700 italic">"Penguasaan Mikrotik Routing, Fiber Optic Splicing, & Troubleshooting Jaringan."</p>
+                        <button onclick="alert('Form pengajuan kompetensi dibuka.')" class="bg-indigo-600 text-white px-2.5 py-1 rounded mt-1 font-medium">Perbarui Kebutuhan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 2. PENEMPATAN PKL ================= -->
+        <div id="tab-penempatan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-users-viewfinder mr-2 text-indigo-600"></i>2. Penempatan PKL Siswa (Sesuai Poin 2.1 - 2.4)</h3>
+                    <p class="text-xs text-slate-500">Persetujuan pengajuan siswa magang, daftar siswa yang ditempatkan, identitas guru pembimbing sekolah, serta pembagian divisi industri.</p>
+                </div>
+
+                <!-- Tabel Penempatan Siswa -->
+                <div class="overflow-x-auto">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Daftar Siswa PKL yang Ditempatkan di Mitra</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Nama Siswa & NIS</th>
+                                <th class="p-2.5">Jurusan / Kelas</th>
+                                <th class="p-2.5">Guru Pembimbing Sekolah</th>
+                                <th class="p-2.5">Divisi Penempatan Industri</th>
+                                <th class="p-2.5 text-center">Aksi Divisi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Rian Pratama (10245)</td>
+                                <td class="p-2.5">X TKJ</td>
+                                <td class="p-2.5">Pak San, S.T.</td>
+                                <td class="p-2.5"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Divisi Network Operations</span></td>
+                                <td class="p-2.5 text-center">
+                                    <button onclick="alert('Mengatur pembagian divisi industri siswa.')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-2.5 py-1 rounded">Atur Divisi</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 3. MONITORING SELAMA PKL ================= -->
+        <div id="tab-monitoring" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-clipboard-check mr-2 text-indigo-600"></i>3. Monitoring Selama PKL (Sesuai Poin 3.1 - 3.4)</h3>
+                    <p class="text-xs text-slate-500">Verifikasi presensi harian, jurnal kegiatan harian siswa, umpan balik singkat, serta pelaporan masalah siswa ke guru pembimbing.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Verifikasi Presensi & Jurnal Harian</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Validasi Aktivitas Magang Harian</h4>
+                        <p class="text-slate-500">Periksa presensi kehadiran harian siswa serta verifikasi jurnal kegiatan pengerjaan tugas di lapangan yang diunggah siswa.</p>
+                        <button onclick="alert('Membuka modul verifikasi presensi & jurnal harian siswa.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Buka Verifikasi Presensi & Jurnal</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-rose-600 uppercase text-[10px]">Umpan Balik & Pelaporan Masalah</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Catatan Umpan Balik & Laporan Kendala</h4>
+                        <p class="text-slate-500">Berikan catatan ringkas atas kinerja harian siswa atau laporkan kendala kedisiplinan/ketidakhadiran langsung ke guru pembimbing sekolah.</p>
+                        <button onclick="alert('Form pelaporan kendala siswa dibuka.')" class="bg-rose-600 text-white px-3 py-1.5 rounded font-medium">Laporkan Kendala Siswa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 4. PENILAIAN PKL ================= -->
+        <div id="tab-penilaian" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-star mr-2 text-indigo-600"></i>4. Penilaian PKL (Sesuai Poin 4.1 - 4.4)</h3>
+                        <p class="text-xs text-slate-500">Pengisian rubrik penilaian kompetensi teknis, sikap kerja, disiplin, elemen pembelajaran, serta penguncian nilai akhir.</p>
+                    </div>
+                    <button onclick="alert('Nilai akhir PKL berhasil dikunci (Locked).')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-2 rounded transition shadow-sm"><i class="fa-solid fa-lock mr-1"></i> Kunci Penilaian Final</button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Formulir Penilaian Kompetensi & Sikap Siswa PKL</h4>
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Elemen Penilaian (Rubrik Industri)</th>
+                                <th class="p-2.5 text-center">Bobot</th>
+                                <th class="p-2.5 text-center">Nilai Angka (0-100)</th>
+                                <th class="p-2.5">Catatan Kinerja Industri</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Kompetensi Teknis (Keahlian Praktik Jaringan)</td>
+                                <td class="p-2.5 text-center">40%</td>
+                                <td class="p-2.5 text-center"><input type="number" value="88" class="w-16 text-center border rounded p-1 font-bold"></td>
+                                <td class="p-2.5"><input type="text" value="Sangat terampil dalam konfigurasi router." class="w-full border rounded p-1 text-xs"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Sikap Kerja & Kedisiplinan</td>
+                                <td class="p-2.5 text-center">30%</td>
+                                <td class="p-2.5 text-center"><input type="number" value="90" class="w-16 text-center border rounded p-1 font-bold"></td>
+                                <td class="p-2.5"><input type="text" value="Tepat waktu dan bertanggung jawab." class="w-full border rounded p-1 text-xs"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Komunikasi & Kerja Sama Tim</td>
+                                <td class="p-2.5 text-center">30%</td>
+                                <td class="p-2.5 text-center"><input type="number" value="85" class="w-16 text-center border rounded p-1 font-bold"></td>
+                                <td class="p-2.5"><input type="text" value="Aktif berkoordinasi dengan teknisi senior." class="w-full border rounded p-1 text-xs"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 5. KESELARASAN KURIKULUM DAN KERJA SAMA ================= -->
+        <div id="tab-keselarasan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-book-bookmark mr-2 text-indigo-600"></i>5. Keselarasan Kurikulum dan Lowongan Kerja (Sesuai Poin 5.1 - 5.4)</h3>
+                    <p class="text-xs text-slate-500">Masukan kurikulum industri, survei kepuasan, informasi guru tamu/kunjungan industri, serta unggah lowongan kerja lulusan (BKK).</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Masukan Kurikulum & Survei</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Sinkronisasi Kebutuhan Industri</h4>
+                        <p class="text-slate-500">Berikan masukan penyesuaian materi kejuruan atau isi survei kepuasan terhadap kinerja siswa magang dan kualitas sekolah.</p>
+                        <button onclick="alert('Form survei & masukan kurikulum dibuka.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium">Isi Masukan & Survei Kepuasan</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-emerald-600 uppercase text-[10px]">Bursa Kerja Khusus (BKK)</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Unggah Lowongan Pekerjaan Alumni</h4>
+                        <p class="text-slate-500">Publikasikan informasi lowongan kerja terbaru untuk lulusan SMK Bina Informatika (terhubung langsung dengan BK dan modul alumni).</p>
+                        <button onclick="alert('Form unggah lowongan kerja alumni dibuka.')" class="bg-emerald-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-briefcase mr-1"></i> Unggah Lowongan Kerja Lulusan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 6. KOMUNIKASI ================= -->
+        <div id="tab-komunikasi" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-comments mr-2 text-indigo-600"></i>6. Komunikasi & Pengingat (Sesuai Poin 6.1 - 6.3)</h3>
+                    <p class="text-xs text-slate-500">Pengumuman PKL dari sekolah, pesan langsung ke guru pembimbing/Kaprog/TU, serta pengingat batas waktu pengisian nilai.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Pesan & Koordinasi Sekolah</span>
+                        <p class="text-slate-600">Hubungi guru pembimbing sekolah, Kaprog, atau staf Tata Usaha secara instan melalui sistem chat mitra.</p>
+                        <button onclick="alert('Membuka ruang obrolan dengan guru pembimbing / Kaprog.')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-brands fa-whatsapp mr-1"></i> Buka Chat Pembimbing / Kaprog</button>
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-200 space-y-3">
+                        <span class="font-bold text-amber-700 uppercase text-[10px]">Pengingat Tenggat Nilai</span>
+                        <p class="text-amber-900 font-medium">Batas akhir pengisian rubrik penilaian PKL: <strong>15 Oktober 2026</strong>.</p>
+                        <p class="text-amber-700 text-[11px]">Pastikan seluruh nilai siswa telah dikunci sebelum tanggal tersebut.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= 7. LAPORAN ================= -->
+        <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base"><i class="fa-solid fa-file-lines mr-2 text-indigo-600"></i>7. Laporan & Riwayat PKL (Sesuai Poin 7.1 - 7.3)</h3>
+                    <p class="text-xs text-slate-500">Rekap presensi & nilai siswa yang dibimbing, unduh berita acara/lembar penilaian, serta arsip riwayat siswa PKL sebelumnya.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Rekap Presensi & Nilai Bimbingan</span>
+                        <p class="text-slate-500">Unduh rekapitulasi kehadiran dan akumulasi nilai akhir seluruh siswa yang pernah atau sedang dibimbing di perusahaan Anda.</p>
+                        <button onclick="alert('Mengunduh rekap presensi & nilai bimbingan (PDF/Excel).')" class="bg-indigo-600 text-white px-3 py-1.5 rounded font-medium"><i class="fa-solid fa-download mr-1"></i> Unduh Rekap Presensi & Nilai</button>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Riwayat Siswa Magang (Arsip)</span>
+                        <p class="text-slate-500">Lihat rekam jejak arsip daftar siswa dari tahun-tahun sebelumnya yang pernah melaksanakan PKL di perusahaan Anda.</p>
+                        <button onclick="alert('Membuka arsip riwayat siswa magang tahun sebelumnya.')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded font-medium">Lihat Riwayat Arsip Siswa PKL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Portal Mitra IDUKA &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 7 dengan antarmuka penuh.
+    </footer>
+
+    <!-- Script Tab Switcher -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('text-indigo-600', 'border-indigo-600', 'font-semibold');
+                el.classList.add('text-slate-600', 'border-transparent', 'font-medium');
+            });
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-slate-600', 'border-transparent', 'font-medium');
+            activeBtn.classList.add('text-indigo-600', 'border-indigo-600', 'font-semibold');
+        }
+    </script>
+</body>
+</html>
