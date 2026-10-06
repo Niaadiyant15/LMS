@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype LMS - SMK Bina Informatika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Top Navbar -->
+    <header class="bg-slate-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2 rounded-lg">
+                    <i class="fa-solid fa-school text-xl text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-sm md:text-base">SMK BINA INFORMATIKA - PROTOTYPE LMS</h1>
+                    <p class="text-xs text-slate-400">Pilih portal sesuai aktor untuk melihat prototype halaman</p>
+                </div>
+            </div>
+            <span class="hidden md:inline-block text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700">
+                <i class="fa-solid fa-file-lines mr-1 text-blue-400"></i> Sesuai Koordinasi TEFA 6 Oktober 2026
+            </span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+
+        <!-- Pencarian -->
+        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+            <div>
+                <h2 class="font-bold text-slate-800 text-sm md:text-base">Masuk sebagai...</h2>
+                <p class="text-xs text-slate-500"><span id="jumlahPortal">17</span> portal aktor &middot; klik kartu untuk membuka halaman</p>
+            </div>
+            <div class="relative w-full md:w-72">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                <input id="cari" oninput="render()" type="text" placeholder="Cari aktor, mis. kurikulum, PKL..." class="w-full border border-slate-300 rounded-lg pl-8 pr-3 py-2 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+        </div>
+
+        <div id="daftarGrup" class="space-y-6"></div>
+
+        <p id="kosong" class="hidden text-center text-xs text-slate-500 py-10">Tidak ada portal yang cocok dengan pencarian.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        Prototype LMS SMK Bina Informatika &copy; 2026. Halaman statis untuk keperluan demo dan koordinasi.
+    </footer>
+
+    <script>
+        const grup = [
+            { nama: 'Pimpinan', portal: [
+                { file: 'yayasan.html', judul: 'Yayasan', ikon: 'fa-layer-group', warna: 'indigo', desk: 'Dashboard lintas sekolah, monitoring kinerja, laporan, persetujuan strategis, SDM & keuangan.' },
+                { file: 'kepala sekolah.html', judul: 'Kepala Sekolah', ikon: 'fa-user-tie', warna: 'blue', desk: 'Dashboard eksekutif, monitoring pembelajaran, persetujuan, laporan bidang, supervisi.' }
+            ]},
+            { nama: 'Wakil Kepala & Departemen', portal: [
+                { file: 'depkur.html', judul: 'Departemen Kurikulum', ikon: 'fa-book', warna: 'indigo', desk: 'Struktur kurikulum, beban mengajar, jadwal, perangkat ajar, instrumen supervisi.' },
+                { file: 'kesiswaan.html', judul: 'Waka Kesiswaan', ikon: 'fa-user-shield', warna: 'emerald', desk: 'Tata tertib, kehadiran, ekskul & OSIS, prestasi, beasiswa, pembinaan karakter.' },
+                { file: 'waka humas.html', judul: 'Waka Humas / Hubin', ikon: 'fa-handshake', warna: 'blue', desk: 'Mitra IDUKA & MoU, PKL, BKK, tracer study alumni, komite, publikasi.' },
+                { file: 'sarpras.html', judul: 'Waka Sarpras', ikon: 'fa-warehouse', warna: 'amber', desk: 'Inventaris & aset, ruang, lab & bengkel, perawatan, pengadaan, keamanan.' }
+            ]},
+            { nama: 'Staf & Administrasi', portal: [
+                { file: 'admin.html', judul: 'Admin Sekolah', ikon: 'fa-user-gear', warna: 'slate', desk: 'Manajemen pengguna, data master, penugasan, pengaturan sekolah, backup data.' },
+                { file: 'tata usaha.html', judul: 'Tata Usaha', ikon: 'fa-folder-open', warna: 'purple', desk: 'Data induk siswa, kepegawaian, persuratan, rapor & Dapodik, administrasi PKL.' },
+                { file: 'keuangan.html', judul: 'Bagian Keuangan', ikon: 'fa-wallet', warna: 'emerald', desk: 'Tarif & tagihan, pembayaran, tunggakan, pengeluaran & anggaran, laporan kas.' },
+                { file: 'penilaian.html', judul: 'Staf Penilaian & CBT', ikon: 'fa-file-shield', warna: 'rose', desk: 'Jadwal & ruang ujian, pengelolaan soal, pelaksanaan CBT, rekap hasil ujian.' }
+            ]},
+            { nama: 'Guru', portal: [
+                { file: 'mapelbaruguru.html', judul: 'Guru Mata Pelajaran', ikon: 'fa-chalkboard', warna: 'emerald', desk: 'Kelas virtual, perangkat ajar, materi, tugas, ujian & nilai, presensi & jurnal.' },
+                { file: 'walas.html', judul: 'Wali Kelas', ikon: 'fa-people-roof', warna: 'blue', desk: 'Data kelas binaan, absensi & izin, monitoring akademik, rapor, pembinaan.' },
+                { file: 'piket.html', judul: 'Guru Piket', ikon: 'fa-clipboard-user', warna: 'amber', desk: 'Kehadiran guru, jam kosong, siswa terlambat & izin keluar, jurnal piket, buku tamu.' },
+                { file: 'bk.html', judul: 'Bimbingan Konseling', ikon: 'fa-hand-holding-heart', warna: 'rose', desk: 'Pelanggaran & poin, konseling, home visit, bimbingan karier, peringatan dini.' }
+            ]},
+            { nama: 'Siswa, Orang Tua & Mitra', portal: [
+                { file: 'siswa.html', judul: 'Siswa', ikon: 'fa-user-graduate', warna: 'teal', desk: 'Dashboard, materi, tugas & portofolio, ujian & nilai, kehadiran, PKL & karier.' },
+                { file: 'wali murid.html', judul: 'Wali Murid', ikon: 'fa-children', warna: 'blue', desk: 'Profil anak, kehadiran & izin, akademik & rapor, kedisiplinan, PKL, SPP.' },
+                { file: 'iduka.html', judul: 'Mitra IDUKA', ikon: 'fa-industry', warna: 'indigo', desk: 'Profil & MoU, penempatan PKL, monitoring harian, penilaian PKL, lowongan kerja.' }
+            ]}
+        ];
+
+        // Kelas ditulis lengkap agar terdeteksi Tailwind CDN
+        const gaya = {
+            indigo: 'bg-indigo-100 text-indigo-600 group-hover:bg-indigo-600',
+            blue: 'bg-blue-100 text-blue-600 group-hover:bg-blue-600',
+            emerald: 'bg-emerald-100 text-emerald-600 group-hover:bg-emerald-600',
+            amber: 'bg-amber-100 text-amber-600 group-hover:bg-amber-600',
+            slate: 'bg-slate-200 text-slate-700 group-hover:bg-slate-700',
+            purple: 'bg-purple-100 text-purple-600 group-hover:bg-purple-600',
+            rose: 'bg-rose-100 text-rose-600 group-hover:bg-rose-600',
+            teal: 'bg-teal-100 text-teal-600 group-hover:bg-teal-600'
+        };
+
+        function render() {
+            const q = document.getElementById('cari').value.trim().toLowerCase();
+            let total = 0;
+            document.getElementById('daftarGrup').innerHTML = grup.map(g => {
+                const cocok = g.portal.filter(p => (p.judul + ' ' + p.desk).toLowerCase().includes(q));
+                total += cocok.length;
+                if (!cocok.length) return '';
+                return `
+                    <section>
+                        <h3 class="font-bold text-slate-500 text-[11px] uppercase tracking-wider mb-2">${g.nama}</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            ${cocok.map(p => `
+                                <a href="${encodeURI(p.file)}" class="group bg-white p-4 rounded-xl shadow-sm border border-slate-200 hover:border-slate-400 hover:shadow-md transition flex flex-col gap-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg flex items-center justify-center transition group-hover:text-white ${gaya[p.warna]}">
+                                            <i class="fa-solid ${p.ikon}"></i>
+                                        </div>
+                                        <h4 class="font-bold text-slate-800 text-sm">${p.judul}</h4>
+                                    </div>
+                                    <p class="text-xs text-slate-500 flex-1">${p.desk}</p>
+                                    <span class="text-xs font-medium text-slate-700 group-hover:text-blue-600">Buka portal <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                                </a>`).join('')}
+                        </div>
+                    </section>`;
+            }).join('');
+            document.getElementById('jumlahPortal').innerText = total;
+            document.getElementById('kosong').classList.toggle('hidden', total > 0);
+        }
+
+        render();
+    </script>
+</body>
+</html>
