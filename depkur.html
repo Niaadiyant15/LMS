@@ -160,6 +160,165 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Supervisi Program (hasil koordinasi TEFA 6 Oktober) -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                    <div>
+                        <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-list-check mr-2 text-indigo-600"></i>Instrumen Supervisi Program</h3>
+                        <p class="text-xs text-slate-500">Instrumen dibuat Waka Kurikulum, hasilnya otomatis menjadi grafik dan dikirim ke Kepala Sekolah. Supervisi tidak hanya untuk pembelajaran.</p>
+                    </div>
+                    <div class="flex gap-2 text-xs">
+                        <select class="border border-slate-300 rounded px-2 py-1.5 bg-slate-50">
+                            <option>Program: Pembelajaran</option>
+                            <option>Program: Kesiswaan</option>
+                            <option>Program: Humas / Hubin</option>
+                            <option>Program: Sarpras</option>
+                        </select>
+                        <button onclick="alert('Formulir pembuatan instrumen supervisi baru dibuka.')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-3 py-1.5 rounded"><i class="fa-solid fa-plus mr-1"></i> Buat Instrumen</button>
+                    </div>
+                </div>
+
+                <!-- 3 Aspek Instrumen -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Aspek 1</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Pra Pembelajaran</h4>
+                        <ul class="space-y-1 text-slate-600">
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> RPP + Modul Ajar</li>
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Prota / Prosem</li>
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Lembar Kerja (LK)</li>
+                        </ul>
+                        <p class="text-slate-400">8 butir penilaian &middot; skala 1 - 4</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Aspek 2</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Proses Pembelajaran</h4>
+                        <ul class="space-y-1 text-slate-600">
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Kegiatan pendahuluan, inti, penutup</li>
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Penggunaan media & metode</li>
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Penilaian proses pembelajaran</li>
+                        </ul>
+                        <p class="text-slate-400">12 butir penilaian &middot; observasi kelas</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-2">
+                        <span class="font-bold text-indigo-600 uppercase text-[10px]">Aspek 3</span>
+                        <h4 class="font-bold text-slate-800 text-sm">Evaluasi Belajar</h4>
+                        <ul class="space-y-1 text-slate-600">
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Penilaian hasil belajar STS</li>
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Penilaian hasil belajar SAS</li>
+                            <li><i class="fa-regular fa-square-check text-indigo-500 mr-1"></i> Analisis & tindak lanjut remedial</li>
+                        </ul>
+                        <p class="text-slate-400">6 butir penilaian &middot; telaah dokumen</p>
+                    </div>
+                </div>
+
+                <!-- Hasil per Guru -->
+                <div class="overflow-x-auto text-xs">
+                    <h4 class="font-bold text-slate-700 text-xs mb-2">Hasil Supervisi per Guru - Semester Ganjil 2026/2027</h4>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                <th class="p-2.5">Guru / Mapel</th>
+                                <th class="p-2.5 text-center">Pra Pembelajaran</th>
+                                <th class="p-2.5 text-center">Proses</th>
+                                <th class="p-2.5 text-center">Evaluasi (STS/SAS)</th>
+                                <th class="p-2.5 text-center">Rata-rata</th>
+                                <th class="p-2.5 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-2.5 font-medium">Bu Dewi, S.Kom. <span class="text-slate-400 block">Pemrograman Web Dasar</span></td>
+                                <td class="p-2.5 text-center">95%</td>
+                                <td class="p-2.5 text-center">90%</td>
+                                <td class="p-2.5 text-center">88%</td>
+                                <td class="p-2.5 text-center font-bold text-emerald-700">91%</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka instrumen supervisi Bu Dewi.')" class="text-indigo-600 font-medium">Lihat</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Pak San, S.T. <span class="text-slate-400 block">Komputer dan Jaringan Dasar</span></td>
+                                <td class="p-2.5 text-center">92%</td>
+                                <td class="p-2.5 text-center">88%</td>
+                                <td class="p-2.5 text-center">85%</td>
+                                <td class="p-2.5 text-center font-bold text-emerald-700">88%</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka instrumen supervisi Pak San.')" class="text-indigo-600 font-medium">Lihat</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Pak Hendra, S.Pd. <span class="text-slate-400 block">Matematika</span></td>
+                                <td class="p-2.5 text-center">89%</td>
+                                <td class="p-2.5 text-center text-amber-700 font-bold">78%</td>
+                                <td class="p-2.5 text-center text-amber-700 font-bold">76%</td>
+                                <td class="p-2.5 text-center font-bold text-amber-700">81%</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka instrumen supervisi Pak Hendra.')" class="text-indigo-600 font-medium">Lihat</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">Bu Ratna, S.Pd. <span class="text-slate-400 block">Bahasa Indonesia</span></td>
+                                <td class="p-2.5 text-center text-slate-400" colspan="3">Dijadwalkan 14 Okt 2026</td>
+                                <td class="p-2.5 text-center">-</td>
+                                <td class="p-2.5 text-center"><button onclick="alert('Membuka formulir pengisian instrumen supervisi.')" class="bg-indigo-600 text-white px-2 py-0.5 rounded font-medium">Isi Instrumen</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Grafik & Tindak Lanjut -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-800 uppercase text-[10px]">Grafik Hasil Supervisi Program (Rata-rata Sekolah)</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Terkirim ke Kasek</span>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span>Pra Pembelajaran (RPP, Modul, Prota/Prosem, LK)</span><strong>92%</strong></div>
+                            <div class="w-full bg-white rounded-full h-3 border border-indigo-200"><div class="bg-indigo-600 h-full rounded-full" style="width: 92%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span>Proses Pembelajaran (Penilaian KBM)</span><strong>88%</strong></div>
+                            <div class="w-full bg-white rounded-full h-3 border border-indigo-200"><div class="bg-indigo-500 h-full rounded-full" style="width: 88%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1"><span>Evaluasi Belajar (Hasil STS & SAS)</span><strong>85%</strong></div>
+                            <div class="w-full bg-white rounded-full h-3 border border-indigo-200"><div class="bg-indigo-400 h-full rounded-full" style="width: 85%"></div></div>
+                        </div>
+                        <button onclick="alert('Laporan supervisi program beserta grafik dikirim ke dashboard Kepala Sekolah.')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded font-medium w-full"><i class="fa-solid fa-paper-plane mr-1"></i> Kirim Ulang Laporan ke Kepala Sekolah</button>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-indigo-600 uppercase text-[10px]">Catatan Tindak Lanjut ke Dashboard Guru</span>
+                            <button onclick="alert('Formulir catatan tindak lanjut dibuka. Dokumen akan muncul di dashboard guru untuk diunduh.')" class="bg-indigo-600 text-white px-2 py-1 rounded font-medium"><i class="fa-solid fa-plus mr-1"></i> Kirim Catatan</button>
+                        </div>
+                        <p class="text-slate-500">Status dilihat/diunduh guru ikut tampil di dashboard Kepala Sekolah untuk memastikan dokumen sudah diterima.</p>
+                        <table class="w-full text-left border-collapse bg-white rounded border border-slate-200">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 uppercase border-b border-slate-200">
+                                    <th class="p-2">Guru</th>
+                                    <th class="p-2">Dokumen</th>
+                                    <th class="p-2 text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-2 font-medium">Bu Dewi, S.Kom.</td>
+                                    <td class="p-2">TL_Supervisi_Dewi.pdf</td>
+                                    <td class="p-2 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold">Diunduh 3 Okt</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-medium">Pak San, S.T.</td>
+                                    <td class="p-2">TL_Supervisi_San.pdf</td>
+                                    <td class="p-2 text-center"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Dilihat</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2 font-medium">Pak Hendra, S.Pd.</td>
+                                    <td class="p-2">TL_Supervisi_Hendra.pdf</td>
+                                    <td class="p-2 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold">Belum Dibuka</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- ================= 5. MONITORING PEMBELAJARAN DAN PENILAIAN ================= -->
