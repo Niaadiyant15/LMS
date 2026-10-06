@@ -697,7 +697,24 @@
             'presensi_jurnal': { title: 'Riwayat Jurnal', html: '<p>Riwayat absensi & jurnal terekam.</p>' },
             'presensi_sikap': { title: 'Catatan Sikap ke BK', html: '<textarea class="w-full text-xs p-2 border rounded" placeholder="Catatan khusus..."></textarea>' },
             'interaksi_forum': { title: 'Forum & Diskusi', html: '<textarea class="w-full text-xs p-2 border rounded" placeholder="Tulis pesan..."></textarea>' },
-            'interaksi_supervisi': { title: 'Catatan Supervisi Kasek', html: '<p>Catatan tindak lanjut supervisi Kepala Sekolah.</p>' },
+            'interaksi_supervisi': { title: 'Catatan Tindak Lanjut Supervisi', html: `
+                <p class="text-xs text-slate-500">Dikirim oleh Waka Kurikulum setelah supervisi program. Status dilihat/diunduh tercatat dan tampil di dashboard Kepala Sekolah.</p>
+                <div class="grid grid-cols-3 gap-2 text-xs text-center">
+                    <div class="bg-indigo-50 border border-indigo-200 rounded p-2"><span class="block text-slate-500">Pra Pembelajaran</span><strong class="text-indigo-700">94%</strong></div>
+                    <div class="bg-indigo-50 border border-indigo-200 rounded p-2"><span class="block text-slate-500">Proses</span><strong class="text-indigo-700">86%</strong></div>
+                    <div class="bg-indigo-50 border border-indigo-200 rounded p-2"><span class="block text-slate-500">Evaluasi STS/SAS</span><strong class="text-indigo-700">84%</strong></div>
+                </div>
+                <div class="bg-slate-50 border border-slate-200 rounded p-3 text-xs space-y-1">
+                    <strong class="block">Catatan Tindak Lanjut:</strong>
+                    <p>1. Lengkapi LK praktik routing pada modul ajar Bab 3.</p>
+                    <p>2. Tambahkan asesmen formatif di akhir kegiatan inti.</p>
+                    <p>3. Lampirkan analisis butir soal STS sebelum 20 Okt 2026.</p>
+                </div>
+                <div class="flex items-center justify-between bg-white border border-slate-200 rounded p-3 text-xs">
+                    <div><i class="fa-solid fa-file-pdf text-rose-500 mr-1"></i> <strong>TL_Supervisi_Nia.pdf</strong> <span class="text-slate-400 block">Dikirim 5 Okt 2026 &middot; Waka Kurikulum</span></div>
+                    <span id="statusTL" class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold">Dilihat</span>
+                </div>
+                <button onclick="document.getElementById('statusTL').className='bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold';document.getElementById('statusTL').innerText='Diunduh';alert('Dokumen terunduh. Status \\'Diunduh\\' terkirim ke dashboard Kepala Sekolah & Waka Kurikulum.')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs py-2 rounded font-medium"><i class="fa-solid fa-download mr-1"></i> Unduh Catatan Tindak Lanjut (PDF)</button>` },
             'laporan_rekap': { title: 'Rekap Nilai & LMS', html: '<p>Statistik keaktifan LMS siswa.</p>' },
             'laporan_leger': { title: 'Ekspor Leger', html: '<button onclick="alert(\'Leger terunduh!\')" class="bg-emerald-600 text-white text-xs px-3 py-1.5 rounded">Download Leger (.xlsx)</button>' }
         };

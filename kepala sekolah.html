@@ -425,7 +425,18 @@
                             <button onclick="alert('Mengunduh laporan grafik supervisi kurikulum.')" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-medium transition text-xs">
                                 <i class="fa-solid fa-download mr-1"></i> Unduh Laporan Grafik
                             </button>
-                            <button onclick="alert('Membuka panel konfirmasi tindak lanjut guru.')" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 py-2 rounded font-medium transition text-xs">
+                            <button onclick="bukaModalLaporan('Log Catatan Tindak Lanjut Supervisi Guru', `
+                                <p class='text-xs text-slate-500 mb-2'>Catatan tindak lanjut dikirim Waka Kurikulum ke dashboard guru. Status tercatat otomatis saat guru membuka atau mengunduh dokumen.</p>
+                                <table class='w-full text-left text-xs border-collapse'>
+                                    <thead><tr class='bg-slate-50 text-slate-500 uppercase border-b border-slate-200'><th class='p-2'>Guru</th><th class='p-2'>Dokumen</th><th class='p-2'>Dikirim</th><th class='p-2 text-center'>Status</th></tr></thead>
+                                    <tbody class='divide-y divide-slate-100'>
+                                        <tr><td class='p-2 font-medium'>Bu Dewi, S.Kom.</td><td class='p-2'>TL_Supervisi_Dewi.pdf</td><td class='p-2'>1 Okt 2026</td><td class='p-2 text-center'><span class='bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-semibold'>Diunduh 3 Okt</span></td></tr>
+                                        <tr><td class='p-2 font-medium'>Nia Adiyanti, S.Kom.</td><td class='p-2'>TL_Supervisi_Nia.pdf</td><td class='p-2'>5 Okt 2026</td><td class='p-2 text-center'><span class='bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold'>Dilihat</span></td></tr>
+                                        <tr><td class='p-2 font-medium'>Pak San, S.T.</td><td class='p-2'>TL_Supervisi_San.pdf</td><td class='p-2'>2 Okt 2026</td><td class='p-2 text-center'><span class='bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-semibold'>Dilihat</span></td></tr>
+                                        <tr><td class='p-2 font-medium'>Pak Hendra, S.Pd.</td><td class='p-2'>TL_Supervisi_Hendra.pdf</td><td class='p-2'>4 Okt 2026</td><td class='p-2 text-center'><span class='bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-semibold'>Belum Dibuka</span></td></tr>
+                                    </tbody>
+                                </table>
+                                <button onclick='alert(&quot;Pengingat dikirim ke guru yang belum mengunduh.&quot;)' class='mt-3 bg-amber-500 hover:bg-amber-600 text-white text-xs px-3 py-1.5 rounded font-medium'>Kirim Pengingat ke Guru yang Belum Unduh</button>`)" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 py-2 rounded font-medium transition text-xs">
                                 Cek Log Download Guru
                             </button>
                         </div>
