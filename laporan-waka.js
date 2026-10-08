@@ -25,12 +25,20 @@
         'Tertunda': 'bg-amber-100 text-amber-800'
     };
 
-    const p = (nama, target, realisasi, progres, kendala, tindakLanjut, status) =>
-        ({ nama, target, realisasi, progres, kendala, tindakLanjut, status, terkirim: true, catatanKS: '' });
+    const p = (nama, target, realisasi, progres, kendala, tindakLanjut, status, lampiran) =>
+        ({ nama, target, realisasi, progres, kendala, tindakLanjut, status, terkirim: true, catatanKS: '', lampiran: lampiran || [] });
+
+    // Lampiran contoh (hanya metadata; isi file tidak tersedia di prototype)
+    const contohFile = (nama, ukuran, tanggal) => ({ nama, ukuran, tanggal, data: '' });
+
+    // File di atas batas ini hanya dicatat namanya, karena penyimpanan browser terbatas (~5 MB)
+    const MAKS_UKURAN_SIMPAN = 1.5 * 1024 * 1024;
+    const FORMAT_DITERIMA = '.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.jpg,.jpeg,.png';
 
     const DATA_AWAL = {
         kurikulum: [
-            p('Raker Persiapan Mengajar', '100 % Guru Mempersiapkan bahan ajar / Modul Deep Learning', '85 %', 85, 'Masih ada guru pemula yang belum menguasai pembuatan modul', 'PIGP', 'Berjalan'),
+            p('Raker Persiapan Mengajar', '100 % Guru Mempersiapkan bahan ajar / Modul Deep Learning', '85 %', 85, 'Masih ada guru pemula yang belum menguasai pembuatan modul', 'PIGP', 'Berjalan',
+                [contohFile('Notulen_Raker_Persiapan_Mengajar.pdf', 245760, '2026-07-10'), contohFile('Rekap_Kesiapan_Modul_Guru.xlsx', 61440, '2026-07-12')]),
             p('Induksi Guru Pemula', '100 % guru pemula mengikuti program induksi & pendampingan mentor', '4 dari 5 guru', 80, 'Jadwal mentor bentrok dengan jam mengajar', 'Pendampingan dijadwalkan tiap Sabtu', 'Berjalan'),
             p('Hasil Penelaahan Modul Deep Learning', '100 % modul ajar guru ditelaah & disetujui', '30 dari 38 modul', 79, '8 modul masih perlu revisi asesmen', 'Klinik modul bersama tim kurikulum', 'Berjalan'),
             p('Hasil Kegiatan STS', 'STS terlaksana 100 % dengan ketuntasan minimal 85 %', 'Persiapan soal', 20, 'Masih ada guru yang terlambat menyerahkan soal', 'Pengingat tenggat soal ke guru mapel', 'Berjalan'),
@@ -81,6 +89,16 @@
 
     // ---------- Util ----------
     const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const ukuranTeks = b => b >= 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB';
+    const ikonFile = nama => {
+        const ext = (nama.split('.').pop() || '').toLowerCase();
+        if (ext === 'pdf') return 'fa-file-pdf text-rose-500';
+        if (['doc', 'docx'].includes(ext)) return 'fa-file-word text-blue-600';
+        if (['xls', 'xlsx'].includes(ext)) return 'fa-file-excel text-emerald-600';
+        if (['ppt', 'pptx'].includes(ext)) return 'fa-file-powerpoint text-orange-500';
+        if (['jpg', 'jpeg', 'png'].includes(ext)) return 'fa-file-image text-purple-500';
+        return 'fa-file text-slate-500';
+    };
     const sel = 'p-2.5 border border-slate-200 align-top';
 
     // ---------- Modal (disuntikkan sekali per halaman) ----------
@@ -196,6 +214,7 @@
                                     <td class="${sel} text-center"><span class="${WARNA_STATUS[pr.status] || WARNA_STATUS['Belum Mulai']} px-2 py-0.5 rounded font-medium whitespace-nowrap">${esc(pr.status)}</span></td>
                                     <td class="${sel} text-center whitespace-nowrap">
                                         <button onclick="LaporanWaka.detail('${containerId}', ${pr.idx})" class="text-blue-600 font-semibold underline">Lihat Detail</button>
+                                        ${(pr.lampiran || []).length ? `<span class="ml-1 text-slate-500" title="${pr.lampiran.length} lampiran"><i class="fa-solid fa-paperclip"></i> ${pr.lampiran.length}</span>` : ''}
                                         ${pr.catatanKS ? '<i class="fa-solid fa-comment-dots text-purple-500 ml-1" title="Ada catatan Kepala Sekolah"></i>' : ''}
                                         ${isWaka ? `
                                             <div class="mt-1 space-x-2">
@@ -260,7 +279,8 @@
             tindakLanjut: f.get('tindakLanjut').trim() || '-',
             status: f.get('status'),
             terkirim: false,
-            catatanKS: idx == null ? '' : daftar[idx].catatanKS
+            catatanKS: idx == null ? '' : daftar[idx].catatanKS,
+            lampiran: idx == null ? [] : (daftar[idx].lampiran || [])
         };
         if (idx == null) daftar.push(baru); else daftar[idx] = baru;
         if (!simpan(data)) alert('Penyimpanan browser tidak tersedia; perubahan hanya tampil sampai halaman ditutup.');
@@ -311,11 +331,91 @@
             ${baris('Kendala', esc(pr.kendala))}
             ${baris('Tindak Lanjut', esc(pr.tindakLanjut))}
             ${baris('Status', `<span class="${WARNA_STATUS[pr.status]} px-2 py-0.5 rounded">${esc(pr.status)}</span> ${pr.terkirim ? '<span class="text-emerald-700">&middot; Terkirim ke Kepala Sekolah</span>' : '<span class="text-amber-700">&middot; Draft</span>'}`)}
+            ${lampiranHtml(containerId, idx, pr, st.mode === 'waka')}
             ${catatan}
             <div class="flex justify-end gap-2 pt-2 border-t">
                 <button onclick="alert('Mengunduh laporan program kerja (PDF/Excel).')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded font-medium"><i class="fa-solid fa-download mr-1"></i> Download PDF / Excel</button>
                 <button onclick="LaporanWaka.tutup()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded font-medium">Tutup</button>
             </div>`);
+    }
+
+    // ---------- Lampiran laporan detail ----------
+    function lampiranHtml(containerId, idx, pr, bisaUbah) {
+        const daftar = pr.lampiran || [];
+        return `
+            <div class="border border-slate-200 rounded p-3 space-y-2">
+                <div class="flex justify-between items-center gap-2">
+                    <span class="font-bold text-slate-700 uppercase text-[10px]"><i class="fa-solid fa-paperclip mr-1"></i> Lampiran Laporan Detail (${daftar.length})</span>
+                    ${bisaUbah ? `<label class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded font-medium cursor-pointer whitespace-nowrap">
+                        <i class="fa-solid fa-upload mr-1"></i> Unggah File
+                        <input type="file" multiple accept="${FORMAT_DITERIMA}" class="hidden" onchange="LaporanWaka.unggahLampiran('${containerId}', ${idx}, this)">
+                    </label>` : ''}
+                </div>
+                ${daftar.length ? `<ul class="divide-y divide-slate-100">${daftar.map((f, i) => `
+                    <li class="flex items-center justify-between gap-2 py-2">
+                        <div class="flex items-center gap-2 min-w-0">
+                            <i class="fa-solid ${ikonFile(f.nama)} text-lg"></i>
+                            <div class="min-w-0">
+                                <span class="font-medium block truncate">${esc(f.nama)}</span>
+                                <span class="text-slate-400">${ukuranTeks(f.ukuran)} &middot; ${esc(f.tanggal)}${f.data ? '' : f.besar ? ' &middot; <i>terlalu besar, hanya nama file</i>' : ' &middot; <i>contoh</i>'}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 whitespace-nowrap">
+                            <button onclick="LaporanWaka.unduhLampiran('${containerId}', ${idx}, ${i})" class="text-blue-600 font-medium"><i class="fa-solid fa-download mr-1"></i>Unduh</button>
+                            ${bisaUbah ? `<button onclick="LaporanWaka.hapusLampiran('${containerId}', ${idx}, ${i})" class="text-slate-500 hover:text-rose-600" title="Hapus"><i class="fa-solid fa-trash"></i></button>` : ''}
+                        </div>
+                    </li>`).join('')}</ul>`
+                : `<p class="text-slate-400">${bisaUbah ? 'Belum ada lampiran. Unggah laporan detail sesuai format sekolah (PDF, Word, Excel, PowerPoint, atau gambar).' : 'Waka belum melampirkan file laporan detail.'}</p>`}
+            </div>`;
+    }
+
+    function unggahLampiran(containerId, idx, input) {
+        const files = [...(input.files || [])];
+        if (!files.length) return;
+        const tanggal = new Date().toISOString().slice(0, 10);
+        let besar = 0;
+        Promise.all(files.map(file => new Promise(resolve => {
+            if (file.size > MAKS_UKURAN_SIMPAN) { besar++; return resolve({ nama: file.name, ukuran: file.size, tanggal, data: '', besar: true }); }
+            const reader = new FileReader();
+            reader.onload = () => resolve({ nama: file.name, ukuran: file.size, tanggal, data: reader.result });
+            reader.onerror = () => resolve({ nama: file.name, ukuran: file.size, tanggal, data: '' });
+            reader.readAsDataURL(file);
+        }))).then(hasil => {
+            const data = muat();
+            const pr = data[instans[containerId].bidang].program[idx];
+            pr.lampiran = (pr.lampiran || []).concat(hasil);
+            if (!simpan(data)) {
+                // Penyimpanan penuh: simpan nama file saja
+                hasil.forEach(f => { f.data = ''; f.besar = true; });
+                besar = hasil.length;
+                if (!simpan(data)) { alert('Lampiran gagal disimpan: penyimpanan browser penuh.'); return; }
+            }
+            if (besar) alert(besar + ' file terlalu besar untuk prototype ini, jadi hanya nama filenya yang dicatat. Pada sistem asli file akan diunggah ke server.');
+            detail(containerId, idx);
+            gambar(containerId);
+        });
+    }
+
+    function unduhLampiran(containerId, idx, i) {
+        const f = (muat()[instans[containerId].bidang].program[idx].lampiran || [])[i];
+        if (!f) return;
+        if (!f.data) { alert('"' + f.nama + '" ' + (f.besar ? 'terlalu besar untuk disimpan di prototype ini' : 'adalah file contoh') + ', jadi isinya tidak tersedia untuk diunduh.'); return; }
+        const a = document.createElement('a');
+        a.href = f.data;
+        a.download = f.nama;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    }
+
+    function hapusLampiran(containerId, idx, i) {
+        const data = muat();
+        const pr = data[instans[containerId].bidang].program[idx];
+        if (!confirm('Hapus lampiran "' + pr.lampiran[i].nama + '"?')) return;
+        pr.lampiran.splice(i, 1);
+        simpan(data);
+        detail(containerId, idx);
+        gambar(containerId);
     }
 
     function simpanCatatan(containerId, idx) {
@@ -349,5 +449,5 @@
         reader.readAsDataURL(file);
     }
 
-    window.LaporanWaka = { render, filter, formTambah, formEdit, simpanForm, hapus, kirim, detail, simpanCatatan, gantiFoto, tutup };
+    window.LaporanWaka = { render, filter, formTambah, formEdit, simpanForm, hapus, kirim, detail, simpanCatatan, gantiFoto, unggahLampiran, unduhLampiran, hapusLampiran, tutup };
 })();
