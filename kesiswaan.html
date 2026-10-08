@@ -132,6 +132,14 @@
 
         <!-- ================= 2. KEHADIRAN DAN KETERLAMBATAN SISWA ================= -->
         <div id="tab-kehadiran" class="space-y-6 tab-content hidden">
+            <!-- Alur laporan keterlambatan Piket -> BK -> Kesiswaan (script: alur-keterlambatan.js) -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-user-clock mr-2 text-emerald-600"></i>Laporan Keterlambatan dari Guru BK</h3>
+                    <p class="text-xs text-slate-500">Rekap keterlambatan siswa beserta tindak lanjut BK. Siswa yang terlambat berulang dapat langsung diproses Surat Peringatan.</p>
+                </div>
+                <div id="alurTerlambat"></div>
+            </div>
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
                 <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
                     <div>
@@ -323,5 +331,7 @@
     </script>
     <script src="laporan-waka.js"></script>
     <script>LaporanWaka.render('laporanWaka', 'kesiswaan', { mode: 'waka' });</script>
+    <script src="alur-keterlambatan.js"></script>
+    <script>AlurTerlambat.renderKesiswaan('alurTerlambat');</script>
 </body>
 </html>

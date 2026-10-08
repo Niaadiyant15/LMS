@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "prototype-static",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/ASUS/AppData/Local/Temp/claude/C--xampp-htdocs-prototype-lms/3bc93196-5cc7-46a1-ad63-eb147fa584b4/scratchpad/serve.js", "C:/xampp/htdocs/prototype-lms", "8765"],
+      "port": 8765
+    }
+  ]
+}

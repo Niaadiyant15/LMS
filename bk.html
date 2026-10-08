@@ -36,7 +36,7 @@
     <!-- Navigation Tabs (Sesuai Poin 1 - 6 Bimbingan Konseling) -->
     <nav class="bg-white border-b border-slate-200 shadow-sm sticky top-[57px] z-40">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 md:space-x-4 overflow-x-auto text-xs md:text-sm">
-            <button onclick="switchTab(' data-siswa')" id="btn-data-siswa" class="tab-btn py-3 font-semibold text-rose-600 border-b-2 border-rose-600 whitespace-nowrap"><i class="fa-solid fa-address-card mr-1.5"></i> 1. Data Siswa untuk BK</button>
+            <button onclick="switchTab('data-siswa')" id="btn-data-siswa" class="tab-btn py-3 font-semibold text-rose-600 border-b-2 border-rose-600 whitespace-nowrap"><i class="fa-solid fa-address-card mr-1.5"></i> 1. Data Siswa untuk BK</button>
             <button onclick="switchTab('disiplin')" id="btn-disiplin" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 2. Kedisiplinan & Pelanggaran</button>
             <button onclick="switchTab('konseling')" id="btn-konseling" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> 3. Konseling <span class="bg-rose-500 text-white text-[10px] px-1.5 py-0.5 rounded-full ml-1">Rahasia</span></button>
             <button onclick="switchTab('karier')" id="btn-karier" class="tab-btn py-3 font-medium text-slate-600 hover:text-rose-600 border-b-2 border-transparent whitespace-nowrap"><i class="fa-solid fa-briefcase mr-1.5"></i> 4. Bimbingan Karier (SMK)</button>
@@ -81,6 +81,14 @@
 
         <!-- ================= 2. KEDISIPLINAN DAN PELANGGARAN ================= -->
         <div id="tab-disiplin" class="space-y-6 tab-content hidden">
+            <!-- Alur laporan keterlambatan Piket -> BK -> Kesiswaan (script: alur-keterlambatan.js) -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-user-clock mr-2 text-rose-600"></i>Laporan Keterlambatan dari Guru Piket</h3>
+                    <p class="text-xs text-slate-500">Tindak lanjuti laporan keterlambatan dari Guru Piket (teguran, konseling, panggilan orang tua), lalu laporkan ringkasannya ke Waka Kesiswaan.</p>
+                </div>
+                <div id="alurTerlambat"></div>
+            </div>
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
                 <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
                     <div>
@@ -234,5 +242,7 @@
             activeBtn.classList.add('text-rose-600', 'border-rose-600', 'font-semibold');
         }
     </script>
+    <script src="alur-keterlambatan.js"></script>
+    <script>AlurTerlambat.renderBK('alurTerlambat');</script>
 </body>
 </html>

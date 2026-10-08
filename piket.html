@@ -77,6 +77,14 @@
 
         <!-- ================= 2. KEHADIRAN DAN KETERTIBAN SISWA ================= -->
         <div id="tab-siswa" class="space-y-6 tab-content hidden">
+            <!-- Alur laporan keterlambatan Piket -> BK -> Kesiswaan (script: alur-keterlambatan.js) -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-user-clock mr-2 text-amber-600"></i>Laporan Siswa Terlambat ke Guru BK</h3>
+                    <p class="text-xs text-slate-500">Catat siswa terlambat (jam datang & alasan), beri izin masuk kelas, lalu laporkan ke Guru BK untuk ditindaklanjuti.</p>
+                </div>
+                <div id="alurTerlambat"></div>
+            </div>
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
                 <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
                     <div>
@@ -211,5 +219,7 @@
             activeBtn.classList.add('text-amber-600', 'border-amber-600', 'font-semibold');
         }
     </script>
+    <script src="alur-keterlambatan.js"></script>
+    <script>AlurTerlambat.renderPiket('alurTerlambat');</script>
 </body>
 </html>
