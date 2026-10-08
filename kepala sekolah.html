@@ -248,57 +248,9 @@
                     </ol>
                 </div>
 
-                <!-- Bagian Detail Program Kerja Sesuai Gambar Bawah -->
-                <div id="area-detail-laporan" class="bg-slate-50 p-4 rounded-lg border border-slate-200 space-y-4">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-4 rounded-lg border border-slate-200">
-                        <div class="space-y-2">
-                            <h4 id="labelLaporanTerpilih" class="font-bold text-slate-800 text-xs md:text-sm">Laporan Kerja Wakil Kurikulum :</h4>
-                            <div id="listSubItem" class="text-xs text-slate-600 space-y-1 font-mono">
-                                1. Raker Persiapan Mengajar<br>
-                                2. Induksi Guru Pemula<br>
-                                3. Hasil Penelaahan Modul Dep Learning<br>
-                                4. Hasil Kegiatan STS<br>
-                                5. Hasil Kegiatan SAS<br>
-                                6. Hasil Kegiatan TKA
-                            </div>
-                        </div>
-                        <!-- Kotak Foto Sesuai Gambar -->
-                        <div class="w-20 h-24 bg-slate-200 rounded-lg overflow-hidden border border-slate-300 flex-shrink-0 shadow-sm">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Penanggung Jawab" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-
-                    <!-- Tabel Persis Sesuai Gambar Bawah (Program, Target, Realisasi, Progres, Kendala, Tindak Lanjut, Status, Aksi) -->
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-xs border-collapse border border-slate-200">
-                            <thead>
-                                <tr class="bg-emerald-800 text-white uppercase font-semibold text-[11px]">
-                                    <th class="p-2.5 border border-emerald-700">Program</th>
-                                    <th class="p-2.5 border border-emerald-700">Target</th>
-                                    <th class="p-2.5 border border-emerald-700">Realisasi</th>
-                                    <th class="p-2.5 border border-emerald-700">Progres</th>
-                                    <th class="p-2.5 border border-emerald-700">Kendala</th>
-                                    <th class="p-2.5 border border-emerald-700">Tindak Lanjut</th>
-                                    <th class="p-2.5 border border-emerald-700 text-center">Status</th>
-                                    <th class="p-2.5 border border-emerald-700 text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabelIsiDinamis" class="divide-y divide-slate-200 bg-white">
-                                <tr>
-                                    <td class="p-2.5 border border-slate-200 font-medium">Raker</td>
-                                    <td class="p-2.5 border border-slate-200">100 % Guru Mempersiapkan bahan ajar / Modul Deep Learning</td>
-                                    <td class="p-2.5 border border-slate-200">85 %</td>
-                                    <td class="p-2.5 border border-slate-200">85 %</td>
-                                    <td class="p-2.5 border border-slate-200 text-rose-600">Masih ada guru pemula yang belum menguasai pembuatan modul</td>
-                                    <td class="p-2.5 border border-slate-200 font-semibold text-purple-700">PIGP</td>
-                                    <td class="p-2.5 border border-slate-200 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Berjalan</span></td>
-                                    <td class="p-2.5 border border-slate-200 text-center">
-                                        <button onclick="bukaModalLaporan('Raker Kurikulum', 'Rincian lengkap program Raker Persiapan Mengajar dan evaluasi PIGP.')" class="text-blue-600 font-semibold hover:underline">Lihat Detail</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- Detail Laporan Kerja Waka (data dari halaman tiap waka, script: laporan-waka.js) -->
+                <div id="area-detail-laporan">
+                    <div id="laporanWakaKS"></div>
                 </div>
             </div>
         </div>
@@ -437,6 +389,7 @@
         Dashboard Kepala Sekolah &copy; 2026. Lengkap sesuai seluruh rincian poin 1 sampai 6.
     </footer>
 
+    <script src="laporan-waka.js"></script>
     <!-- Script Tab & Fungsi Modal Laporan -->
     <script>
         function switchTab(tabId) {
@@ -479,94 +432,11 @@
             document.getElementById('modalLaporan').classList.add('hidden');
         }
 
-        // Fungsi interaktif pilihan laporan sesuai permintaan gambar
+        // Pilihan laporan per bidang: menampilkan program kerja yang sudah dikirim waka
         function pilihLaporan(jenis) {
-            const labelLaporan = document.getElementById('labelLaporanTerpilih');
-            const listSub = document.getElementById('listSubItem');
-            const tabelIsi = document.getElementById('tabelIsiDinamis');
-
-            if (jenis === 'kurikulum') {
-                labelLaporan.innerText = "Laporan Kerja Wakil Kurikulum :";
-                listSub.innerHTML = `1. Raker Persiapan Mengajar<br>2. Induksi Guru Pemula<br>3. Hasil Penelaahan Modul Dep Learning<br>4. Hasil Kegiatan STS<br>5. Hasil Kegiatan SAS<br>6. Hasil Kegiatan TKA`;
-                tabelIsi.innerHTML = `
-                    <tr>
-                        <td class="p-2.5 border border-slate-200 font-medium">Raker</td>
-                        <td class="p-2.5 border border-slate-200">100 % Guru Mempersiapkan bahan ajar / Modul Deep Learning</td>
-                        <td class="p-2.5 border border-slate-200">85 %</td>
-                        <td class="p-2.5 border border-slate-200">85 %</td>
-                        <td class="p-2.5 border border-slate-200 text-rose-600">Masih ada guru pemula yang belum menguasai pembuatan modul</td>
-                        <td class="p-2.5 border border-slate-200 font-semibold text-purple-700">PIGP</td>
-                        <td class="p-2.5 border border-slate-200 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Berjalan</span></td>
-                        <td class="p-2.5 border border-slate-200 text-center">
-                            <button onclick="bukaModalLaporan('Raker Kurikulum', 'Rincian lengkap program Raker Persiapan Mengajar dan evaluasi PIGP.')" class="text-blue-600 font-semibold hover:underline">Lihat Detail</button>
-                        </td>
-                    </tr>`;
-            } else if (jenis === 'kesiswaan') {
-                labelLaporan.innerText = "Laporan Kerja Wakil Kesiswaan :";
-                listSub.innerHTML = `1. Pembinaan Kedisiplinan & Tata Tertib Siswa<br>2. Program Ekstrakurikuler & Pembinaan Karakter<br>3. Layanan Konseling (BK)`;
-                tabelIsi.innerHTML = `
-                    <tr>
-                        <td class="p-2.5 border border-slate-200 font-medium">Kedisiplinan</td>
-                        <td class="p-2.5 border border-slate-200">100% Siswa menaati tata tertib & tingkat kehadiran 95%</td>
-                        <td class="p-2.5 border border-slate-200">92 %</td>
-                        <td class="p-2.5 border border-slate-200">92 %</td>
-                        <td class="p-2.5 border border-slate-200 text-rose-600">Beberapa siswa terlambat datang ke sekolah</td>
-                        <td class="p-2.5 border border-slate-200 font-semibold text-purple-700">Home Visit & BK</td>
-                        <td class="p-2.5 border border-slate-200 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Berjalan</span></td>
-                        <td class="p-2.5 border border-slate-200 text-center">
-                            <button onclick="bukaModalLaporan('Laporan Kesiswaan', 'Rincian kedisiplinan dan laporan penanganan kesiswaan.')" class="text-blue-600 font-semibold hover:underline">Lihat Detail</button>
-                        </td>
-                    </tr>`;
-            } else if (jenis === 'humas') {
-                labelLaporan.innerText = "Laporan Kerja Wakil Hubungan Industri / HUBIN :";
-                listSub.innerHTML = `1. Penempatan Prakerin / PKL Siswa<br>2. Kerja Sama IDUKA (DUDI) Partner<br>3. Program Guru Tamu Industri`;
-                tabelIsi.innerHTML = `
-                    <tr>
-                        <td class="p-2.5 border border-slate-200 font-medium">Kemitraan</td>
-                        <td class="p-2.5 border border-slate-200">Kerja sama dengan 30 Perusahaan IT/DUDI</td>
-                        <td class="p-2.5 border border-slate-200">24 Mitra</td>
-                        <td class="p-2.5 border border-slate-200">80 %</td>
-                        <td class="p-2.5 border border-slate-200 text-rose-600">Penyesuaian jadwal industri dengan kalender akademik</td>
-                        <td class="p-2.5 border border-slate-200 font-semibold text-purple-700">MoU Lanjutan</td>
-                        <td class="p-2.5 border border-slate-200 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Berjalan</span></td>
-                        <td class="p-2.5 border border-slate-200 text-center">
-                            <button onclick="bukaModalLaporan('Laporan HUBIN', 'Rincian kerja sama IDUKA dan penempatan PKL.')" class="text-blue-600 font-semibold hover:underline">Lihat Detail</button>
-                        </td>
-                    </tr>`;
-            } else if (jenis === 'sarpras') {
-                labelLaporan.innerText = "Laporan Kerja Wakil Sarana :";
-                listSub.innerHTML = `1. Inventaris & Perawatan Lab Komputer<br>2. Pemeliharaan Fasilitas Kelas & Proyektor`;
-                tabelIsi.innerHTML = `
-                    <tr>
-                        <td class="p-2.5 border border-slate-200 font-medium">Sarpras Lab</td>
-                        <td class="p-2.5 border border-slate-200">100% Perangkat Lab Komputer siap pakai</td>
-                        <td class="p-2.5 border border-slate-200">33 Unit</td>
-                        <td class="p-2.5 border border-slate-200">94 %</td>
-                        <td class="p-2.5 border border-slate-200 text-rose-600">2 Unit PC memerlukan penggantian sparepart</td>
-                        <td class="p-2.5 border border-slate-200 font-semibold text-purple-700">Perbaikan Teknisi</td>
-                        <td class="p-2.5 border border-slate-200 text-center"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">Proses</span></td>
-                        <td class="p-2.5 border border-slate-200 text-center">
-                            <button onclick="bukaModalLaporan('Laporan Sarpras', 'Rincian inventaris lab dan sarana sekolah.')" class="text-blue-600 font-semibold hover:underline">Lihat Detail</button>
-                        </td>
-                    </tr>`;
-            } else if (jenis === 'keuangan') {
-                labelLaporan.innerText = "Laporan Kerja Bendahara / Keuangan Sekolah :";
-                listSub.innerHTML = `1. Rekapitulasi Administrasi Keuangan Siswa<br>2. Validasi Surat Perjanjian Cicilan / Keringanan Ujian`;
-                tabelIsi.innerHTML = `
-                    <tr>
-                        <td class="p-2.5 border border-slate-200 font-medium">Keuangan</td>
-                        <td class="p-2.5 border border-slate-200">100% Validasi administrasi siswa semester ganjil</td>
-                        <td class="p-2.5 border border-slate-200">90 % Lunas</td>
-                        <td class="p-2.5 border border-slate-200">90 %</td>
-                        <td class="p-2.5 border border-slate-200 text-rose-600">124 Siswa mengajukan surat perjanjian keringanan</td>
-                        <td class="p-2.5 border border-slate-200 font-semibold text-purple-700">Validasi Cicilan</td>
-                        <td class="p-2.5 border border-slate-200 text-center"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Selesai</span></td>
-                        <td class="p-2.5 border border-slate-200 text-center">
-                            <button onclick="bukaModalLaporan('Laporan Keuangan', 'Rincian rekapitulasi keuangan dan validasi siswa.')" class="text-blue-600 font-semibold hover:underline">Lihat Detail</button>
-                        </td>
-                    </tr>`;
-            }
+            LaporanWaka.render('laporanWakaKS', jenis, { mode: 'kepsek' });
         }
+        pilihLaporan('kurikulum');
     </script>
 </body>
 </html>

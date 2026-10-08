@@ -221,6 +221,14 @@
 
         <!-- ================= 6. KOMUNIKASI DAN LAPORAN ================= -->
         <div id="tab-laporan" class="space-y-6 tab-content hidden">
+            <!-- Laporan Kerja Program ke Kepala Sekolah (script: laporan-waka.js) -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                <div class="border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-clipboard-list mr-2 text-blue-600"></i>Laporan Kerja Program ke Kepala Sekolah</h3>
+                    <p class="text-xs text-slate-500">Tambahkan program kerja yang ingin dilaporkan beserta target, realisasi, progres, kendala, dan tindak lanjut. Program yang dikirim akan tampil di menu Laporan dashboard Kepala Sekolah.</p>
+                </div>
+                <div id="laporanWaka"></div>
+            </div>
             <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 space-y-4">
                 <div class="border-b border-slate-100 pb-3">
                     <h3 class="font-bold text-slate-700 text-sm"><i class="fa-solid fa-file-lines mr-2 text-blue-600"></i>6.1 - 6.5 Pengumuman, Laporan Humas, & Ekspor PDF/Excel</h3>
@@ -265,5 +273,7 @@
             activeBtn.classList.add('text-blue-600', 'border-blue-600', 'font-semibold');
         }
     </script>
+    <script src="laporan-waka.js"></script>
+    <script>LaporanWaka.render('laporanWaka', 'humas', { mode: 'waka' });</script>
 </body>
 </html>
